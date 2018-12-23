@@ -7,15 +7,30 @@
 //
 
 import UIKit
+import GoogleMaps
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var appCoordinator: AppCoordinator!
 
-
+    private let googleMapsApiKey = "AIzaSyBThadeRS-i717ZD67SIzKc6So8Qd6o_78"
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        GMSServices.provideAPIKey(googleMapsApiKey)
+        FirebaseApp.configure()
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        guard let window = self.window else {
+            return true
+        }
+    
+        appCoordinator = AppCoordinator(window: window)
+        appCoordinator.start()
+        
         return true
     }
 
