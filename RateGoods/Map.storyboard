@@ -46,7 +46,7 @@
         <!--Map View Controller-->
         <scene sceneID="kMx-Ex-3A1">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" id="JF8-Qt-C5W" customClass="MapViewController" customModule="RateGoods" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PulleyViewController" id="JF8-Qt-C5W" customClass="MapViewController" customModule="RateGoods" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dd6-Mg-rye" customClass="GMSMapView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,7 +60,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fHe-ay-JII" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="823" y="14"/>
+            <point key="canvasLocation" x="821.60000000000002" y="13.943028485757123"/>
+        </scene>
+        <!--Panel Content View Controller-->
+        <scene sceneID="z28-aR-Rkb">
+            <objects>
+                <viewController storyboardIdentifier="PanelContentViewController" id="598-vc-lrU" customClass="PanelContentViewController" customModule="RateGoods" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Eww-Vp-DER">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="D9v-hI-PX3"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VAY-KU-kzx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="820" y="706.59670164917543"/>
         </scene>
     </scenes>
 </document>

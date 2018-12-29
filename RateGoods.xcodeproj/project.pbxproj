@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		52DC3EB221BDE2CD1122938A /* Pods_RateGoods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA930032140497CB535308D /* Pods_RateGoods.framework */; };
+		DD82BB1921D3DEC9005BE3EF /* BottomSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD82BB1821D3DEC9005BE3EF /* BottomSheetView.xib */; };
+		DD82BB1B21D3DF01005BE3EF /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD82BB1A21D3DF01005BE3EF /* BottomSheetView.swift */; };
+		DD82BB1E21D3EC8E005BE3EF /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD82BB1D21D3EC8E005BE3EF /* R.generated.swift */; };
 		DDBAC71E21CC3C8E00C8B743 /* mapstyle.json in Resources */ = {isa = PBXBuildFile; fileRef = DDFA887121C70C3600AA578D /* mapstyle.json */; };
 		DDBAC72021CC3E6B00C8B743 /* MapViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBAC71F21CC3E6B00C8B743 /* MapViewInteractor.swift */; };
 		DDBFEBD421CCEF4C00A34FBB /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBFEBD321CCEF4C00A34FBB /* DatabaseManager.swift */; };
@@ -16,10 +19,10 @@
 		DDBFEBDB21CD5AA300A34FBB /* Popular.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDBFEBDA21CD5AA300A34FBB /* Popular.storyboard */; };
 		DDBFEBDD21CD5AB500A34FBB /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDBFEBDC21CD5AB500A34FBB /* Settings.storyboard */; };
 		DDBFEBDF21CD5ADA00A34FBB /* Favourites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDBFEBDE21CD5ADA00A34FBB /* Favourites.storyboard */; };
+		DDC0F5C021D78C2400E79FD6 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC0F5BF21D78C2400E79FD6 /* StorageManager.swift */; };
 		DDC3B4AF21C417E900C056FC /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = DDC3B4AE21C417E900C056FC /* Podfile */; };
 		DDC3B4B121C4331700C056FC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC3B4B021C4331600C056FC /* SearchViewController.swift */; };
 		DDC8149A21C7DDA200C9232E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDC8149921C7DDA200C9232E /* GoogleService-Info.plist */; };
-		DDD564AA21CE56A000EC6649 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD564A921CE56A000EC6649 /* R.generated.swift */; };
 		DDD564AC21CE59AA00EC6649 /* MapViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD564AB21CE59AA00EC6649 /* MapViewCoordinator.swift */; };
 		DDD564B021CE8BEA00EC6649 /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD564AF21CE8BEA00EC6649 /* PopularViewController.swift */; };
 		DDD564B221CE8C0900EC6649 /* PopularViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD564B121CE8C0900EC6649 /* PopularViewInteractor.swift */; };
@@ -37,12 +40,18 @@
 		DDDD27FF21CE448700E6F4A3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDD27FE21CE448700E6F4A3 /* AppCoordinator.swift */; };
 		DDDD280121CE463400E6F4A3 /* TabsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDD280021CE463400E6F4A3 /* TabsCoordinator.swift */; };
 		DDDD280321CE476900E6F4A3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDD280221CE476900E6F4A3 /* Coordinator.swift */; };
+		DDF57E2A21CFF3B700E4C94C /* PanelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF57E2921CFF3B700E4C94C /* PanelContentViewController.swift */; };
+		DDF57E2C21CFF3F200E4C94C /* PanelContentViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF57E2B21CFF3F200E4C94C /* PanelContentViewInteractor.swift */; };
+		DDF57E2E21D0066900E4C94C /* FloatingPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF57E2D21D0066900E4C94C /* FloatingPanelLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A3849616A1601D111E7ABA35 /* Pods-RateGoods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RateGoods.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RateGoods/Pods-RateGoods.debug.xcconfig"; sourceTree = "<group>"; };
 		BB8FDA0A84C845E13401FAE0 /* Pods-RateGoods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RateGoods.release.xcconfig"; path = "Pods/Target Support Files/Pods-RateGoods/Pods-RateGoods.release.xcconfig"; sourceTree = "<group>"; };
 		BDA930032140497CB535308D /* Pods_RateGoods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RateGoods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD82BB1821D3DEC9005BE3EF /* BottomSheetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetView.xib; sourceTree = "<group>"; };
+		DD82BB1A21D3DF01005BE3EF /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
+		DD82BB1D21D3EC8E005BE3EF /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		DDBAC71F21CC3E6B00C8B743 /* MapViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewInteractor.swift; sourceTree = "<group>"; };
 		DDBFEBD321CCEF4C00A34FBB /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		DDBFEBD621CD5A8300A34FBB /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
@@ -50,10 +59,10 @@
 		DDBFEBDA21CD5AA300A34FBB /* Popular.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Popular.storyboard; sourceTree = "<group>"; };
 		DDBFEBDC21CD5AB500A34FBB /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		DDBFEBDE21CD5ADA00A34FBB /* Favourites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favourites.storyboard; sourceTree = "<group>"; };
+		DDC0F5BF21D78C2400E79FD6 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		DDC3B4AE21C417E900C056FC /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DDC3B4B021C4331600C056FC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		DDC8149921C7DDA200C9232E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		DDD564A921CE56A000EC6649 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		DDD564AB21CE59AA00EC6649 /* MapViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewCoordinator.swift; sourceTree = "<group>"; };
 		DDD564AF21CE8BEA00EC6649 /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
 		DDD564B121CE8C0900EC6649 /* PopularViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewInteractor.swift; sourceTree = "<group>"; };
@@ -73,6 +82,9 @@
 		DDDD27FE21CE448700E6F4A3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		DDDD280021CE463400E6F4A3 /* TabsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsCoordinator.swift; sourceTree = "<group>"; };
 		DDDD280221CE476900E6F4A3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		DDF57E2921CFF3B700E4C94C /* PanelContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelContentViewController.swift; sourceTree = "<group>"; };
+		DDF57E2B21CFF3F200E4C94C /* PanelContentViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelContentViewInteractor.swift; sourceTree = "<group>"; };
+		DDF57E2D21D0066900E4C94C /* FloatingPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelLayout.swift; sourceTree = "<group>"; };
 		DDFA887121C70C3600AA578D /* mapstyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mapstyle.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,7 +120,7 @@
 		DD4337FC21C93B9F000AF8EF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DDD564A921CE56A000EC6649 /* R.generated.swift */,
+				DD82BB1D21D3EC8E005BE3EF /* R.generated.swift */,
 				DDC8149921C7DDA200C9232E /* GoogleService-Info.plist */,
 				DDDC6BAD21C40E470049888D /* Assets.xcassets */,
 				DDFA887121C70C3600AA578D /* mapstyle.json */,
@@ -121,6 +133,8 @@
 			children = (
 				DDBAC71F21CC3E6B00C8B743 /* MapViewInteractor.swift */,
 				DDDC6BA821C40E450049888D /* MapViewController.swift */,
+				DDF57E2B21CFF3F200E4C94C /* PanelContentViewInteractor.swift */,
+				DDF57E2921CFF3B700E4C94C /* PanelContentViewController.swift */,
 			);
 			name = MapViewController;
 			sourceTree = "<group>";
@@ -227,6 +241,7 @@
 				DDBAC72621CC40A300C8B743 /* Coordinators */,
 				DDF57E2321CF8F8300E4C94C /* Managers */,
 				DDBAC72321CC400900C8B743 /* ViewControllers */,
+				DDF57E2421CFC4E400E4C94C /* Views */,
 				DD4337FC21C93B9F000AF8EF /* Resources */,
 			);
 			path = RateGoods;
@@ -236,8 +251,19 @@
 			isa = PBXGroup;
 			children = (
 				DDBFEBD321CCEF4C00A34FBB /* DatabaseManager.swift */,
+				DDC0F5BF21D78C2400E79FD6 /* StorageManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		DDF57E2421CFC4E400E4C94C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DDF57E2D21D0066900E4C94C /* FloatingPanelLayout.swift */,
+				DD82BB1821D3DEC9005BE3EF /* BottomSheetView.xib */,
+				DD82BB1A21D3DF01005BE3EF /* BottomSheetView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +333,7 @@
 				DDDC6BB121C40E470049888D /* LaunchScreen.storyboard in Resources */,
 				DDDC6BAE21C40E470049888D /* Assets.xcassets in Resources */,
 				DDC3B4AF21C417E900C056FC /* Podfile in Resources */,
+				DD82BB1921D3DEC9005BE3EF /* BottomSheetView.xib in Resources */,
 				DDDC6BAC21C40E450049888D /* Main.storyboard in Resources */,
 				DDBFEBDB21CD5AA300A34FBB /* Popular.storyboard in Resources */,
 				DDBFEBD921CD5A9700A34FBB /* Search.storyboard in Resources */,
@@ -350,6 +377,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RateGoods/Pods-RateGoods-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
@@ -360,6 +388,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
@@ -422,11 +451,13 @@
 				DDDD280321CE476900E6F4A3 /* Coordinator.swift in Sources */,
 				DDDD27FF21CE448700E6F4A3 /* AppCoordinator.swift in Sources */,
 				DDD564BC21CE8D5800EC6649 /* PopularViewCoordinator.swift in Sources */,
-				DDD564AA21CE56A000EC6649 /* R.generated.swift in Sources */,
+				DDF57E2A21CFF3B700E4C94C /* PanelContentViewController.swift in Sources */,
 				DDC3B4B121C4331700C056FC /* SearchViewController.swift in Sources */,
 				DDD564B421CE8CF200EC6649 /* FavouritesViewController.swift in Sources */,
+				DDF57E2E21D0066900E4C94C /* FloatingPanelLayout.swift in Sources */,
 				DDD564B621CE8D0200EC6649 /* FavouritesViewInteractor.swift in Sources */,
 				DDD564B821CE8D1D00EC6649 /* SearchViewInteractor.swift in Sources */,
+				DD82BB1E21D3EC8E005BE3EF /* R.generated.swift in Sources */,
 				DDD564AC21CE59AA00EC6649 /* MapViewCoordinator.swift in Sources */,
 				DDDC6BA921C40E450049888D /* MapViewController.swift in Sources */,
 				DDDD280121CE463400E6F4A3 /* TabsCoordinator.swift in Sources */,
@@ -434,9 +465,12 @@
 				DDD564BA21CE8D4800EC6649 /* SearchViewCoordinator.swift in Sources */,
 				DDD564BE21CE8D6F00EC6649 /* FavouritesViewCoordinator.swift in Sources */,
 				DDD564B021CE8BEA00EC6649 /* PopularViewController.swift in Sources */,
+				DDF57E2C21CFF3F200E4C94C /* PanelContentViewInteractor.swift in Sources */,
 				DDBFEBD421CCEF4C00A34FBB /* DatabaseManager.swift in Sources */,
+				DD82BB1B21D3DF01005BE3EF /* BottomSheetView.swift in Sources */,
 				DDDC6BA721C40E450049888D /* AppDelegate.swift in Sources */,
 				DDD564B221CE8C0900EC6649 /* PopularViewInteractor.swift in Sources */,
+				DDC0F5C021D78C2400E79FD6 /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,6 +630,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleMaps\"",
 				);
 				INFOPLIST_FILE = RateGoods/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -625,6 +660,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleMaps\"",
 				);
 				INFOPLIST_FILE = RateGoods/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

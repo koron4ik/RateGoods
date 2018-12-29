@@ -61,8 +61,16 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 0 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
   struct nib {
+    /// Nib `BottomSheetView`.
+    static let bottomSheetView = _R.nib._BottomSheetView()
+    
+    /// `UINib(name: "BottomSheetView", in: bundle)`
+    static func bottomSheetView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.bottomSheetView)
+    }
+    
     fileprivate init() {}
   }
   
@@ -155,6 +163,17 @@ struct _R: Rswift.Validatable {
   }
   
   struct nib {
+    struct _BottomSheetView: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "BottomSheetView"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> BottomSheetView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? BottomSheetView
+      }
+      
+      fileprivate init() {}
+    }
+    
     fileprivate init() {}
   }
   
@@ -217,19 +236,25 @@ struct _R: Rswift.Validatable {
       
       let bundle = R.hostingBundle
       let mapNavigationController = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "MapNavigationController")
-      let mapViewController = StoryboardViewControllerResource<MapViewController>(identifier: "MapViewController")
       let name = "Map"
+      let panelContentViewController = StoryboardViewControllerResource<PanelContentViewController>(identifier: "PanelContentViewController")
+      let pulleyViewController = StoryboardViewControllerResource<MapViewController>(identifier: "PulleyViewController")
       
       func mapNavigationController(_: Void = ()) -> UIKit.UINavigationController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: mapNavigationController)
       }
       
-      func mapViewController(_: Void = ()) -> MapViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: mapViewController)
+      func panelContentViewController(_: Void = ()) -> PanelContentViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: panelContentViewController)
+      }
+      
+      func pulleyViewController(_: Void = ()) -> MapViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: pulleyViewController)
       }
       
       static func validate() throws {
-        if _R.storyboard.map().mapViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mapViewController' could not be loaded from storyboard 'Map' as 'MapViewController'.") }
+        if _R.storyboard.map().pulleyViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'pulleyViewController' could not be loaded from storyboard 'Map' as 'MapViewController'.") }
+        if _R.storyboard.map().panelContentViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'panelContentViewController' could not be loaded from storyboard 'Map' as 'PanelContentViewController'.") }
         if _R.storyboard.map().mapNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mapNavigationController' could not be loaded from storyboard 'Map' as 'UIKit.UINavigationController'.") }
       }
       

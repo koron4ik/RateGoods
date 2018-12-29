@@ -1,4 +1,4 @@
-platform :ios, '9.0'
+platform :ios, '11.0'
 use_frameworks!
 inhibit_all_warnings!
 
@@ -10,5 +10,6 @@ pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
 pod 'R.swift'
+pod 'FloatingPanel'
 
 end

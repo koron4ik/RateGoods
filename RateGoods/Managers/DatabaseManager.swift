@@ -27,4 +27,13 @@ class DatabaseManager {
             print(error.localizedDescription)
         })
     }
+    
+    func addStore(with title: String, imageUrl: String, latitude: String, longitude: String) {
+        ref.child("stores").childByAutoId().setValue([
+            "Title": title,
+            "imageUrl": imageUrl,
+            "latitude": latitude,
+            "longitude": longitude
+        ])
+    }
 }

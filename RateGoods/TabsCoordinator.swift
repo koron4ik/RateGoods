@@ -18,6 +18,7 @@ class TabsCoordinator: Coordinator {
     
     init(rootViewController: UINavigationController) {
         self.rootViewController = rootViewController
+        //tabBarViewController.tabBar.isHidden = true
     }
     
     func start() {
