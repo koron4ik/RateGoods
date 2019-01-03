@@ -9,6 +9,5 @@
 import UIKit
 
 class SearchViewInteractor: SearchViewControllerInteractor {
-
     
 }

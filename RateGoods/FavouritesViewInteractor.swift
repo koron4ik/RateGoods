@@ -10,5 +10,4 @@ import UIKit
 
 class FavouritesViewInteractor: FavouritesViewControllerInteractor {
     
-    
 }

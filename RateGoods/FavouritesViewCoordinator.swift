@@ -26,5 +26,4 @@ class FavouritesViewCoordinator: NSObject, Coordinator, FavouritesViewController
         
     }
     
-    
 }

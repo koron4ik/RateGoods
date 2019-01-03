@@ -1,5 +1,5 @@
 //
-//  BottomSheetView.swift
+//  StoreAddingPanel.swift
 //  RateGoods
 //
 //  Created by Vadim on 12/26/18.
@@ -9,26 +9,27 @@
 import UIKit
 import Rswift
 
-protocol BottomSheetViewDelegate: class {
+protocol StoreAddingPanelDelegate: class {
     func alert(_ alert: UIAlertController)
     func picker(_ picker: UIImagePickerController)
     func saveButtonPressed()
 }
 
-class BottomSheetView: UIView {
+class StoreAddingPanel: UIView {
 
     @IBOutlet weak var storeImageView: UIImageView!
     @IBOutlet weak var storeNameTextField: UITextField!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     
-    weak var delegate: BottomSheetViewDelegate?
+    weak var delegate: StoreAddingPanelDelegate?
     
     var picker = UIImagePickerController()
     
-    func setupPicker() {
+    func configurePicker() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGesture(gesture:)))
         storeImageView.addGestureRecognizer(tapGesture)
         storeImageView.isUserInteractionEnabled = true
-        
         picker.delegate = self
     }
     
@@ -36,9 +37,9 @@ class BottomSheetView: UIView {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        let galleryAction = UIAlertAction(title: "Open Gallery", style: .default) { (action) in self.openGallery()
+        let galleryAction = UIAlertAction(title: "Open Gallery", style: .default) { (_) in self.openGallery()
         }
-        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
             self.openCamera()
         }
 
@@ -49,17 +50,24 @@ class BottomSheetView: UIView {
         delegate?.alert(alert)
     }
     
-    func openCamera(){
+    func openCamera() {
         picker.sourceType = .camera
         picker.allowsEditing = true
         delegate?.picker(picker)
     }
     
-    func openGallery()
-    {
+    func openGallery() {
         picker.sourceType = .photoLibrary
         picker.allowsEditing = true
         delegate?.picker(picker)
+    }
+    
+    func showActivityIndicator() {
+        activityView.startAnimating()
+    }
+    
+    func hideActivityIndicator() {
+        activityView.stopAnimating()
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
@@ -68,12 +76,13 @@ class BottomSheetView: UIView {
     
 }
 
-extension BottomSheetView: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+extension StoreAddingPanel: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let chosenImage = info[.editedImage] as! UIImage
-        storeImageView.contentMode = .scaleToFill
-        storeImageView.image = chosenImage
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if let chosenImage = info[.editedImage] as? UIImage {
+            storeImageView.contentMode = .scaleToFill
+            storeImageView.image = chosenImage
+        }
         
         picker.dismiss(animated: true, completion: nil)
     }

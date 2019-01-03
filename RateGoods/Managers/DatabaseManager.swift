@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseDatabase
+import CodableFirebase
 
 class DatabaseManager {
     
@@ -19,7 +20,7 @@ class DatabaseManager {
         ref = Database.database().reference()
     }
     
-    func loadMapStyle(completionHandler: @escaping (_ value: Any) -> ()) {
+    func loadMapStyle(completionHandler: @escaping (_ value: Any) -> Void) {
         ref.child("mapstyle").observe(.value, with: { (snapshot) in
             guard let style = snapshot.value else { return }
             completionHandler(style)
@@ -30,10 +31,25 @@ class DatabaseManager {
     
     func addStore(with title: String, imageUrl: String, latitude: String, longitude: String) {
         ref.child("stores").childByAutoId().setValue([
-            "Title": title,
+            "title": title,
             "imageUrl": imageUrl,
             "latitude": latitude,
             "longitude": longitude
         ])
+    }
+    
+    func loadStores(completionHandler: @escaping (_ value: [Store]) -> Void) {
+        ref.observe(.value) { (snapshot) in
+            guard let value = snapshot.value else { return }
+            //print("stores - \(value)")
+            do {
+                let item = try FirebaseDecoder().decode(Stores.self, from: value)
+                //print(item)
+                completionHandler(Array(item.stores.values))
+            } catch {
+                print(error)
+                completionHandler([Store]())
+            }
+        }
     }
 }

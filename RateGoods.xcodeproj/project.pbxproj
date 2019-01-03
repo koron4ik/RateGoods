@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		52DC3EB221BDE2CD1122938A /* Pods_RateGoods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA930032140497CB535308D /* Pods_RateGoods.framework */; };
-		DD82BB1921D3DEC9005BE3EF /* BottomSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD82BB1821D3DEC9005BE3EF /* BottomSheetView.xib */; };
-		DD82BB1B21D3DF01005BE3EF /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD82BB1A21D3DF01005BE3EF /* BottomSheetView.swift */; };
+		DD4E258D21D8D47800D5777B /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E258C21D8D47800D5777B /* Store.swift */; };
+		DD4E259121D8F14F00D5777B /* StoreInfoPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E259021D8F14F00D5777B /* StoreInfoPanel.swift */; };
+		DD4E259321D8F16100D5777B /* StoreInfoPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4E259221D8F16100D5777B /* StoreInfoPanel.xib */; };
+		DD4E25A321D912B500D5777B /* StoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E25A221D912B500D5777B /* StoreInfoViewController.swift */; };
+		DD82BB1921D3DEC9005BE3EF /* StoreAddingPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD82BB1821D3DEC9005BE3EF /* StoreAddingPanel.xib */; };
+		DD82BB1B21D3DF01005BE3EF /* StoreAddingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD82BB1A21D3DF01005BE3EF /* StoreAddingPanel.swift */; };
 		DD82BB1E21D3EC8E005BE3EF /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD82BB1D21D3EC8E005BE3EF /* R.generated.swift */; };
 		DDBAC71E21CC3C8E00C8B743 /* mapstyle.json in Resources */ = {isa = PBXBuildFile; fileRef = DDFA887121C70C3600AA578D /* mapstyle.json */; };
 		DDBAC72021CC3E6B00C8B743 /* MapViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBAC71F21CC3E6B00C8B743 /* MapViewInteractor.swift */; };
@@ -40,8 +44,10 @@
 		DDDD27FF21CE448700E6F4A3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDD27FE21CE448700E6F4A3 /* AppCoordinator.swift */; };
 		DDDD280121CE463400E6F4A3 /* TabsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDD280021CE463400E6F4A3 /* TabsCoordinator.swift */; };
 		DDDD280321CE476900E6F4A3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDD280221CE476900E6F4A3 /* Coordinator.swift */; };
-		DDF57E2A21CFF3B700E4C94C /* PanelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF57E2921CFF3B700E4C94C /* PanelContentViewController.swift */; };
-		DDF57E2C21CFF3F200E4C94C /* PanelContentViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF57E2B21CFF3F200E4C94C /* PanelContentViewInteractor.swift */; };
+		DDE1343E21DE3D5800AA170B /* CLLocationCoordinate2D+operatorOverloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1343D21DE3D5800AA170B /* CLLocationCoordinate2D+operatorOverloading.swift */; };
+		DDE1344021DE6BF200AA170B /* UIColor+purple.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1343F21DE6BF200AA170B /* UIColor+purple.swift */; };
+		DDE1344221DE6C0E00AA170B /* String+isEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1344121DE6C0E00AA170B /* String+isEmpty.swift */; };
+		DDF57E2A21CFF3B700E4C94C /* StoreAddingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF57E2921CFF3B700E4C94C /* StoreAddingViewController.swift */; };
 		DDF57E2E21D0066900E4C94C /* FloatingPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF57E2D21D0066900E4C94C /* FloatingPanelLayout.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,8 +55,12 @@
 		A3849616A1601D111E7ABA35 /* Pods-RateGoods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RateGoods.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RateGoods/Pods-RateGoods.debug.xcconfig"; sourceTree = "<group>"; };
 		BB8FDA0A84C845E13401FAE0 /* Pods-RateGoods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RateGoods.release.xcconfig"; path = "Pods/Target Support Files/Pods-RateGoods/Pods-RateGoods.release.xcconfig"; sourceTree = "<group>"; };
 		BDA930032140497CB535308D /* Pods_RateGoods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RateGoods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD82BB1821D3DEC9005BE3EF /* BottomSheetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetView.xib; sourceTree = "<group>"; };
-		DD82BB1A21D3DF01005BE3EF /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
+		DD4E258C21D8D47800D5777B /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		DD4E259021D8F14F00D5777B /* StoreInfoPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoPanel.swift; sourceTree = "<group>"; };
+		DD4E259221D8F16100D5777B /* StoreInfoPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreInfoPanel.xib; sourceTree = "<group>"; };
+		DD4E25A221D912B500D5777B /* StoreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoViewController.swift; sourceTree = "<group>"; };
+		DD82BB1821D3DEC9005BE3EF /* StoreAddingPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreAddingPanel.xib; sourceTree = "<group>"; };
+		DD82BB1A21D3DF01005BE3EF /* StoreAddingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddingPanel.swift; sourceTree = "<group>"; };
 		DD82BB1D21D3EC8E005BE3EF /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		DDBAC71F21CC3E6B00C8B743 /* MapViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewInteractor.swift; sourceTree = "<group>"; };
 		DDBFEBD321CCEF4C00A34FBB /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -82,8 +92,10 @@
 		DDDD27FE21CE448700E6F4A3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		DDDD280021CE463400E6F4A3 /* TabsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsCoordinator.swift; sourceTree = "<group>"; };
 		DDDD280221CE476900E6F4A3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		DDF57E2921CFF3B700E4C94C /* PanelContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelContentViewController.swift; sourceTree = "<group>"; };
-		DDF57E2B21CFF3F200E4C94C /* PanelContentViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelContentViewInteractor.swift; sourceTree = "<group>"; };
+		DDE1343D21DE3D5800AA170B /* CLLocationCoordinate2D+operatorOverloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+operatorOverloading.swift"; sourceTree = "<group>"; };
+		DDE1343F21DE6BF200AA170B /* UIColor+purple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+purple.swift"; sourceTree = "<group>"; };
+		DDE1344121DE6C0E00AA170B /* String+isEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isEmpty.swift"; sourceTree = "<group>"; };
+		DDF57E2921CFF3B700E4C94C /* StoreAddingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddingViewController.swift; sourceTree = "<group>"; };
 		DDF57E2D21D0066900E4C94C /* FloatingPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelLayout.swift; sourceTree = "<group>"; };
 		DDFA887121C70C3600AA578D /* mapstyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mapstyle.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,13 +140,21 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		DD4E258B21D8D45200D5777B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DD4E258C21D8D47800D5777B /* Store.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		DDBAC72221CC3FE400C8B743 /* MapViewController */ = {
 			isa = PBXGroup;
 			children = (
 				DDBAC71F21CC3E6B00C8B743 /* MapViewInteractor.swift */,
 				DDDC6BA821C40E450049888D /* MapViewController.swift */,
-				DDF57E2B21CFF3F200E4C94C /* PanelContentViewInteractor.swift */,
-				DDF57E2921CFF3B700E4C94C /* PanelContentViewController.swift */,
+				DDF57E2921CFF3B700E4C94C /* StoreAddingViewController.swift */,
+				DD4E25A221D912B500D5777B /* StoreInfoViewController.swift */,
 			);
 			name = MapViewController;
 			sourceTree = "<group>";
@@ -190,6 +210,9 @@
 		DDBFEBD521CD176500A34FBB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DDE1343D21DE3D5800AA170B /* CLLocationCoordinate2D+operatorOverloading.swift */,
+				DDE1343F21DE6BF200AA170B /* UIColor+purple.swift */,
+				DDE1344121DE6C0E00AA170B /* String+isEmpty.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -242,6 +265,7 @@
 				DDF57E2321CF8F8300E4C94C /* Managers */,
 				DDBAC72321CC400900C8B743 /* ViewControllers */,
 				DDF57E2421CFC4E400E4C94C /* Views */,
+				DD4E258B21D8D45200D5777B /* Model */,
 				DD4337FC21C93B9F000AF8EF /* Resources */,
 			);
 			path = RateGoods;
@@ -260,8 +284,10 @@
 			isa = PBXGroup;
 			children = (
 				DDF57E2D21D0066900E4C94C /* FloatingPanelLayout.swift */,
-				DD82BB1821D3DEC9005BE3EF /* BottomSheetView.xib */,
-				DD82BB1A21D3DF01005BE3EF /* BottomSheetView.swift */,
+				DD82BB1821D3DEC9005BE3EF /* StoreAddingPanel.xib */,
+				DD82BB1A21D3DF01005BE3EF /* StoreAddingPanel.swift */,
+				DD4E259021D8F14F00D5777B /* StoreInfoPanel.swift */,
+				DD4E259221D8F16100D5777B /* StoreInfoPanel.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -274,7 +300,8 @@
 			buildConfigurationList = DDDC6BB521C40E470049888D /* Build configuration list for PBXNativeTarget "RateGoods" */;
 			buildPhases = (
 				E15D0382D986B5709F29C0AC /* [CP] Check Pods Manifest.lock */,
-				DDDD280421CE4C3700E6F4A3 /* ShellScript */,
+				DD534BC521DD47F800ECD808 /* ShellScript */,
+				DD534BC321DD356300ECD808 /* ShellScript */,
 				DDDC6B9F21C40E440049888D /* Sources */,
 				DDDC6BA021C40E440049888D /* Frameworks */,
 				DDDC6BA121C40E440049888D /* Resources */,
@@ -331,9 +358,10 @@
 				DDBAC71E21CC3C8E00C8B743 /* mapstyle.json in Resources */,
 				DDBFEBD721CD5A8300A34FBB /* Map.storyboard in Resources */,
 				DDDC6BB121C40E470049888D /* LaunchScreen.storyboard in Resources */,
+				DD4E259321D8F16100D5777B /* StoreInfoPanel.xib in Resources */,
 				DDDC6BAE21C40E470049888D /* Assets.xcassets in Resources */,
 				DDC3B4AF21C417E900C056FC /* Podfile in Resources */,
-				DD82BB1921D3DEC9005BE3EF /* BottomSheetView.xib in Resources */,
+				DD82BB1921D3DEC9005BE3EF /* StoreAddingPanel.xib in Resources */,
 				DDDC6BAC21C40E450049888D /* Main.storyboard in Resources */,
 				DDBFEBDB21CD5AA300A34FBB /* Popular.storyboard in Resources */,
 				DDBFEBD921CD5A9700A34FBB /* Search.storyboard in Resources */,
@@ -377,10 +405,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RateGoods/Pods-RateGoods-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
 				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -388,10 +419,13 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -400,7 +434,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RateGoods/Pods-RateGoods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DDDD280421CE4C3700E6F4A3 /* ShellScript */ = {
+		DD534BC321DD356300ECD808 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -408,16 +442,31 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$TEMP_DIR/rswift-lastrun",
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/\"\n";
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT\"\n";
+		};
+		DD534BC521DD47F800ECD808 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		E15D0382D986B5709F29C0AC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -451,7 +500,8 @@
 				DDDD280321CE476900E6F4A3 /* Coordinator.swift in Sources */,
 				DDDD27FF21CE448700E6F4A3 /* AppCoordinator.swift in Sources */,
 				DDD564BC21CE8D5800EC6649 /* PopularViewCoordinator.swift in Sources */,
-				DDF57E2A21CFF3B700E4C94C /* PanelContentViewController.swift in Sources */,
+				DD4E258D21D8D47800D5777B /* Store.swift in Sources */,
+				DDF57E2A21CFF3B700E4C94C /* StoreAddingViewController.swift in Sources */,
 				DDC3B4B121C4331700C056FC /* SearchViewController.swift in Sources */,
 				DDD564B421CE8CF200EC6649 /* FavouritesViewController.swift in Sources */,
 				DDF57E2E21D0066900E4C94C /* FloatingPanelLayout.swift in Sources */,
@@ -460,14 +510,18 @@
 				DD82BB1E21D3EC8E005BE3EF /* R.generated.swift in Sources */,
 				DDD564AC21CE59AA00EC6649 /* MapViewCoordinator.swift in Sources */,
 				DDDC6BA921C40E450049888D /* MapViewController.swift in Sources */,
+				DDE1344021DE6BF200AA170B /* UIColor+purple.swift in Sources */,
 				DDDD280121CE463400E6F4A3 /* TabsCoordinator.swift in Sources */,
+				DDE1343E21DE3D5800AA170B /* CLLocationCoordinate2D+operatorOverloading.swift in Sources */,
 				DDBAC72021CC3E6B00C8B743 /* MapViewInteractor.swift in Sources */,
 				DDD564BA21CE8D4800EC6649 /* SearchViewCoordinator.swift in Sources */,
+				DD4E25A321D912B500D5777B /* StoreInfoViewController.swift in Sources */,
 				DDD564BE21CE8D6F00EC6649 /* FavouritesViewCoordinator.swift in Sources */,
+				DDE1344221DE6C0E00AA170B /* String+isEmpty.swift in Sources */,
+				DD4E259121D8F14F00D5777B /* StoreInfoPanel.swift in Sources */,
 				DDD564B021CE8BEA00EC6649 /* PopularViewController.swift in Sources */,
-				DDF57E2C21CFF3F200E4C94C /* PanelContentViewInteractor.swift in Sources */,
 				DDBFEBD421CCEF4C00A34FBB /* DatabaseManager.swift in Sources */,
-				DD82BB1B21D3DF01005BE3EF /* BottomSheetView.swift in Sources */,
+				DD82BB1B21D3DF01005BE3EF /* StoreAddingPanel.swift in Sources */,
 				DDDC6BA721C40E450049888D /* AppDelegate.swift in Sources */,
 				DDD564B221CE8C0900EC6649 /* PopularViewInteractor.swift in Sources */,
 				DDC0F5C021D78C2400E79FD6 /* StorageManager.swift in Sources */,

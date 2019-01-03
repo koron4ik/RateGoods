@@ -9,7 +9,10 @@ pod 'GoogleMaps'
 pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
+pod 'CodableFirebase'
 pod 'R.swift'
 pod 'FloatingPanel'
+pod 'Kingfisher'
+pod 'Toast-Swift'
 
 end

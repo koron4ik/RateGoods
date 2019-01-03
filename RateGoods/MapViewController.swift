@@ -8,11 +8,14 @@
 
 import UIKit
 import GoogleMaps
-import FirebaseDatabase
 import FloatingPanel
 
 protocol MapViewControllerInteractor: class {
+    var stores: [Store] { get }
+    
     func setupMapStyle(completion: @escaping (GMSMapStyle?) -> Void)
+    func addMarkersToMap(stores: [Store], completion: @escaping (CLLocationCoordinate2D?, String?) -> Void)
+    func getStore(with coordinate: CLLocationCoordinate2D) -> Store?
 }
 
 protocol MapViewControllerCoordinator: class {
@@ -22,12 +25,22 @@ protocol MapViewControllerCoordinator: class {
 class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: GMSMapView!
-    private var floatingPanelController: FloatingPanelController!
+    
+    lazy var floatingPanelController: FloatingPanelController = {
+        let floatingPanelController = FloatingPanelController()
+        floatingPanelController.delegate = self
+        floatingPanelController.addPanel(toParent: self)
+        floatingPanelController.isRemovalInteractionEnabled = true
+        floatingPanelController.move(to: .hidden, animated: true)
+        floatingPanelController.surfaceView.alpha = 0.9
+        floatingPanelController.surfaceView.cornerRadius = 16.0
+        floatingPanelController.surfaceView.backgroundColor = UIColor.purple
+        floatingPanelController.surfaceView.grabberHandle.backgroundColor = UIColor.white
+        return floatingPanelController
+    }()
     
     var interactor: MapViewControllerInteractor?
     weak var coordinator: MapViewControllerCoordinator?
-    
-    var currentStoreLocation: CLLocationCoordinate2D?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +51,18 @@ class MapViewController: UIViewController {
 
         self.mapView.settings.consumesGesturesInView = false
         self.mapView.delegate = self
+        
+        self.view.makeToastActivity(.center)
+        DatabaseManager.shared.loadStores { [weak self] (stores) in
+            self?.interactor?.addMarkersToMap(stores: stores, completion: { [weak self] (coordinate, title) in
+                if let coordinate = coordinate, let title = title {
+                    let marker = GMSMarker(position: coordinate)
+                    marker.title = title
+                    marker.map = self?.mapView
+                }
+            })
+            self?.view.hideToastActivity()
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -47,9 +72,6 @@ class MapViewController: UIViewController {
 
 extension MapViewController: FloatingPanelControllerDelegate {
     func floatingPanel(_ vc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
-        vc.surfaceView.alpha = 0.9
-        vc.surfaceView.cornerRadius = 16.0
-        vc.isRemovalInteractionEnabled = true
         return MyFloatingPanelLayout()
     }
 }
@@ -57,48 +79,30 @@ extension MapViewController: FloatingPanelControllerDelegate {
 extension MapViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
-        currentStoreLocation = coordinate
-
-        let marker = GMSMarker(position: coordinate)
-        marker.title = "Marker"
-        marker.map = mapView
-        
-        floatingPanelController = FloatingPanelController()
-        floatingPanelController.delegate = self
-        floatingPanelController.addPanel(toParent: self)
+        let storeAddingVC = StoreAddingViewController(storeLocation: coordinate)
         floatingPanelController.move(to: .full, animated: true)
-        
-        let contentVC = R.storyboard.map.panelContentViewController()
-        contentVC?.delegate = self
-        floatingPanelController.set(contentViewController: contentVC)
-        
-        //guard let title = marker.title else { return }
-        
-        //ref.child("coordinates").child(title).setValue(["latitude": coordinate.latitude, "longitude": coordinate.longitude])
+        floatingPanelController.set(contentViewController: storeAddingVC)
+        storeAddingVC.delegate = self
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        //guard let title = marker.title else { return true }
+        guard let store = interactor?.getStore(with: marker.position) else { return false }
         
-        //ref.child("coordinates").child(title).removeValue()
-        marker.map = nil
+        let storeInfoVC = StoreInfoViewController(store: store)
+        floatingPanelController.move(to: .full, animated: true)
+        floatingPanelController.set(contentViewController: storeInfoVC)
         
         return true
     }
 }
 
-extension MapViewController: PanelContentViewControllerDelegate {
+extension MapViewController: StoreAddingViewControllerDelegate {
     
-    func storeSaving(title: String, imageUrl: String) {
-        guard let latitude = currentStoreLocation?.latitude.description,
-            let longitude = currentStoreLocation?.longitude.description else {
-                return
-        }
+    func storeSaved(with coordinate: CLLocationCoordinate2D) {
+        floatingPanelController.move(to: .hidden, animated: true)
         
-        DatabaseManager.shared.addStore(with: title,
-                                        imageUrl: imageUrl,
-                                        latitude: latitude,
-                                        longitude: longitude)
+        let marker = GMSMarker(position: coordinate)
+        marker.map = mapView
     }
 
 }

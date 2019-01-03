@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class MapViewCoordinator: NSObject, Coordinator, MapViewControllerCoordinator {
     
@@ -25,6 +26,4 @@ class MapViewCoordinator: NSObject, Coordinator, MapViewControllerCoordinator {
     func stop() {
         
     }
-    
-    
 }

@@ -26,5 +26,4 @@ class PopularViewCoordinator: NSObject, Coordinator, PopularViewControllerCoordi
         
     }
     
-    
 }

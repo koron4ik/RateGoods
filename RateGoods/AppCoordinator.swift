@@ -13,7 +13,6 @@ class AppCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var window: UIWindow?
     lazy var rootViewController: UINavigationController = UINavigationController(rootViewController: UIViewController())
-
     
     init(window: UIWindow) {
         self.window = window
