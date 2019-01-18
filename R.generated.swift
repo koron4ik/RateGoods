@@ -16,29 +16,16 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
-  /// This `R.color` struct is generated, and contains static references to 0 colors.
-  struct color {
-    fileprivate init() {}
-  }
-  
-  /// This `R.file` struct is generated, and contains static references to 3 files.
+  /// This `R.file` struct is generated, and contains static references to 2 files.
   struct file {
     /// Resource file `GoogleService-Info.plist`.
     static let googleServiceInfoPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "GoogleService-Info", pathExtension: "plist")
-    /// Resource file `Podfile`.
-    static let podfile = Rswift.FileResource(bundle: R.hostingBundle, name: "Podfile", pathExtension: "")
     /// Resource file `mapstyle.json`.
     static let mapstyleJson = Rswift.FileResource(bundle: R.hostingBundle, name: "mapstyle", pathExtension: "json")
     
     /// `bundle.url(forResource: "GoogleService-Info", withExtension: "plist")`
     static func googleServiceInfoPlist(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.googleServiceInfoPlist
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-    
-    /// `bundle.url(forResource: "Podfile", withExtension: "")`
-    static func podfile(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.podfile
       return fileResource.bundle.url(forResource: fileResource)
     }
     
@@ -51,15 +38,31 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.font` struct is generated, and contains static references to 0 fonts.
-  struct font {
-    fileprivate init() {}
-  }
-  
-  /// This `R.image` struct is generated, and contains static references to 1 images.
+  /// This `R.image` struct is generated, and contains static references to 4 images.
   struct image {
+    /// Image `background`.
+    static let background = Rswift.ImageResource(bundle: R.hostingBundle, name: "background")
+    /// Image `favouriteAct`.
+    static let favouriteAct = Rswift.ImageResource(bundle: R.hostingBundle, name: "favouriteAct")
+    /// Image `favouriteUnAct`.
+    static let favouriteUnAct = Rswift.ImageResource(bundle: R.hostingBundle, name: "favouriteUnAct")
     /// Image `placeholder_image`.
     static let placeholder_image = Rswift.ImageResource(bundle: R.hostingBundle, name: "placeholder_image")
+    
+    /// `UIImage(named: "background", bundle: ..., traitCollection: ...)`
+    static func background(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.background, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "favouriteAct", bundle: ..., traitCollection: ...)`
+    static func favouriteAct(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.favouriteAct, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "favouriteUnAct", bundle: ..., traitCollection: ...)`
+    static func favouriteUnAct(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.favouriteUnAct, compatibleWith: traitCollection)
+    }
     
     /// `UIImage(named: "placeholder_image", bundle: ..., traitCollection: ...)`
     static func placeholder_image(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
@@ -69,40 +72,74 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 2 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 4 nibs.
   struct nib {
+    /// Nib `AdditionalView`.
+    static let additionalView = _R.nib._AdditionalView()
+    /// Nib `MainView`.
+    static let mainView = _R.nib._MainView()
     /// Nib `StoreAddingPanel`.
     static let storeAddingPanel = _R.nib._StoreAddingPanel()
     /// Nib `StoreInfoPanel`.
     static let storeInfoPanel = _R.nib._StoreInfoPanel()
     
+    /// `UINib(name: "AdditionalView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.additionalView) instead")
+    static func additionalView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.additionalView)
+    }
+    
+    /// `UINib(name: "MainView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.mainView) instead")
+    static func mainView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.mainView)
+    }
+    
     /// `UINib(name: "StoreAddingPanel", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.storeAddingPanel) instead")
     static func storeAddingPanel(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.storeAddingPanel)
     }
     
     /// `UINib(name: "StoreInfoPanel", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.storeInfoPanel) instead")
     static func storeInfoPanel(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.storeInfoPanel)
+    }
+    
+    static func additionalView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> AdditionalView? {
+      return R.nib.additionalView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? AdditionalView
+    }
+    
+    static func mainView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MainView? {
+      return R.nib.mainView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MainView
+    }
+    
+    static func storeAddingPanel(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> StoreAddingPanel? {
+      return R.nib.storeAddingPanel.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? StoreAddingPanel
+    }
+    
+    static func storeInfoPanel(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> StoreInfoPanel? {
+      return R.nib.storeInfoPanel.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? StoreInfoPanel
     }
     
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 0 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
   struct reuseIdentifier {
+    /// Reuse identifier `GoodsCell`.
+    static let goodsCell: Rswift.ReuseIdentifier<GoodsCell> = Rswift.ReuseIdentifier(identifier: "GoodsCell")
+    
     fileprivate init() {}
   }
   
-  /// This `R.segue` struct is generated, and contains static references to 0 view controllers.
-  struct segue {
-    fileprivate init() {}
-  }
-  
-  /// This `R.storyboard` struct is generated, and contains static references to 7 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 8 storyboards.
   struct storyboard {
     /// Storyboard `Favourites`.
     static let favourites = _R.storyboard.favourites()
+    /// Storyboard `Goods`.
+    static let goods = _R.storyboard.goods()
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
     /// Storyboard `Main`.
@@ -119,6 +156,11 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "Favourites", bundle: ...)`
     static func favourites(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.favourites)
+    }
+    
+    /// `UIStoryboard(name: "Goods", bundle: ...)`
+    static func goods(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.goods)
     }
     
     /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
@@ -154,11 +196,6 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.string` struct is generated, and contains static references to 0 localization tables.
-  struct string {
-    fileprivate init() {}
-  }
-  
   fileprivate struct intern: Rswift.Validatable {
     fileprivate static func validate() throws {
       try _R.validate()
@@ -180,20 +217,60 @@ struct _R: Rswift.Validatable {
   
   struct nib: Rswift.Validatable {
     static func validate() throws {
+      try _AdditionalView.validate()
+      try _MainView.validate()
       try _StoreAddingPanel.validate()
       try _StoreInfoPanel.validate()
+    }
+    
+    struct _AdditionalView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "AdditionalView"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> AdditionalView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? AdditionalView
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "placeholder_image", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'placeholder_image' is used in nib 'AdditionalView', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _MainView: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "MainView"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MainView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MainView
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "favouriteUnAct", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'favouriteUnAct' is used in nib 'MainView', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "placeholder_image", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'placeholder_image' is used in nib 'MainView', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+      }
+      
+      fileprivate init() {}
     }
     
     struct _StoreAddingPanel: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "StoreAddingPanel"
       
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> StoreAddingPanel? {
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> StoreAddingPanel? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? StoreAddingPanel
       }
       
       static func validate() throws {
         if UIKit.UIImage(named: "placeholder_image", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'placeholder_image' is used in nib 'StoreAddingPanel', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+          if UIKit.UIColor(named: "underPageBackgroundColor", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'underPageBackgroundColor' is used in storyboard 'StoreAddingPanel', but couldn't be loaded.") }
+        }
       }
       
       fileprivate init() {}
@@ -203,12 +280,14 @@ struct _R: Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "StoreInfoPanel"
       
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> StoreInfoPanel? {
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> StoreInfoPanel? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? StoreInfoPanel
       }
       
       static func validate() throws {
         if UIKit.UIImage(named: "placeholder_image", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'placeholder_image' is used in nib 'StoreInfoPanel', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
       }
       
       fileprivate init() {}
@@ -219,11 +298,14 @@ struct _R: Rswift.Validatable {
   
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
+      try favourites.validate()
+      try goods.validate()
+      try launchScreen.validate()
       try main.validate()
+      try map.validate()
       try popular.validate()
       try search.validate()
-      try favourites.validate()
-      try map.validate()
+      try settings.validate()
     }
     
     struct favourites: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
@@ -238,17 +320,49 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if #available(iOS 11.0, *) {
+        }
         if _R.storyboard.favourites().favouritesNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'favouritesNavigationController' could not be loaded from storyboard 'Favourites' as 'UIKit.UINavigationController'.") }
       }
       
       fileprivate init() {}
     }
     
-    struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType {
+    struct goods: Rswift.StoryboardResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let goodsAddingViewController = StoryboardViewControllerResource<GoodsAddingViewController>(identifier: "GoodsAddingViewController")
+      let goodsViewController = StoryboardViewControllerResource<GoodsViewController>(identifier: "GoodsViewController")
+      let name = "Goods"
+      
+      func goodsAddingViewController(_: Void = ()) -> GoodsAddingViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: goodsAddingViewController)
+      }
+      
+      func goodsViewController(_: Void = ()) -> GoodsViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: goodsViewController)
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "placeholder_image", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'placeholder_image' is used in storyboard 'Goods', but couldn't be loaded.") }
+        if #available(iOS 11.0, *) {
+        }
+        if _R.storyboard.goods().goodsAddingViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'goodsAddingViewController' could not be loaded from storyboard 'Goods' as 'GoodsAddingViewController'.") }
+        if _R.storyboard.goods().goodsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'goodsViewController' could not be loaded from storyboard 'Goods' as 'GoodsViewController'.") }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
       typealias InitialController = UIKit.UIViewController
       
       let bundle = R.hostingBundle
       let name = "LaunchScreen"
+      
+      static func validate() throws {
+        if #available(iOS 11.0, *) {
+        }
+      }
       
       fileprivate init() {}
     }
@@ -265,6 +379,8 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if #available(iOS 11.0, *) {
+        }
         if _R.storyboard.main().tabsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'tabsViewController' could not be loaded from storyboard 'Main' as 'UIKit.UITabBarController'.") }
       }
       
@@ -288,8 +404,10 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if _R.storyboard.map().pulleyViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'pulleyViewController' could not be loaded from storyboard 'Map' as 'MapViewController'.") }
+        if #available(iOS 11.0, *) {
+        }
         if _R.storyboard.map().mapNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mapNavigationController' could not be loaded from storyboard 'Map' as 'UIKit.UINavigationController'.") }
+        if _R.storyboard.map().pulleyViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'pulleyViewController' could not be loaded from storyboard 'Map' as 'MapViewController'.") }
       }
       
       fileprivate init() {}
@@ -307,6 +425,8 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if #available(iOS 11.0, *) {
+        }
         if _R.storyboard.popular().popularNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'popularNavigationController' could not be loaded from storyboard 'Popular' as 'UIKit.UINavigationController'.") }
       }
       
@@ -325,15 +445,22 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if #available(iOS 11.0, *) {
+        }
         if _R.storyboard.search().searchNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchNavigationController' could not be loaded from storyboard 'Search' as 'UIKit.UINavigationController'.") }
       }
       
       fileprivate init() {}
     }
     
-    struct settings: Rswift.StoryboardResourceType {
+    struct settings: Rswift.StoryboardResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "Settings"
+      
+      static func validate() throws {
+        if #available(iOS 11.0, *) {
+        }
+      }
       
       fileprivate init() {}
     }

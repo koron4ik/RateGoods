@@ -13,7 +13,7 @@ class MyFloatingPanelLayout: FloatingPanelLayout {
     
     func insetFor(position: FloatingPanelPosition) -> CGFloat? {
         switch position {
-        case .full: return 100.0
+        case .full: return 180.0
         case .tip: return 77.0
         default: return nil
         }

@@ -19,40 +19,41 @@ class StorageManager {
         ref = Storage.storage().reference()
     }
     
-    func uploadMedia(image: UIImage, completion: @escaping (URL?, Error?) -> Void) {
+    func uploadMedia(path: String, image: UIImage, completion: @escaping (Result<URL?>) -> Void) {
         let imageName = NSUUID().uuidString
-        let storageRef = ref.child("storeImages").child("\(imageName).png")
+        let storageRef = ref.child(path).child("\(imageName).png")
         
         if let uploadData = image.pngData() {
-            storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+            storageRef.putData(uploadData, metadata: nil) { _, error in
                 if let error = error {
-                    completion(nil, error)
+                    completion(.failure(error))
                     return
                 }
                 
-                if metadata == nil {
-                    completion(nil, NSError(domain: "core", code: 0, userInfo: [NSLocalizedDescriptionKey: "Unexpected error. Path is nil."]))
-                    return
-                }
-                
-                storageRef.downloadURL(completion: { (url, error) in
-                    completion(url, error)
+                storageRef.downloadURL(completion: { url, error in
+                    if let error = error {
+                        completion(.failure(error))
+                        return
+                    }
+                    completion(.success(url))
                 })
             }
         }
     }
     
-    func loadImage(with url: String, completion: @escaping (UIImage?) -> Void) {
-        Storage.storage().reference(forURL: url).getData(maxSize: 2 * 1024 * 1024) { (data, error) in
-            guard let data = data else {
-                completion(nil)
+    func loadImage(with url: String, completion: @escaping (Result<UIImage?>) -> Void) {
+        Storage.storage().reference(forURL: url).getData(maxSize: 2 * 1024 * 1024) { data, error in
+            if let error = error {
+                completion(.failure(error))
                 return
             }
-            if let error = error {
-                print(error)
-                completion(nil)
+            
+            if let data = data {
+                completion(.success(UIImage(data: data)))
+                return
             }
-            completion(UIImage(data: data))            
+            
+            completion(.success(nil))
         }
     }
 }

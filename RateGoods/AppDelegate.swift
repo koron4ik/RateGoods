@@ -15,12 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var appCoordinator: AppCoordinator!
-
-    private let googleMapsApiKey = "AIzaSyBThadeRS-i717ZD67SIzKc6So8Qd6o_78"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        GMSServices.provideAPIKey(googleMapsApiKey)
+        GMSServices.provideAPIKey(Constants.APIKey.googleMaps)
         FirebaseApp.configure()
         
         self.window = UIWindow(frame: UIScreen.main.bounds)

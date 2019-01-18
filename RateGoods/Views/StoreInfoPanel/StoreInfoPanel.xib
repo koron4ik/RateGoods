@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="xX9-Y3-guK" customClass="StoreInfoPanel" customModule="RateGoods" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="528"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_image" translatesAutoresizingMaskIntoConstraints="NO" id="mMY-Yd-WkD">
+                    <rect key="frame" x="0.0" y="97" width="375" height="376"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSd-Dv-GyP">
+                    <rect key="frame" x="0.0" y="473" width="375" height="55"/>
+                    <color key="backgroundColor" red="0.70041757822036743" green="0.72383016347885132" blue="0.85850071907043457" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="SC0-Xp-NG1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="37"/>
+                    <color key="tintColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="VIEW GOODS"/>
+                    <connections>
+                        <action selector="viewGoodsButtonPressed:" destination="xX9-Y3-guK" eventType="touchUpInside" id="JDS-2O-rVv"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ij-Iu-ZWb">
+                    <rect key="frame" x="0.0" y="37" width="375" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="i1b-Od-CWw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="44"/>
+                    <color key="textColor" red="0.70056990720000001" green="0.72225671049999995" blue="0.85764990480000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <size key="shadowOffset" width="-3" height="3"/>
+                </label>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="NKf-Mj-8N8">
+                    <rect key="frame" x="169" y="266.5" width="37" height="37"/>
+                </activityIndicatorView>
+            </subviews>
+            <color key="backgroundColor" red="0.70041757819999995" green="0.72383016349999996" blue="0.85850071910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ZSd-Dv-GyP" firstAttribute="top" secondItem="mMY-Yd-WkD" secondAttribute="bottom" id="03Z-JN-z8C"/>
+                <constraint firstItem="NKf-Mj-8N8" firstAttribute="centerX" secondItem="mMY-Yd-WkD" secondAttribute="centerX" id="0bL-ga-xva"/>
+                <constraint firstItem="6ij-Iu-ZWb" firstAttribute="leading" secondItem="B2f-AS-CFT" secondAttribute="leading" id="83k-9H-bP3"/>
+                <constraint firstItem="mMY-Yd-WkD" firstAttribute="leading" secondItem="B2f-AS-CFT" secondAttribute="leading" id="IpO-NL-7pE"/>
+                <constraint firstItem="6ij-Iu-ZWb" firstAttribute="top" secondItem="B2f-AS-CFT" secondAttribute="top" constant="17" id="UX9-AY-tQD"/>
+                <constraint firstItem="mMY-Yd-WkD" firstAttribute="top" secondItem="6ij-Iu-ZWb" secondAttribute="bottom" id="Vph-KJ-k5w"/>
+                <constraint firstItem="ZSd-Dv-GyP" firstAttribute="bottom" secondItem="B2f-AS-CFT" secondAttribute="bottom" id="Vww-XI-MsK"/>
+                <constraint firstItem="mMY-Yd-WkD" firstAttribute="trailing" secondItem="B2f-AS-CFT" secondAttribute="trailing" id="b7a-DF-r64"/>
+                <constraint firstItem="ZSd-Dv-GyP" firstAttribute="trailing" secondItem="B2f-AS-CFT" secondAttribute="trailing" id="f1a-fN-y2I"/>
+                <constraint firstItem="ZSd-Dv-GyP" firstAttribute="leading" secondItem="B2f-AS-CFT" secondAttribute="leading" id="mAg-7B-8pL"/>
+                <constraint firstItem="6ij-Iu-ZWb" firstAttribute="trailing" secondItem="B2f-AS-CFT" secondAttribute="trailing" id="rGF-1T-NbV"/>
+                <constraint firstItem="NKf-Mj-8N8" firstAttribute="centerY" secondItem="mMY-Yd-WkD" secondAttribute="centerY" id="u05-qM-GqZ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="B2f-AS-CFT"/>
+            <connections>
+                <outlet property="activityView" destination="NKf-Mj-8N8" id="w92-6I-Ml8"/>
+                <outlet property="storeImageView" destination="mMY-Yd-WkD" id="pI5-NG-PIb"/>
+                <outlet property="storeTitleLabel" destination="6ij-Iu-ZWb" id="JRQ-HT-OEC"/>
+            </connections>
+            <point key="canvasLocation" x="40.799999999999997" y="-85.457271364317847"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="placeholder_image" width="1200" height="800"/>
+    </resources>
+</document>

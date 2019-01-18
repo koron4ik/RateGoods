@@ -12,9 +12,30 @@
 		DD4E259121D8F14F00D5777B /* StoreInfoPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E259021D8F14F00D5777B /* StoreInfoPanel.swift */; };
 		DD4E259321D8F16100D5777B /* StoreInfoPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4E259221D8F16100D5777B /* StoreInfoPanel.xib */; };
 		DD4E25A321D912B500D5777B /* StoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E25A221D912B500D5777B /* StoreInfoViewController.swift */; };
+		DD51A42E21E7724600D0A5DC /* GoodsViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51A42D21E7724600D0A5DC /* GoodsViewCoordinator.swift */; };
+		DD51A43021E7726300D0A5DC /* GoodsViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51A42F21E7726300D0A5DC /* GoodsViewInteractor.swift */; };
+		DD57500721E9D72600300857 /* GoodsAddingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD57500621E9D72600300857 /* GoodsAddingViewController.swift */; };
+		DD57500921E9D8E500300857 /* GoodsAddingViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD57500821E9D8E500300857 /* GoodsAddingViewInteractor.swift */; };
+		DD57500B21E9D93A00300857 /* GoodsAddingViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD57500A21E9D93A00300857 /* GoodsAddingViewCoordinator.swift */; };
+		DD63390021E2339500F6D06A /* Goods.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD6338FF21E2339500F6D06A /* Goods.storyboard */; };
+		DD63390321E233E800F6D06A /* GoodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390221E233E800F6D06A /* GoodsViewController.swift */; };
+		DD63390521E2405500F6D06A /* GoodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390421E2405500F6D06A /* GoodsCell.swift */; };
+		DD63390721E2817B00F6D06A /* StoreInfoViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390621E2817B00F6D06A /* StoreInfoViewCoordinator.swift */; };
+		DD63390921E2818C00F6D06A /* StoreAddingViewCoordiantor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390821E2818C00F6D06A /* StoreAddingViewCoordiantor.swift */; };
+		DD63390B21E2AB9A00F6D06A /* StoreInfoViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390A21E2AB9A00F6D06A /* StoreInfoViewInteractor.swift */; };
+		DD63390D21E2ABB100F6D06A /* StoreAddingViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390C21E2ABB100F6D06A /* StoreAddingViewInteractor.swift */; };
 		DD82BB1921D3DEC9005BE3EF /* StoreAddingPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD82BB1821D3DEC9005BE3EF /* StoreAddingPanel.xib */; };
 		DD82BB1B21D3DF01005BE3EF /* StoreAddingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD82BB1A21D3DF01005BE3EF /* StoreAddingPanel.swift */; };
 		DD82BB1E21D3EC8E005BE3EF /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD82BB1D21D3EC8E005BE3EF /* R.generated.swift */; };
+		DD88533E21E8B42400D75F6F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD88533D21E8B42400D75F6F /* MainView.swift */; };
+		DD88534021E8B43500D75F6F /* AdditionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD88533F21E8B43500D75F6F /* AdditionalView.swift */; };
+		DD88534221E8B48300D75F6F /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD88534121E8B48300D75F6F /* MainView.xib */; };
+		DD88534421E8B6A600D75F6F /* AdditionalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD88534321E8B6A600D75F6F /* AdditionalView.xib */; };
+		DD8C8F8A21F1F31700A7BDE6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD8C8F8821F1F31700A7BDE6 /* Model.xcdatamodeld */; };
+		DD9935F621EA9A2C003793B1 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9935F521EA9A2C003793B1 /* Review.swift */; };
+		DD9935F821EA9A3A003793B1 /* Goods.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9935F721EA9A3A003793B1 /* Goods.swift */; };
+		DDA3646721E364E700FA34BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA3646621E364E700FA34BD /* Constants.swift */; };
+		DDA3646921E36E2D00FA34BD /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA3646821E36E2D00FA34BD /* Result.swift */; };
 		DDBAC71E21CC3C8E00C8B743 /* mapstyle.json in Resources */ = {isa = PBXBuildFile; fileRef = DDFA887121C70C3600AA578D /* mapstyle.json */; };
 		DDBAC72021CC3E6B00C8B743 /* MapViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBAC71F21CC3E6B00C8B743 /* MapViewInteractor.swift */; };
 		DDBFEBD421CCEF4C00A34FBB /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBFEBD321CCEF4C00A34FBB /* DatabaseManager.swift */; };
@@ -24,7 +45,6 @@
 		DDBFEBDD21CD5AB500A34FBB /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDBFEBDC21CD5AB500A34FBB /* Settings.storyboard */; };
 		DDBFEBDF21CD5ADA00A34FBB /* Favourites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDBFEBDE21CD5ADA00A34FBB /* Favourites.storyboard */; };
 		DDC0F5C021D78C2400E79FD6 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC0F5BF21D78C2400E79FD6 /* StorageManager.swift */; };
-		DDC3B4AF21C417E900C056FC /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = DDC3B4AE21C417E900C056FC /* Podfile */; };
 		DDC3B4B121C4331700C056FC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC3B4B021C4331600C056FC /* SearchViewController.swift */; };
 		DDC8149A21C7DDA200C9232E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDC8149921C7DDA200C9232E /* GoogleService-Info.plist */; };
 		DDD564AC21CE59AA00EC6649 /* MapViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD564AB21CE59AA00EC6649 /* MapViewCoordinator.swift */; };
@@ -59,9 +79,30 @@
 		DD4E259021D8F14F00D5777B /* StoreInfoPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoPanel.swift; sourceTree = "<group>"; };
 		DD4E259221D8F16100D5777B /* StoreInfoPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreInfoPanel.xib; sourceTree = "<group>"; };
 		DD4E25A221D912B500D5777B /* StoreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoViewController.swift; sourceTree = "<group>"; };
+		DD51A42D21E7724600D0A5DC /* GoodsViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsViewCoordinator.swift; sourceTree = "<group>"; };
+		DD51A42F21E7726300D0A5DC /* GoodsViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsViewInteractor.swift; sourceTree = "<group>"; };
+		DD57500621E9D72600300857 /* GoodsAddingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsAddingViewController.swift; sourceTree = "<group>"; };
+		DD57500821E9D8E500300857 /* GoodsAddingViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsAddingViewInteractor.swift; sourceTree = "<group>"; };
+		DD57500A21E9D93A00300857 /* GoodsAddingViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsAddingViewCoordinator.swift; sourceTree = "<group>"; };
+		DD6338FF21E2339500F6D06A /* Goods.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Goods.storyboard; sourceTree = "<group>"; };
+		DD63390221E233E800F6D06A /* GoodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsViewController.swift; sourceTree = "<group>"; };
+		DD63390421E2405500F6D06A /* GoodsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsCell.swift; sourceTree = "<group>"; };
+		DD63390621E2817B00F6D06A /* StoreInfoViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoViewCoordinator.swift; sourceTree = "<group>"; };
+		DD63390821E2818C00F6D06A /* StoreAddingViewCoordiantor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddingViewCoordiantor.swift; sourceTree = "<group>"; };
+		DD63390A21E2AB9A00F6D06A /* StoreInfoViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoViewInteractor.swift; sourceTree = "<group>"; };
+		DD63390C21E2ABB100F6D06A /* StoreAddingViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddingViewInteractor.swift; sourceTree = "<group>"; };
 		DD82BB1821D3DEC9005BE3EF /* StoreAddingPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreAddingPanel.xib; sourceTree = "<group>"; };
 		DD82BB1A21D3DF01005BE3EF /* StoreAddingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddingPanel.swift; sourceTree = "<group>"; };
 		DD82BB1D21D3EC8E005BE3EF /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		DD88533D21E8B42400D75F6F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		DD88533F21E8B43500D75F6F /* AdditionalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalView.swift; sourceTree = "<group>"; };
+		DD88534121E8B48300D75F6F /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
+		DD88534321E8B6A600D75F6F /* AdditionalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdditionalView.xib; sourceTree = "<group>"; };
+		DD8C8F8921F1F31700A7BDE6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		DD9935F521EA9A2C003793B1 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		DD9935F721EA9A3A003793B1 /* Goods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goods.swift; sourceTree = "<group>"; };
+		DDA3646621E364E700FA34BD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DDA3646821E36E2D00FA34BD /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		DDBAC71F21CC3E6B00C8B743 /* MapViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewInteractor.swift; sourceTree = "<group>"; };
 		DDBFEBD321CCEF4C00A34FBB /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		DDBFEBD621CD5A8300A34FBB /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
@@ -70,7 +111,6 @@
 		DDBFEBDC21CD5AB500A34FBB /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		DDBFEBDE21CD5ADA00A34FBB /* Favourites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favourites.storyboard; sourceTree = "<group>"; };
 		DDC0F5BF21D78C2400E79FD6 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
-		DDC3B4AE21C417E900C056FC /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DDC3B4B021C4331600C056FC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		DDC8149921C7DDA200C9232E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDD564AB21CE59AA00EC6649 /* MapViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewCoordinator.swift; sourceTree = "<group>"; };
@@ -134,6 +174,7 @@
 			children = (
 				DD82BB1D21D3EC8E005BE3EF /* R.generated.swift */,
 				DDC8149921C7DDA200C9232E /* GoogleService-Info.plist */,
+				DDDC6BB221C40E470049888D /* Info.plist */,
 				DDDC6BAD21C40E470049888D /* Assets.xcassets */,
 				DDFA887121C70C3600AA578D /* mapstyle.json */,
 			);
@@ -144,42 +185,22 @@
 			isa = PBXGroup;
 			children = (
 				DD4E258C21D8D47800D5777B /* Store.swift */,
+				DD9935F521EA9A2C003793B1 /* Review.swift */,
+				DD9935F721EA9A3A003793B1 /* Goods.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		DDBAC72221CC3FE400C8B743 /* MapViewController */ = {
+		DD57500521E9D70400300857 /* GoodsAddingViewController */ = {
 			isa = PBXGroup;
 			children = (
-				DDBAC71F21CC3E6B00C8B743 /* MapViewInteractor.swift */,
-				DDDC6BA821C40E450049888D /* MapViewController.swift */,
-				DDF57E2921CFF3B700E4C94C /* StoreAddingViewController.swift */,
-				DD4E25A221D912B500D5777B /* StoreInfoViewController.swift */,
+				DD57500621E9D72600300857 /* GoodsAddingViewController.swift */,
+				DD57500821E9D8E500300857 /* GoodsAddingViewInteractor.swift */,
 			);
-			name = MapViewController;
+			path = GoodsAddingViewController;
 			sourceTree = "<group>";
 		};
-		DDBAC72321CC400900C8B743 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				DDBAC72221CC3FE400C8B743 /* MapViewController */,
-				DDBAC72421CC401400C8B743 /* SearchViewController */,
-				DDD564AD21CE8B8F00EC6649 /* PopularViewController */,
-				DDD564AE21CE8BAB00EC6649 /* FavouritesViewController */,
-			);
-			name = ViewControllers;
-			sourceTree = "<group>";
-		};
-		DDBAC72421CC401400C8B743 /* SearchViewController */ = {
-			isa = PBXGroup;
-			children = (
-				DDC3B4B021C4331600C056FC /* SearchViewController.swift */,
-				DDD564B721CE8D1D00EC6649 /* SearchViewInteractor.swift */,
-			);
-			name = SearchViewController;
-			sourceTree = "<group>";
-		};
-		DDBAC72521CC403700C8B743 /* Storyboards */ = {
+		DD6338F321E2009500F6D06A /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				DDDC6BAF21C40E470049888D /* LaunchScreen.storyboard */,
@@ -189,22 +210,144 @@
 				DDBFEBDA21CD5AA300A34FBB /* Popular.storyboard */,
 				DDBFEBDC21CD5AB500A34FBB /* Settings.storyboard */,
 				DDBFEBDE21CD5ADA00A34FBB /* Favourites.storyboard */,
+				DD6338FF21E2339500F6D06A /* Goods.storyboard */,
 			);
-			name = Storyboards;
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		DDBAC72621CC40A300C8B743 /* Coordinators */ = {
+		DD6338F421E200D400F6D06A /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
 				DDDD280221CE476900E6F4A3 /* Coordinator.swift */,
 				DDDD27FE21CE448700E6F4A3 /* AppCoordinator.swift */,
 				DDDD280021CE463400E6F4A3 /* TabsCoordinator.swift */,
 				DDD564AB21CE59AA00EC6649 /* MapViewCoordinator.swift */,
+				DD63390621E2817B00F6D06A /* StoreInfoViewCoordinator.swift */,
+				DD63390821E2818C00F6D06A /* StoreAddingViewCoordiantor.swift */,
+				DD51A42D21E7724600D0A5DC /* GoodsViewCoordinator.swift */,
+				DD57500A21E9D93A00300857 /* GoodsAddingViewCoordinator.swift */,
 				DDD564B921CE8D4800EC6649 /* SearchViewCoordinator.swift */,
 				DDD564BB21CE8D5800EC6649 /* PopularViewCoordinator.swift */,
 				DDD564BD21CE8D6F00EC6649 /* FavouritesViewCoordinator.swift */,
 			);
-			name = Coordinators;
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		DD6338F521E2010A00F6D06A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DD6338F921E201F900F6D06A /* MapViewController */,
+				DD6338FE21E2023A00F6D06A /* StoreInfoViewController */,
+				DD6338FD21E2022500F6D06A /* StoreAddingViewController */,
+				DD63390121E233C000F6D06A /* GoodsViewController */,
+				DD57500521E9D70400300857 /* GoodsAddingViewController */,
+				DD6338FA21E2020300F6D06A /* SearchViewController */,
+				DD6338FB21E2020E00F6D06A /* PopularViewController */,
+				DD6338FC21E2021800F6D06A /* FavouritesViewContrller */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DD6338F921E201F900F6D06A /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DDBAC71F21CC3E6B00C8B743 /* MapViewInteractor.swift */,
+				DDDC6BA821C40E450049888D /* MapViewController.swift */,
+			);
+			path = MapViewController;
+			sourceTree = "<group>";
+		};
+		DD6338FA21E2020300F6D06A /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DDC3B4B021C4331600C056FC /* SearchViewController.swift */,
+				DDD564B721CE8D1D00EC6649 /* SearchViewInteractor.swift */,
+			);
+			path = SearchViewController;
+			sourceTree = "<group>";
+		};
+		DD6338FB21E2020E00F6D06A /* PopularViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DDD564AF21CE8BEA00EC6649 /* PopularViewController.swift */,
+				DDD564B121CE8C0900EC6649 /* PopularViewInteractor.swift */,
+			);
+			path = PopularViewController;
+			sourceTree = "<group>";
+		};
+		DD6338FC21E2021800F6D06A /* FavouritesViewContrller */ = {
+			isa = PBXGroup;
+			children = (
+				DDD564B321CE8CF200EC6649 /* FavouritesViewController.swift */,
+				DDD564B521CE8D0200EC6649 /* FavouritesViewInteractor.swift */,
+			);
+			path = FavouritesViewContrller;
+			sourceTree = "<group>";
+		};
+		DD6338FD21E2022500F6D06A /* StoreAddingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DDF57E2921CFF3B700E4C94C /* StoreAddingViewController.swift */,
+				DD63390C21E2ABB100F6D06A /* StoreAddingViewInteractor.swift */,
+			);
+			path = StoreAddingViewController;
+			sourceTree = "<group>";
+		};
+		DD6338FE21E2023A00F6D06A /* StoreInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DD4E25A221D912B500D5777B /* StoreInfoViewController.swift */,
+				DD63390A21E2AB9A00F6D06A /* StoreInfoViewInteractor.swift */,
+			);
+			path = StoreInfoViewController;
+			sourceTree = "<group>";
+		};
+		DD63390121E233C000F6D06A /* GoodsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DD63390221E233E800F6D06A /* GoodsViewController.swift */,
+				DD51A42F21E7726300D0A5DC /* GoodsViewInteractor.swift */,
+			);
+			path = GoodsViewController;
+			sourceTree = "<group>";
+		};
+		DD88533921E8B3D600D75F6F /* StoreAddingPanel */ = {
+			isa = PBXGroup;
+			children = (
+				DD82BB1A21D3DF01005BE3EF /* StoreAddingPanel.swift */,
+				DD82BB1821D3DEC9005BE3EF /* StoreAddingPanel.xib */,
+			);
+			path = StoreAddingPanel;
+			sourceTree = "<group>";
+		};
+		DD88533A21E8B3E800D75F6F /* StoreInfoPanel */ = {
+			isa = PBXGroup;
+			children = (
+				DD4E259021D8F14F00D5777B /* StoreInfoPanel.swift */,
+				DD4E259221D8F16100D5777B /* StoreInfoPanel.xib */,
+			);
+			path = StoreInfoPanel;
+			sourceTree = "<group>";
+		};
+		DD88533B21E8B3FB00D75F6F /* GoodsCell */ = {
+			isa = PBXGroup;
+			children = (
+				DD63390421E2405500F6D06A /* GoodsCell.swift */,
+				DD88533D21E8B42400D75F6F /* MainView.swift */,
+				DD88533F21E8B43500D75F6F /* AdditionalView.swift */,
+				DD88534121E8B48300D75F6F /* MainView.xib */,
+				DD88534321E8B6A600D75F6F /* AdditionalView.xib */,
+			);
+			path = GoodsCell;
+			sourceTree = "<group>";
+		};
+		DD9935F421EA36F0003793B1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DDA3646621E364E700FA34BD /* Constants.swift */,
+				DDA3646821E36E2D00FA34BD /* Result.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		DDBFEBD521CD176500A34FBB /* Extensions */ = {
@@ -217,28 +360,9 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		DDD564AD21CE8B8F00EC6649 /* PopularViewController */ = {
-			isa = PBXGroup;
-			children = (
-				DDD564AF21CE8BEA00EC6649 /* PopularViewController.swift */,
-				DDD564B121CE8C0900EC6649 /* PopularViewInteractor.swift */,
-			);
-			name = PopularViewController;
-			sourceTree = "<group>";
-		};
-		DDD564AE21CE8BAB00EC6649 /* FavouritesViewController */ = {
-			isa = PBXGroup;
-			children = (
-				DDD564B321CE8CF200EC6649 /* FavouritesViewController.swift */,
-				DDD564B521CE8D0200EC6649 /* FavouritesViewInteractor.swift */,
-			);
-			name = FavouritesViewController;
-			sourceTree = "<group>";
-		};
 		DDDC6B9A21C40E440049888D = {
 			isa = PBXGroup;
 			children = (
-				DDC3B4AE21C417E900C056FC /* Podfile */,
 				DDDC6BA521C40E440049888D /* RateGoods */,
 				DDDC6BA421C40E440049888D /* Products */,
 				C4D0189D193C251A37A5A867 /* Pods */,
@@ -257,16 +381,17 @@
 		DDDC6BA521C40E440049888D /* RateGoods */ = {
 			isa = PBXGroup;
 			children = (
-				DDDC6BB221C40E470049888D /* Info.plist */,
 				DDDC6BA621C40E450049888D /* AppDelegate.swift */,
 				DDBFEBD521CD176500A34FBB /* Extensions */,
-				DDBAC72521CC403700C8B743 /* Storyboards */,
-				DDBAC72621CC40A300C8B743 /* Coordinators */,
+				DD6338F321E2009500F6D06A /* Storyboards */,
+				DD6338F421E200D400F6D06A /* Coordinators */,
+				DD9935F421EA36F0003793B1 /* Helpers */,
 				DDF57E2321CF8F8300E4C94C /* Managers */,
-				DDBAC72321CC400900C8B743 /* ViewControllers */,
+				DD6338F521E2010A00F6D06A /* ViewControllers */,
 				DDF57E2421CFC4E400E4C94C /* Views */,
 				DD4E258B21D8D45200D5777B /* Model */,
 				DD4337FC21C93B9F000AF8EF /* Resources */,
+				DD8C8F8821F1F31700A7BDE6 /* Model.xcdatamodeld */,
 			);
 			path = RateGoods;
 			sourceTree = "<group>";
@@ -283,11 +408,10 @@
 		DDF57E2421CFC4E400E4C94C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DD88533B21E8B3FB00D75F6F /* GoodsCell */,
+				DD88533A21E8B3E800D75F6F /* StoreInfoPanel */,
+				DD88533921E8B3D600D75F6F /* StoreAddingPanel */,
 				DDF57E2D21D0066900E4C94C /* FloatingPanelLayout.swift */,
-				DD82BB1821D3DEC9005BE3EF /* StoreAddingPanel.xib */,
-				DD82BB1A21D3DF01005BE3EF /* StoreAddingPanel.swift */,
-				DD4E259021D8F14F00D5777B /* StoreInfoPanel.swift */,
-				DD4E259221D8F16100D5777B /* StoreInfoPanel.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -360,14 +484,16 @@
 				DDDC6BB121C40E470049888D /* LaunchScreen.storyboard in Resources */,
 				DD4E259321D8F16100D5777B /* StoreInfoPanel.xib in Resources */,
 				DDDC6BAE21C40E470049888D /* Assets.xcassets in Resources */,
-				DDC3B4AF21C417E900C056FC /* Podfile in Resources */,
 				DD82BB1921D3DEC9005BE3EF /* StoreAddingPanel.xib in Resources */,
+				DD88534421E8B6A600D75F6F /* AdditionalView.xib in Resources */,
 				DDDC6BAC21C40E450049888D /* Main.storyboard in Resources */,
 				DDBFEBDB21CD5AA300A34FBB /* Popular.storyboard in Resources */,
+				DD88534221E8B48300D75F6F /* MainView.xib in Resources */,
 				DDBFEBD921CD5A9700A34FBB /* Search.storyboard in Resources */,
 				DDBFEBDF21CD5ADA00A34FBB /* Favourites.storyboard in Resources */,
 				DDC8149A21C7DDA200C9232E /* GoogleService-Info.plist in Resources */,
 				DDBFEBDD21CD5AB500A34FBB /* Settings.storyboard in Resources */,
+				DD63390021E2339500F6D06A /* Goods.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,10 +532,10 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RateGoods/Pods-RateGoods-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
+				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -420,10 +546,10 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -442,14 +568,16 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT\"\n";
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
 		DD534BC521DD47F800ECD808 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -459,10 +587,12 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"",
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -497,6 +627,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD63390721E2817B00F6D06A /* StoreInfoViewCoordinator.swift in Sources */,
+				DD8C8F8A21F1F31700A7BDE6 /* Model.xcdatamodeld in Sources */,
+				DD88533E21E8B42400D75F6F /* MainView.swift in Sources */,
 				DDDD280321CE476900E6F4A3 /* Coordinator.swift in Sources */,
 				DDDD27FF21CE448700E6F4A3 /* AppCoordinator.swift in Sources */,
 				DDD564BC21CE8D5800EC6649 /* PopularViewCoordinator.swift in Sources */,
@@ -504,25 +637,40 @@
 				DDF57E2A21CFF3B700E4C94C /* StoreAddingViewController.swift in Sources */,
 				DDC3B4B121C4331700C056FC /* SearchViewController.swift in Sources */,
 				DDD564B421CE8CF200EC6649 /* FavouritesViewController.swift in Sources */,
+				DD57500721E9D72600300857 /* GoodsAddingViewController.swift in Sources */,
 				DDF57E2E21D0066900E4C94C /* FloatingPanelLayout.swift in Sources */,
 				DDD564B621CE8D0200EC6649 /* FavouritesViewInteractor.swift in Sources */,
+				DD88534021E8B43500D75F6F /* AdditionalView.swift in Sources */,
+				DD51A42E21E7724600D0A5DC /* GoodsViewCoordinator.swift in Sources */,
 				DDD564B821CE8D1D00EC6649 /* SearchViewInteractor.swift in Sources */,
 				DD82BB1E21D3EC8E005BE3EF /* R.generated.swift in Sources */,
 				DDD564AC21CE59AA00EC6649 /* MapViewCoordinator.swift in Sources */,
+				DD9935F621EA9A2C003793B1 /* Review.swift in Sources */,
+				DD51A43021E7726300D0A5DC /* GoodsViewInteractor.swift in Sources */,
 				DDDC6BA921C40E450049888D /* MapViewController.swift in Sources */,
 				DDE1344021DE6BF200AA170B /* UIColor+purple.swift in Sources */,
+				DD57500B21E9D93A00300857 /* GoodsAddingViewCoordinator.swift in Sources */,
 				DDDD280121CE463400E6F4A3 /* TabsCoordinator.swift in Sources */,
 				DDE1343E21DE3D5800AA170B /* CLLocationCoordinate2D+operatorOverloading.swift in Sources */,
 				DDBAC72021CC3E6B00C8B743 /* MapViewInteractor.swift in Sources */,
+				DDA3646921E36E2D00FA34BD /* Result.swift in Sources */,
 				DDD564BA21CE8D4800EC6649 /* SearchViewCoordinator.swift in Sources */,
 				DD4E25A321D912B500D5777B /* StoreInfoViewController.swift in Sources */,
+				DD9935F821EA9A3A003793B1 /* Goods.swift in Sources */,
 				DDD564BE21CE8D6F00EC6649 /* FavouritesViewCoordinator.swift in Sources */,
+				DD63390521E2405500F6D06A /* GoodsCell.swift in Sources */,
+				DD63390D21E2ABB100F6D06A /* StoreAddingViewInteractor.swift in Sources */,
+				DD57500921E9D8E500300857 /* GoodsAddingViewInteractor.swift in Sources */,
 				DDE1344221DE6C0E00AA170B /* String+isEmpty.swift in Sources */,
 				DD4E259121D8F14F00D5777B /* StoreInfoPanel.swift in Sources */,
+				DDA3646721E364E700FA34BD /* Constants.swift in Sources */,
 				DDD564B021CE8BEA00EC6649 /* PopularViewController.swift in Sources */,
 				DDBFEBD421CCEF4C00A34FBB /* DatabaseManager.swift in Sources */,
+				DD63390B21E2AB9A00F6D06A /* StoreInfoViewInteractor.swift in Sources */,
 				DD82BB1B21D3DF01005BE3EF /* StoreAddingPanel.swift in Sources */,
 				DDDC6BA721C40E450049888D /* AppDelegate.swift in Sources */,
+				DD63390921E2818C00F6D06A /* StoreAddingViewCoordiantor.swift in Sources */,
+				DD63390321E233E800F6D06A /* GoodsViewController.swift in Sources */,
 				DDD564B221CE8C0900EC6649 /* PopularViewInteractor.swift in Sources */,
 				DDC0F5C021D78C2400E79FD6 /* StorageManager.swift in Sources */,
 			);
@@ -684,7 +832,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleMaps\"",
 				);
 				INFOPLIST_FILE = RateGoods/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -714,7 +862,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleMaps\"",
 				);
 				INFOPLIST_FILE = RateGoods/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -748,6 +896,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DD8C8F8821F1F31700A7BDE6 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DD8C8F8921F1F31700A7BDE6 /* Model.xcdatamodel */,
+			);
+			currentVersion = DD8C8F8921F1F31700A7BDE6 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DDDC6B9B21C40E440049888D /* Project object */;
 }

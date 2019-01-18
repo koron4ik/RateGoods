@@ -1,4 +1,4 @@
-platform :ios, '11.0'
+platform :ios, '10.0'
 use_frameworks!
 inhibit_all_warnings!
 
@@ -12,7 +12,7 @@ pod 'Firebase/Storage'
 pod 'CodableFirebase'
 pod 'R.swift'
 pod 'FloatingPanel'
-pod 'Kingfisher'
 pod 'Toast-Swift'
+pod 'Cosmos'
 
 end

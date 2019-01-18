@@ -1,0 +1,9 @@
+disabled_rules:
+- trailing_whitespace
+excluded:
+- Pods
+- R.generated.swift
+line_length:
+- 300 # warning
+- 400 # error
+force_cast: warning
