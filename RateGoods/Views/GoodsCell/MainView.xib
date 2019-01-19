@@ -63,7 +63,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="CtD-09-QVG" secondAttribute="height" multiplier="1:1" id="hf5-Mr-nNJ"/>
                             </constraints>
-                            <state key="normal" image="favouriteUnAct"/>
+                            <state key="normal" image="unfavourite"/>
                             <connections>
                                 <action selector="favouriteButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="ja6-8q-pZY"/>
                             </connections>
@@ -133,6 +133,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="favouriteButton" destination="CtD-09-QVG" id="JQ4-U1-miz"/>
                 <outlet property="rateLabel" destination="Xur-cG-IPJ" id="Yz1-ma-ytD"/>
                 <outlet property="reviewsLabel" destination="Qb9-Ib-HrH" id="TBl-nm-i3X"/>
                 <outlet property="storeImageView" destination="IEN-sx-Pgk" id="LHK-7U-GvE"/>
@@ -142,7 +143,7 @@
         </view>
     </objects>
     <resources>
-        <image name="favouriteUnAct" width="48" height="48"/>
         <image name="placeholder_image" width="1200" height="800"/>
+        <image name="unfavourite" width="48" height="48"/>
     </resources>
 </document>

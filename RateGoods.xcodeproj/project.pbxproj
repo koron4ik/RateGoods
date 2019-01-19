@@ -32,11 +32,11 @@
 		DD88534221E8B48300D75F6F /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD88534121E8B48300D75F6F /* MainView.xib */; };
 		DD88534421E8B6A600D75F6F /* AdditionalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD88534321E8B6A600D75F6F /* AdditionalView.xib */; };
 		DD8C8F8A21F1F31700A7BDE6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD8C8F8821F1F31700A7BDE6 /* Model.xcdatamodeld */; };
+		DD8C8F8C21F28BE700A7BDE6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8C8F8B21F28BE700A7BDE6 /* CoreDataManager.swift */; };
 		DD9935F621EA9A2C003793B1 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9935F521EA9A2C003793B1 /* Review.swift */; };
 		DD9935F821EA9A3A003793B1 /* Goods.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9935F721EA9A3A003793B1 /* Goods.swift */; };
 		DDA3646721E364E700FA34BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA3646621E364E700FA34BD /* Constants.swift */; };
 		DDA3646921E36E2D00FA34BD /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA3646821E36E2D00FA34BD /* Result.swift */; };
-		DDBAC71E21CC3C8E00C8B743 /* mapstyle.json in Resources */ = {isa = PBXBuildFile; fileRef = DDFA887121C70C3600AA578D /* mapstyle.json */; };
 		DDBAC72021CC3E6B00C8B743 /* MapViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBAC71F21CC3E6B00C8B743 /* MapViewInteractor.swift */; };
 		DDBFEBD421CCEF4C00A34FBB /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBFEBD321CCEF4C00A34FBB /* DatabaseManager.swift */; };
 		DDBFEBD721CD5A8300A34FBB /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDBFEBD621CD5A8300A34FBB /* Map.storyboard */; };
@@ -99,6 +99,7 @@
 		DD88534121E8B48300D75F6F /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		DD88534321E8B6A600D75F6F /* AdditionalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdditionalView.xib; sourceTree = "<group>"; };
 		DD8C8F8921F1F31700A7BDE6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		DD8C8F8B21F28BE700A7BDE6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		DD9935F521EA9A2C003793B1 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		DD9935F721EA9A3A003793B1 /* Goods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goods.swift; sourceTree = "<group>"; };
 		DDA3646621E364E700FA34BD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -137,7 +138,6 @@
 		DDE1344121DE6C0E00AA170B /* String+isEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isEmpty.swift"; sourceTree = "<group>"; };
 		DDF57E2921CFF3B700E4C94C /* StoreAddingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddingViewController.swift; sourceTree = "<group>"; };
 		DDF57E2D21D0066900E4C94C /* FloatingPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelLayout.swift; sourceTree = "<group>"; };
-		DDFA887121C70C3600AA578D /* mapstyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mapstyle.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,7 +176,6 @@
 				DDC8149921C7DDA200C9232E /* GoogleService-Info.plist */,
 				DDDC6BB221C40E470049888D /* Info.plist */,
 				DDDC6BAD21C40E470049888D /* Assets.xcassets */,
-				DDFA887121C70C3600AA578D /* mapstyle.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -401,6 +400,7 @@
 			children = (
 				DDBFEBD321CCEF4C00A34FBB /* DatabaseManager.swift */,
 				DDC0F5BF21D78C2400E79FD6 /* StorageManager.swift */,
+				DD8C8F8B21F28BE700A7BDE6 /* CoreDataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -479,7 +479,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDBAC71E21CC3C8E00C8B743 /* mapstyle.json in Resources */,
 				DDBFEBD721CD5A8300A34FBB /* Map.storyboard in Resources */,
 				DDDC6BB121C40E470049888D /* LaunchScreen.storyboard in Resources */,
 				DD4E259321D8F16100D5777B /* StoreInfoPanel.xib in Resources */,
@@ -643,6 +642,7 @@
 				DD88534021E8B43500D75F6F /* AdditionalView.swift in Sources */,
 				DD51A42E21E7724600D0A5DC /* GoodsViewCoordinator.swift in Sources */,
 				DDD564B821CE8D1D00EC6649 /* SearchViewInteractor.swift in Sources */,
+				DD8C8F8C21F28BE700A7BDE6 /* CoreDataManager.swift in Sources */,
 				DD82BB1E21D3EC8E005BE3EF /* R.generated.swift in Sources */,
 				DDD564AC21CE59AA00EC6649 /* MapViewCoordinator.swift in Sources */,
 				DD9935F621EA9A2C003793B1 /* Review.swift in Sources */,

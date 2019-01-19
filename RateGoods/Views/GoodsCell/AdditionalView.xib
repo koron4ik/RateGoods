@@ -216,7 +216,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="rateLabel" destination="CZW-sQ-fRw" id="6Gx-lm-Lqr"/>
                 <outlet property="reviewTextView" destination="USB-XE-bpB" id="KsC-7s-T7b"/>
+                <outlet property="reviewsLabel" destination="jmj-nf-Aj5" id="0pZ-j0-7ZA"/>
                 <outlet property="storeImageView" destination="ojq-9g-AQR" id="PFa-Ww-qoB"/>
                 <outlet property="titleLabel" destination="b2c-uE-eZd" id="Boz-5B-8de"/>
             </connections>

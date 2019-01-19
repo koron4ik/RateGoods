@@ -12,7 +12,6 @@ class AdditionalView: UIView {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var storeImageView: UIImageView!
-    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var reviewsLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var reviewTextView: UITextView!

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol GoodsCellDelegate: class {
+    func goodsCell(_ goodsCell: GoodsCell, faviouriteButtonPressedAt indexPath: IndexPath)
+}
+
 class GoodsCell: UITableViewCell {
     
     enum Height: CGFloat {
@@ -20,8 +24,11 @@ class GoodsCell: UITableViewCell {
         case closed
     }
     
+    weak var delegate: GoodsCellDelegate?
+    
     var mainView: MainView!
     var additionalView: AdditionalView!
+    var indexPath: IndexPath!
     
     var indent: CGFloat = 8
     var cornerRadius: CGFloat = 10.0
@@ -44,6 +51,7 @@ class GoodsCell: UITableViewCell {
         mainView.layer.cornerRadius = cornerRadius
         mainView.layer.masksToBounds = true
         mainView.translatesAutoresizingMaskIntoConstraints = false
+        mainView.delegate = self
         
         additionalView.layer.cornerRadius = cornerRadius
         additionalView.layer.masksToBounds = true
@@ -90,5 +98,12 @@ class GoodsCell: UITableViewCell {
     @IBAction func addReviewButtonPressed(_ sender: UIButton) {
         additionalView.reviewTextView.text.removeAll()
         close()
+    }
+}
+
+extension GoodsCell: MainViewDelegate {
+    
+    func favouriteButtonPressed() {
+        delegate?.goodsCell(self, faviouriteButtonPressedAt: self.indexPath)
     }
 }

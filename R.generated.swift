@@ -16,22 +16,14 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
-  /// This `R.file` struct is generated, and contains static references to 2 files.
+  /// This `R.file` struct is generated, and contains static references to 1 files.
   struct file {
     /// Resource file `GoogleService-Info.plist`.
     static let googleServiceInfoPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "GoogleService-Info", pathExtension: "plist")
-    /// Resource file `mapstyle.json`.
-    static let mapstyleJson = Rswift.FileResource(bundle: R.hostingBundle, name: "mapstyle", pathExtension: "json")
     
     /// `bundle.url(forResource: "GoogleService-Info", withExtension: "plist")`
     static func googleServiceInfoPlist(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.googleServiceInfoPlist
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-    
-    /// `bundle.url(forResource: "mapstyle", withExtension: "json")`
-    static func mapstyleJson(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.mapstyleJson
       return fileResource.bundle.url(forResource: fileResource)
     }
     
@@ -42,31 +34,31 @@ struct R: Rswift.Validatable {
   struct image {
     /// Image `background`.
     static let background = Rswift.ImageResource(bundle: R.hostingBundle, name: "background")
-    /// Image `favouriteAct`.
-    static let favouriteAct = Rswift.ImageResource(bundle: R.hostingBundle, name: "favouriteAct")
-    /// Image `favouriteUnAct`.
-    static let favouriteUnAct = Rswift.ImageResource(bundle: R.hostingBundle, name: "favouriteUnAct")
+    /// Image `favourite`.
+    static let favourite = Rswift.ImageResource(bundle: R.hostingBundle, name: "favourite")
     /// Image `placeholder_image`.
     static let placeholder_image = Rswift.ImageResource(bundle: R.hostingBundle, name: "placeholder_image")
+    /// Image `unfavourite`.
+    static let unfavourite = Rswift.ImageResource(bundle: R.hostingBundle, name: "unfavourite")
     
     /// `UIImage(named: "background", bundle: ..., traitCollection: ...)`
     static func background(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.background, compatibleWith: traitCollection)
     }
     
-    /// `UIImage(named: "favouriteAct", bundle: ..., traitCollection: ...)`
-    static func favouriteAct(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.favouriteAct, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "favouriteUnAct", bundle: ..., traitCollection: ...)`
-    static func favouriteUnAct(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.favouriteUnAct, compatibleWith: traitCollection)
+    /// `UIImage(named: "favourite", bundle: ..., traitCollection: ...)`
+    static func favourite(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.favourite, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "placeholder_image", bundle: ..., traitCollection: ...)`
     static func placeholder_image(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.placeholder_image, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "unfavourite", bundle: ..., traitCollection: ...)`
+    static func unfavourite(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.unfavourite, compatibleWith: traitCollection)
     }
     
     fileprivate init() {}
@@ -249,8 +241,8 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIKit.UIImage(named: "favouriteUnAct", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'favouriteUnAct' is used in nib 'MainView', but couldn't be loaded.") }
         if UIKit.UIImage(named: "placeholder_image", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'placeholder_image' is used in nib 'MainView', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "unfavourite", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'unfavourite' is used in nib 'MainView', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
       }

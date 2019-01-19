@@ -90,6 +90,8 @@ extension GoodsViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.mainView.titleLabel.text = self.interactor.goods[indexPath.row].title
         cell.additionalView.titleLabel.text = self.interactor.goods[indexPath.row].title
+        cell.delegate = self
+        cell.indexPath = indexPath
         
         if let imageUrl = self.interactor.goods[indexPath.row].imageUrl {
             StorageManager.shared.loadImage(with: imageUrl) { result in
@@ -104,12 +106,17 @@ extension GoodsViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
         
+        if CoreDataManager.shared.goodsIsExist(with: self.interactor.goods[indexPath.row].ref.description()) {
+            cell.mainView.isFavourite = true
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? GoodsCell else { return }
         
+        //cell.isOpen ? cell.close() : cell.open()
         if cell.isOpen {
             cell.close()
         } else {
@@ -120,5 +127,22 @@ extension GoodsViewController: UITableViewDataSource, UITableViewDelegate {
             tableView.beginUpdates()
             tableView.endUpdates()
         }, completion: nil)
+    }
+}
+
+extension GoodsViewController: GoodsCellDelegate {
+    
+    func goodsCell(_ goodsCell: GoodsCell, faviouriteButtonPressedAt indexPath: IndexPath) {
+        let ref = self.interactor.goods[indexPath.row].ref.description()
+        let title = self.interactor.goods[indexPath.row].title ?? ""
+        let image = goodsCell.mainView.storeImageView.image?.pngData()
+        let rate = Float(goodsCell.mainView.rateLabel.text ?? "0.0") ?? 0.0
+        let reviews = Int16(goodsCell.mainView.reviewsLabel.text ?? "0") ?? 0
+        
+        if goodsCell.mainView.isFavourite {
+            CoreDataManager.shared.deleteGoods(with: ref)
+        } else {
+            CoreDataManager.shared.saveFavouriteGoods(with: title, ref: ref, image: image, rate: rate, reviews: reviews)
+        }
     }
 }

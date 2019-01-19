@@ -12,7 +12,7 @@ import FloatingPanel
 
 class StoreAddingViewCoordinator: NSObject, StoreAddingViewControllerCoordiantor {
     
-    private var floatingPanelController: FloatingPanelController
+    private weak var floatingPanelController: FloatingPanelController?
     private var storeLocation: CLLocationCoordinate2D
     
     lazy var presentingViewController: StoreAddingViewController = {
@@ -28,8 +28,8 @@ class StoreAddingViewCoordinator: NSObject, StoreAddingViewControllerCoordiantor
     }
     
     func start() {
-        floatingPanelController.move(to: .full, animated: true)
-        floatingPanelController.set(contentViewController: presentingViewController)
+        floatingPanelController?.move(to: .full, animated: true)
+        floatingPanelController?.set(contentViewController: presentingViewController)
     }
     
     func stop() {
@@ -37,8 +37,8 @@ class StoreAddingViewCoordinator: NSObject, StoreAddingViewControllerCoordiantor
     }
     
     func storeSaved() {
-        if let parent = floatingPanelController.parent as? MapViewController {
-            floatingPanelController.hide(animated: true, completion: nil)
+        if let parent = floatingPanelController?.parent as? MapViewController {
+            floatingPanelController?.hide(animated: true, completion: nil)
             
             let marker = GMSMarker(position: storeLocation)
             marker.map = parent.mapView
