@@ -30,7 +30,7 @@ class GoodsViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationTitleLabel.text = self.interactor.store.title ?? "Store"
-        self.configureTableView()
+        tableView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background"))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,8 +38,8 @@ class GoodsViewController: UIViewController {
         
         self.interactor.goods.removeAll()
         self.tableView.reloadData()
-        self.view.makeToastActivity(.center)
         
+        self.view.makeToastActivity(.center)
         let goodsRef = interactor.store.ref.child(Constants.Database.goods)
         DatabaseManager.shared.loadData(from: goodsRef) { [weak self] (result: Result<[Goods]?>) in
             switch result {
@@ -53,11 +53,6 @@ class GoodsViewController: UIViewController {
             }
             self?.view.hideToastActivity()
         }
-    }
-
-    private func configureTableView() {
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background"))
     }
     
     @IBAction func addGoodsButtonPressed(_ sender: UIButton) {
@@ -134,15 +129,20 @@ extension GoodsViewController: GoodsCellDelegate {
     
     func goodsCell(_ goodsCell: GoodsCell, faviouriteButtonPressedAt indexPath: IndexPath) {
         let ref = self.interactor.goods[indexPath.row].ref.description()
-        let title = self.interactor.goods[indexPath.row].title ?? ""
-        let image = goodsCell.mainView.storeImageView.image?.pngData()
-        let rate = Float(goodsCell.mainView.rateLabel.text ?? "0.0") ?? 0.0
-        let reviews = Int16(goodsCell.mainView.reviewsLabel.text ?? "0") ?? 0
         
         if goodsCell.mainView.isFavourite {
             CoreDataManager.shared.deleteGoods(with: ref)
         } else {
-            CoreDataManager.shared.saveFavouriteGoods(with: title, ref: ref, image: image, rate: rate, reviews: reviews)
+            let title = self.interactor.goods[indexPath.row].title ?? ""
+            let image = goodsCell.mainView.storeImageView.image?.pngData()
+            let rate = Float(goodsCell.mainView.rateLabel.text ?? "0.0") ?? 0.0
+            let reviews = Int16(goodsCell.mainView.reviewsLabel.text ?? "0") ?? 0
+            
+            CoreDataManager.shared.saveFavouriteGoods(with: title,
+                                                      ref: ref,
+                                                      image: image,
+                                                      rate: rate,
+                                                      reviews: reviews)
         }
     }
 }

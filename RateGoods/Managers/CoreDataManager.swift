@@ -49,7 +49,7 @@ class CoreDataManager {
             try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,
                                                               configurationName: nil,
                                                               at: persistentStoreURL,
-                                                              options: nil)
+                                                              options: [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true])
         } catch {
             fatalError("Unable to Load Persistent Store")
         }

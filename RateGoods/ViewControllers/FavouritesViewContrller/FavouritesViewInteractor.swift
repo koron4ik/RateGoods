@@ -10,4 +10,10 @@ import UIKit
 
 class FavouritesViewInteractor: FavouritesViewControllerInteractor {
     
+    var favouriteGoods = [GoodsCoreData]()
+    
+    func loadFavouriteGoods() {
+        favouriteGoods = CoreDataManager.shared.loadGoods()
+    }
+    
 }
