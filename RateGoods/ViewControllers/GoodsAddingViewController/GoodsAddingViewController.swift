@@ -31,7 +31,7 @@ class GoodsAddingViewController: UIViewController {
     @IBOutlet weak var navigationTitleLabel: UILabel!
     @IBOutlet weak var contentScrollView: UIScrollView!
     
-    var picker = UIImagePickerController()
+    private var picker = UIImagePickerController()
     
     private var imageIsChoosen = false
 

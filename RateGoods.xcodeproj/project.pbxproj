@@ -24,6 +24,8 @@
 		DD63390921E2818C00F6D06A /* StoreAddingViewCoordiantor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390821E2818C00F6D06A /* StoreAddingViewCoordiantor.swift */; };
 		DD63390B21E2AB9A00F6D06A /* StoreInfoViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390A21E2AB9A00F6D06A /* StoreInfoViewInteractor.swift */; };
 		DD63390D21E2ABB100F6D06A /* StoreAddingViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390C21E2ABB100F6D06A /* StoreAddingViewInteractor.swift */; };
+		DD7B8EB921FA0AA3002BABC2 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B8EB821FA0AA3002BABC2 /* AuthViewController.swift */; };
+		DD7B8EBB21FA0ABB002BABC2 /* AuthViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B8EBA21FA0ABB002BABC2 /* AuthViewInteractor.swift */; };
 		DD82BB1921D3DEC9005BE3EF /* StoreAddingPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD82BB1821D3DEC9005BE3EF /* StoreAddingPanel.xib */; };
 		DD82BB1B21D3DF01005BE3EF /* StoreAddingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD82BB1A21D3DF01005BE3EF /* StoreAddingPanel.swift */; };
 		DD82BB1E21D3EC8E005BE3EF /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD82BB1D21D3EC8E005BE3EF /* R.generated.swift */; };
@@ -37,6 +39,8 @@
 		DD9935F821EA9A3A003793B1 /* Goods.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9935F721EA9A3A003793B1 /* Goods.swift */; };
 		DDA3646721E364E700FA34BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA3646621E364E700FA34BD /* Constants.swift */; };
 		DDA3646921E36E2D00FA34BD /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA3646821E36E2D00FA34BD /* Result.swift */; };
+		DDB4077C21F62571004590E5 /* Reviews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB4077B21F62571004590E5 /* Reviews.storyboard */; };
+		DDB4078021F67815004590E5 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB4077F21F67815004590E5 /* ReviewCell.swift */; };
 		DDBAC72021CC3E6B00C8B743 /* MapViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBAC71F21CC3E6B00C8B743 /* MapViewInteractor.swift */; };
 		DDBFEBD421CCEF4C00A34FBB /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBFEBD321CCEF4C00A34FBB /* DatabaseManager.swift */; };
 		DDBFEBD721CD5A8300A34FBB /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDBFEBD621CD5A8300A34FBB /* Map.storyboard */; };
@@ -91,6 +95,8 @@
 		DD63390821E2818C00F6D06A /* StoreAddingViewCoordiantor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddingViewCoordiantor.swift; sourceTree = "<group>"; };
 		DD63390A21E2AB9A00F6D06A /* StoreInfoViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoViewInteractor.swift; sourceTree = "<group>"; };
 		DD63390C21E2ABB100F6D06A /* StoreAddingViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddingViewInteractor.swift; sourceTree = "<group>"; };
+		DD7B8EB821FA0AA3002BABC2 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		DD7B8EBA21FA0ABB002BABC2 /* AuthViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewInteractor.swift; sourceTree = "<group>"; };
 		DD82BB1821D3DEC9005BE3EF /* StoreAddingPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreAddingPanel.xib; sourceTree = "<group>"; };
 		DD82BB1A21D3DF01005BE3EF /* StoreAddingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddingPanel.swift; sourceTree = "<group>"; };
 		DD82BB1D21D3EC8E005BE3EF /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
@@ -104,6 +110,8 @@
 		DD9935F721EA9A3A003793B1 /* Goods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goods.swift; sourceTree = "<group>"; };
 		DDA3646621E364E700FA34BD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DDA3646821E36E2D00FA34BD /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		DDB4077B21F62571004590E5 /* Reviews.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reviews.storyboard; sourceTree = "<group>"; };
+		DDB4077F21F67815004590E5 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		DDBAC71F21CC3E6B00C8B743 /* MapViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewInteractor.swift; sourceTree = "<group>"; };
 		DDBFEBD321CCEF4C00A34FBB /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		DDBFEBD621CD5A8300A34FBB /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
@@ -210,6 +218,7 @@
 				DDBFEBDC21CD5AB500A34FBB /* Settings.storyboard */,
 				DDBFEBDE21CD5ADA00A34FBB /* Favourites.storyboard */,
 				DD6338FF21E2339500F6D06A /* Goods.storyboard */,
+				DDB4077B21F62571004590E5 /* Reviews.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -235,6 +244,7 @@
 		DD6338F521E2010A00F6D06A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DD7B8EB721FA0A84002BABC2 /* AuthViewContoller */,
 				DD6338F921E201F900F6D06A /* MapViewController */,
 				DD6338FE21E2023A00F6D06A /* StoreInfoViewController */,
 				DD6338FD21E2022500F6D06A /* StoreAddingViewController */,
@@ -243,6 +253,7 @@
 				DD6338FA21E2020300F6D06A /* SearchViewController */,
 				DD6338FB21E2020E00F6D06A /* PopularViewController */,
 				DD6338FC21E2021800F6D06A /* FavouritesViewContrller */,
+				DDB4077D21F6257A004590E5 /* ReviewsViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -310,6 +321,15 @@
 			path = GoodsViewController;
 			sourceTree = "<group>";
 		};
+		DD7B8EB721FA0A84002BABC2 /* AuthViewContoller */ = {
+			isa = PBXGroup;
+			children = (
+				DD7B8EB821FA0AA3002BABC2 /* AuthViewController.swift */,
+				DD7B8EBA21FA0ABB002BABC2 /* AuthViewInteractor.swift */,
+			);
+			path = AuthViewContoller;
+			sourceTree = "<group>";
+		};
 		DD88533921E8B3D600D75F6F /* StoreAddingPanel */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,6 +367,21 @@
 				DDA3646821E36E2D00FA34BD /* Result.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DDB4077D21F6257A004590E5 /* ReviewsViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ReviewsViewController;
+			sourceTree = "<group>";
+		};
+		DDB4077E21F677E4004590E5 /* ReviewCel */ = {
+			isa = PBXGroup;
+			children = (
+				DDB4077F21F67815004590E5 /* ReviewCell.swift */,
+			);
+			path = ReviewCel;
 			sourceTree = "<group>";
 		};
 		DDBFEBD521CD176500A34FBB /* Extensions */ = {
@@ -408,6 +443,7 @@
 		DDF57E2421CFC4E400E4C94C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DDB4077E21F677E4004590E5 /* ReviewCel */,
 				DD88533B21E8B3FB00D75F6F /* GoodsCell */,
 				DD88533A21E8B3E800D75F6F /* StoreInfoPanel */,
 				DD88533921E8B3D600D75F6F /* StoreAddingPanel */,
@@ -483,6 +519,7 @@
 				DDDC6BB121C40E470049888D /* LaunchScreen.storyboard in Resources */,
 				DD4E259321D8F16100D5777B /* StoreInfoPanel.xib in Resources */,
 				DDDC6BAE21C40E470049888D /* Assets.xcassets in Resources */,
+				DDB4077C21F62571004590E5 /* Reviews.storyboard in Resources */,
 				DD82BB1921D3DEC9005BE3EF /* StoreAddingPanel.xib in Resources */,
 				DD88534421E8B6A600D75F6F /* AdditionalView.xib in Resources */,
 				DDDC6BAC21C40E450049888D /* Main.storyboard in Resources */,
@@ -508,13 +545,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RateGoods/Pods-RateGoods-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -530,10 +573,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RateGoods/Pods-RateGoods-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
@@ -544,10 +587,10 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
@@ -639,14 +682,17 @@
 				DD57500721E9D72600300857 /* GoodsAddingViewController.swift in Sources */,
 				DDF57E2E21D0066900E4C94C /* FloatingPanelLayout.swift in Sources */,
 				DDD564B621CE8D0200EC6649 /* FavouritesViewInteractor.swift in Sources */,
+				DDB4078021F67815004590E5 /* ReviewCell.swift in Sources */,
 				DD88534021E8B43500D75F6F /* AdditionalView.swift in Sources */,
 				DD51A42E21E7724600D0A5DC /* GoodsViewCoordinator.swift in Sources */,
 				DDD564B821CE8D1D00EC6649 /* SearchViewInteractor.swift in Sources */,
+				DD7B8EB921FA0AA3002BABC2 /* AuthViewController.swift in Sources */,
 				DD8C8F8C21F28BE700A7BDE6 /* CoreDataManager.swift in Sources */,
 				DD82BB1E21D3EC8E005BE3EF /* R.generated.swift in Sources */,
 				DDD564AC21CE59AA00EC6649 /* MapViewCoordinator.swift in Sources */,
 				DD9935F621EA9A2C003793B1 /* Review.swift in Sources */,
 				DD51A43021E7726300D0A5DC /* GoodsViewInteractor.swift in Sources */,
+				DD7B8EBB21FA0ABB002BABC2 /* AuthViewInteractor.swift in Sources */,
 				DDDC6BA921C40E450049888D /* MapViewController.swift in Sources */,
 				DDE1344021DE6BF200AA170B /* UIColor+purple.swift in Sources */,
 				DD57500B21E9D93A00300857 /* GoodsAddingViewCoordinator.swift in Sources */,
@@ -832,7 +878,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleMaps\"",
 				);
 				INFOPLIST_FILE = RateGoods/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -862,7 +908,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleMaps\"",
 				);
 				INFOPLIST_FILE = RateGoods/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

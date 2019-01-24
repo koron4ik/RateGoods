@@ -26,7 +26,7 @@ class StoreAddingViewInteractor: StoreAddingViewControllerInteractor {
                 let store = Store(title: storeTitle,
                                   imageUrl: url.absoluteString,
                                   location: storeLocation)
-                DatabaseManager.shared.uploadData(to: store.ref, store.toAny())
+                DatabaseManager.shared.uploadData(to: store.ref, data: store.toAny())
             case .failure(let error):
                 print(error)
             }

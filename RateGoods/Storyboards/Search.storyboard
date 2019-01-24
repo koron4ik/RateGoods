@@ -30,9 +30,10 @@
         <!--Search-->
         <scene sceneID="nU5-s1-PgB">
             <objects>
-                <navigationController storyboardIdentifier="SearchNavigationController" navigationBarHidden="YES" id="p86-cB-lV2" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SearchNavigationController" id="p86-cB-lV2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" id="05n-U5-kPd"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="L87-F8-CRf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="L87-F8-CRf">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -50,14 +51,66 @@
                     <view key="view" contentMode="scaleToFill" id="bYD-lh-Jmf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eHO-K9-6Hh">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GoodsCell" id="Xgq-ke-LrH" customClass="GoodsCell" customModule="RateGoods" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xgq-ke-LrH" id="Oc4-yL-ZSW" customClass="GoodsCell" customModule="RateGoods" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ye5-qz-xU1" id="EVQ-JT-P87"/>
+                                    <outlet property="delegate" destination="Ye5-qz-xU1" id="VLH-UO-qPZ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eHO-K9-6Hh" firstAttribute="leading" secondItem="OVS-ns-xgO" secondAttribute="leading" id="CP1-RW-bvy"/>
+                            <constraint firstItem="eHO-K9-6Hh" firstAttribute="trailing" secondItem="OVS-ns-xgO" secondAttribute="trailing" id="STm-5G-BYe"/>
+                            <constraint firstItem="eHO-K9-6Hh" firstAttribute="top" secondItem="OVS-ns-xgO" secondAttribute="top" id="UPn-Kb-KJu"/>
+                            <constraint firstItem="eHO-K9-6Hh" firstAttribute="bottom" secondItem="OVS-ns-xgO" secondAttribute="bottom" id="zFP-ew-82N"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="OVS-ns-xgO"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RVv-2n-aev"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="RVv-2n-aev">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="N7e-Oy-5hz">
+                            <rect key="frame" x="68.5" y="3.5" width="238" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goods Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvC-EQ-APA">
+                                    <rect key="frame" x="8" y="8" width="222" height="21"/>
+                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="24"/>
+                                    <color key="textColor" red="0.70041757819999995" green="0.72383016349999996" blue="0.85850071910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="bvC-EQ-APA" firstAttribute="top" secondItem="N7e-Oy-5hz" secondAttribute="top" constant="8" id="82d-Ae-pWT"/>
+                                <constraint firstAttribute="bottom" secondItem="bvC-EQ-APA" secondAttribute="bottom" constant="8" id="Mip-hG-xdJ"/>
+                                <constraint firstAttribute="trailing" secondItem="bvC-EQ-APA" secondAttribute="trailing" constant="8" id="c8u-a8-FYl"/>
+                                <constraint firstItem="bvC-EQ-APA" firstAttribute="leading" secondItem="N7e-Oy-5hz" secondAttribute="leading" constant="8" id="hDG-tt-3OY"/>
+                            </constraints>
+                        </view>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="eHO-K9-6Hh" id="Ycq-2k-dMe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1wP-96-TCc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="823" y="14"/>
+            <point key="canvasLocation" x="821.60000000000002" y="13.943028485757123"/>
         </scene>
     </scenes>
 </document>

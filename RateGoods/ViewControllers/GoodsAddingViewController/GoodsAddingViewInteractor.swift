@@ -18,9 +18,9 @@ class GoodsAddingViewInteractor: GoodsAddingViewControllerInteractor {
     
     func saveGoods(with goodsTitle: String, goodsImageUrl: String, rate: Int, goodsReview: String) {
         let goods = Goods(storeKey: store.key, title: goodsTitle, imageUrl: goodsImageUrl)
-        DatabaseManager.shared.uploadData(to: goods.ref, goods.toAny()) {
+        DatabaseManager.shared.uploadData(to: goods.ref, data: goods.toAny()) {
             let review = Review(storeKey: self.store.key, goodsKey: goods.key, rate: rate, text: goodsReview)
-            DatabaseManager.shared.uploadData(to: review.ref, review.toAny())
+            DatabaseManager.shared.uploadData(to: review.ref, data: review.toAny())
         }
     }
 }

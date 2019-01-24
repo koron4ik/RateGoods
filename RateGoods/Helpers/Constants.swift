@@ -23,6 +23,6 @@ struct Constants {
     
     struct Storage {
         static let storeImages = "storeImages"
-        static let goodsImages = "goodsImage"
+        static let goodsImages = "goodsImages"
     }
 }

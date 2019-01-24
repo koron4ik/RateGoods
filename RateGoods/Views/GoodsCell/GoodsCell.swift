@@ -10,6 +10,14 @@ import UIKit
 
 protocol GoodsCellDelegate: class {
     func goodsCell(_ goodsCell: GoodsCell, faviouriteButtonPressedAt indexPath: IndexPath)
+    func goodsCell(_ goodsCell: GoodsCell, seeAllReviewsAt indexPath: IndexPath)
+    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Int)
+}
+
+extension GoodsCellDelegate {
+    func goodsCell(_ goodsCell: GoodsCell, faviouriteButtonPressedAt indexPath: IndexPath) { }
+    func goodsCell(_ goodsCell: GoodsCell, seeAllReviewsAt indexPath: IndexPath) { }
+    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Int) { }
 }
 
 class GoodsCell: UITableViewCell {
@@ -56,6 +64,7 @@ class GoodsCell: UITableViewCell {
         additionalView.layer.cornerRadius = cornerRadius
         additionalView.layer.masksToBounds = true
         additionalView.translatesAutoresizingMaskIntoConstraints = false
+        additionalView.delegate = self
         
         selectionStyle = .none
         
@@ -106,4 +115,19 @@ extension GoodsCell: MainViewDelegate {
     func favouriteButtonPressed() {
         delegate?.goodsCell(self, faviouriteButtonPressedAt: self.indexPath)
     }
+}
+
+extension GoodsCell: AdditionalViewDelegate {
+    
+    func addReviewButtonPressed(_ reviewText: String, _ rate: Int) {
+        delegate?.goodsCell(self, addReviewAt: self.indexPath, with: reviewText, rate: rate)
+    }
+    
+    func seeAllButtonPressed() {
+        delegate?.goodsCell(self, seeAllReviewsAt: self.indexPath)
+    }
+}
+
+extension GoodsCell {
+    //configure cell
 }

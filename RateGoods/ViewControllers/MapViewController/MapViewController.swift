@@ -72,7 +72,7 @@ class MapViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    func configureFloatingPanelController() -> FloatingPanelController {
+    func createFloatingPanelController() -> FloatingPanelController {
         let fpc = FloatingPanelController()
         fpc.delegate = self
         fpc.addPanel(toParent: self)
@@ -87,8 +87,6 @@ class MapViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        floatingPanelController?.removePanelFromParent(animated: false)
     }
     
 }
@@ -103,14 +101,14 @@ extension MapViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
         floatingPanelController?.removePanelFromParent(animated: false)
-        floatingPanelController = configureFloatingPanelController()
+        floatingPanelController = createFloatingPanelController()
         guard let fpc = floatingPanelController else { return }
         coordinator?.showStore(floatingPanelController: fpc, store: nil, storeLocation: coordinate)
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         floatingPanelController?.removePanelFromParent(animated: false)
-        floatingPanelController = configureFloatingPanelController()
+        floatingPanelController = createFloatingPanelController()
         
         guard let store = interactor?.getStore(with: marker.position),
             let fpc = floatingPanelController else { return false }

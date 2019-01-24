@@ -45,7 +45,6 @@ class StoreInfoViewController: UIViewController {
         self.storeInfoPanel = R.nib.storeInfoPanel.instantiate(withOwner: nil, options: nil).first as? StoreInfoPanel
         self.storeInfoPanel.frame = view.frame
         self.storeInfoPanel.delegate = self
-        
         self.storeInfoPanel.setTitle(with: self.interactor.store.title ?? "")
         self.view.addSubview(storeInfoPanel)
     }

@@ -7,6 +7,12 @@
 //
 
 import UIKit
+import Cosmos
+
+protocol AdditionalViewDelegate: class {
+    func addReviewButtonPressed(_ reviewText: String, _ rate: Int)
+    func seeAllButtonPressed()
+}
 
 class AdditionalView: UIView {
 
@@ -15,11 +21,18 @@ class AdditionalView: UIView {
     @IBOutlet weak var reviewsLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var reviewTextView: UITextView!
+    @IBOutlet weak var rateView: CosmosView!
+    
+    weak var delegate: AdditionalViewDelegate?
     
     @IBAction func addReviewButtonPressed(_ sender: UIButton) {
+        guard let reviewText = reviewTextView.text else { return }
+
+        self.delegate?.addReviewButtonPressed(reviewText, Int(rateView.rating))
     }
     
     @IBAction func seeAllButtonPressed(_ sender: UIButton) {
+        
     }
     
 }

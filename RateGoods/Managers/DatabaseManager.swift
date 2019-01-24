@@ -8,7 +8,6 @@
 
 import Foundation
 import FirebaseDatabase
-import CodableFirebase
 
 protocol SnapshotProtocol {
     var key: String { get }
@@ -51,7 +50,7 @@ class DatabaseManager {
         }
     }
     
-    func uploadData(to itemRef: DatabaseReference, _ data: Any, completion: (() -> Void)? = nil) {
+    func uploadData(to itemRef: DatabaseReference, data: Any, completion: (() -> Void)? = nil) {
         itemRef.setValue(data)
         completion?()
     }
@@ -70,8 +69,40 @@ class DatabaseManager {
             completion(.failure(error))
         })
     }
-
-//    storeRef = storeRef
-//    goodsRef = storeRef.child(storeUrl).child(Constants.Database.goods)
-//    reviewRef = storeRef.child(storeUrl).child(Constants.Database.goods).child(goodsUrl).child(Constants.Database.review)
+    
+    func getGoods(with name: String, completion: @escaping (Result<[Goods]?>) -> Void) {
+        loadData(from: storeRef) { (result: Result<[Store]?>) in
+            switch result {
+            case .success(let stores):
+                var filteredGoods = [Goods]()
+                guard let stores = stores else {
+                    completion(.success(nil))
+                    return
+                }
+                let dispatchGroup = DispatchGroup()
+                stores.forEach {
+                    dispatchGroup.enter()
+                    let goodsRef = $0.ref.child(Constants.Database.goods)
+                    self.loadData(from: goodsRef, completion: { (result: Result<[Goods]?>) in
+                        switch result {
+                        case .success(let goods):
+                            guard let goods = goods else {
+                                completion(.success(nil))
+                                return
+                            }
+                            filteredGoods.append(contentsOf: goods.filter { $0.title == name })
+                        case .failure(let error):
+                            completion(.failure(error))
+                        }
+                        dispatchGroup.leave()
+                    })
+                }
+                dispatchGroup.notify(queue: .main) {
+                    completion(.success(filteredGoods))
+                }
+            case .failure(let erorr):
+                completion(.failure(erorr))
+            }
+        }
+    }
 }

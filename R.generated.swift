@@ -118,15 +118,17 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `GoodsCell`.
     static let goodsCell: Rswift.ReuseIdentifier<GoodsCell> = Rswift.ReuseIdentifier(identifier: "GoodsCell")
+    /// Reuse identifier `ReviewCell`.
+    static let reviewCell: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "ReviewCell")
     
     fileprivate init() {}
   }
   
-  /// This `R.storyboard` struct is generated, and contains static references to 8 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 9 storyboards.
   struct storyboard {
     /// Storyboard `Favourites`.
     static let favourites = _R.storyboard.favourites()
@@ -140,6 +142,8 @@ struct R: Rswift.Validatable {
     static let map = _R.storyboard.map()
     /// Storyboard `Popular`.
     static let popular = _R.storyboard.popular()
+    /// Storyboard `Reviews`.
+    static let reviews = _R.storyboard.reviews()
     /// Storyboard `Search`.
     static let search = _R.storyboard.search()
     /// Storyboard `Settings`.
@@ -173,6 +177,11 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "Popular", bundle: ...)`
     static func popular(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.popular)
+    }
+    
+    /// `UIStoryboard(name: "Reviews", bundle: ...)`
+    static func reviews(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.reviews)
     }
     
     /// `UIStoryboard(name: "Search", bundle: ...)`
@@ -296,6 +305,7 @@ struct _R: Rswift.Validatable {
       try main.validate()
       try map.validate()
       try popular.validate()
+      try reviews.validate()
       try search.validate()
       try settings.validate()
     }
@@ -360,7 +370,7 @@ struct _R: Rswift.Validatable {
     }
     
     struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = UIKit.UITabBarController
+      typealias InitialController = UIKit.UIViewController
       
       let bundle = R.hostingBundle
       let name = "Main"
@@ -420,6 +430,20 @@ struct _R: Rswift.Validatable {
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.popular().popularNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'popularNavigationController' could not be loaded from storyboard 'Popular' as 'UIKit.UINavigationController'.") }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct reviews: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = UIKit.UITableViewController
+      
+      let bundle = R.hostingBundle
+      let name = "Reviews"
+      
+      static func validate() throws {
+        if #available(iOS 11.0, *) {
+        }
       }
       
       fileprivate init() {}

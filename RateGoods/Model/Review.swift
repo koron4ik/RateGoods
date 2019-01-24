@@ -36,8 +36,8 @@ class Review: SnapshotProtocol {
     
     func toAny() -> Any {
         return [
-            "rate": rate,
-            "text": text
+            "rate": rate as Any,
+            "text": text as Any
         ]
     }
 }

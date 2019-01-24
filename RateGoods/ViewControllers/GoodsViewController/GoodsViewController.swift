@@ -30,7 +30,7 @@ class GoodsViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationTitleLabel.text = self.interactor.store.title ?? "Store"
-        tableView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background"))
+        tableView.backgroundView = UIImageView(image: UIImage(named: "background"))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +64,22 @@ class GoodsViewController: UIViewController {
     }
 }
 
+extension GoodsViewController: UITextViewDelegate {
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+}
+
 extension GoodsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -82,13 +98,20 @@ extension GoodsViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GoodsCell", for: indexPath) as? GoodsCell else {
             return UITableViewCell()
         }
+        let goods = self.interactor.goods[indexPath.row]
         
-        cell.mainView.titleLabel.text = self.interactor.goods[indexPath.row].title
-        cell.additionalView.titleLabel.text = self.interactor.goods[indexPath.row].title
+//        cell.configure(with: goods.title,
+//                       image: nil,
+//                       rate: goods.rate,
+//                       reviews: goods.reviews)
+        
+        cell.mainView.titleLabel.text = goods.title
+        cell.additionalView.titleLabel.text = goods.title
         cell.delegate = self
+        cell.additionalView.reviewTextView.delegate = self
         cell.indexPath = indexPath
         
-        if let imageUrl = self.interactor.goods[indexPath.row].imageUrl {
+        if let imageUrl = goods.imageUrl {
             StorageManager.shared.loadImage(with: imageUrl) { result in
                 switch result {
                 case .success(let image):
@@ -101,7 +124,7 @@ extension GoodsViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
         
-        if CoreDataManager.shared.goodsIsExist(with: self.interactor.goods[indexPath.row].ref.description()) {
+        if CoreDataManager.shared.goodsIsExist(with: goods.ref.description()) {
             cell.mainView.isFavourite = true
         }
         
@@ -144,5 +167,17 @@ extension GoodsViewController: GoodsCellDelegate {
                                                       rate: rate,
                                                       reviews: reviews)
         }
+    }
+    
+    func goodsCell(_ goodsCell: GoodsCell, seeAllReviewsAt indexPath: IndexPath) {
+        
+    }
+    
+    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Int) {
+        let review = Review(storeKey: self.interactor.store.key,
+                            goodsKey: self.interactor.goods[indexPath.row].key,
+                            rate: rate,
+                            text: text)
+        DatabaseManager.shared.uploadData(to: review.ref, data: review.toAny())
     }
 }

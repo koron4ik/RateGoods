@@ -27,15 +27,14 @@ class FavouritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.backgroundView = UIImageView(image: UIImage(named: "background"))
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.interactor.loadFavouriteGoods()
-        
-        tableView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background"))
-        tableView.reloadData()
+        self.tableView.reloadData()
     }
 }
 
@@ -59,11 +58,13 @@ extension FavouritesViewController: UITableViewDataSource, UITableViewDelegate {
                 return UITableViewCell()
         }
         
-        cell.mainView.titleLabel.text = self.interactor.favouriteGoods[indexPath.row].title
-        cell.mainView.rateLabel.text = String(self.interactor.favouriteGoods[indexPath.row].rate)
-        cell.mainView.reviewsLabel.text = String(self.interactor.favouriteGoods[indexPath.row].reviews)
+        let goods = self.interactor.favouriteGoods[indexPath.row]
         
-        if let imageData = self.interactor.favouriteGoods[indexPath.row].image {
+        cell.mainView.titleLabel.text = goods.title
+        cell.mainView.rateLabel.text = String(goods.rate)
+        cell.mainView.reviewsLabel.text = String(goods.reviews)
+        
+        if let imageData = goods.image {
             cell.mainView.storeImageView.image = UIImage(data: imageData)
         } else {
             cell.mainView.storeImageView.image = UIImage(named: "placeholder_image")

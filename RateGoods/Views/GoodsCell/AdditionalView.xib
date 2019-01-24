@@ -30,42 +30,81 @@
                 <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ydk-2G-1Cp" userLabel="ThirdContainerView">
                     <rect key="frame" x="0.0" y="200" width="335" height="169"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REVIEWS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZR-FM-6IA">
-                            <rect key="frame" x="8" y="8" width="44" height="12"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="12" id="jGC-wD-r83"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="10"/>
-                            <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="0.49546030410000003" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="USB-XE-bpB">
-                            <rect key="frame" x="8" y="28" width="319" height="141"/>
+                            <rect key="frame" x="8" y="36" width="319" height="133"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5u-Pd-Zhl">
-                            <rect key="frame" x="286" y="8" width="41" height="12"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <state key="normal" title="SEE ALL"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="U5u-Pd-Zhl">
+                            <rect key="frame" x="286" y="8" width="41" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="41" id="4ii-C6-t8K"/>
+                                <constraint firstAttribute="height" constant="20" id="IIh-Es-zVb"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                            <state key="normal" title="REVIEWS"/>
                             <connections>
                                 <action selector="seeAllButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="6yD-h5-wuG"/>
                             </connections>
                         </button>
+                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Rate:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNr-Ou-9Mx">
+                            <rect key="frame" x="8" y="8" width="82" height="20"/>
+                            <accessibility key="accessibilityConfiguration">
+                                <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                <bool key="isElement" value="YES"/>
+                            </accessibility>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="Hf9-D2-aDr"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5I-HV-Ltx" customClass="CosmosView" customModule="Cosmos">
+                            <rect key="frame" x="104" y="6" width="125" height="24"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="wQL-hd-eTc"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                    <real key="value" value="25"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                    <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                    <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="USB-XE-bpB" firstAttribute="top" secondItem="OZR-FM-6IA" secondAttribute="bottom" constant="8" id="3QR-Nu-FAJ"/>
+                        <constraint firstItem="e5I-HV-Ltx" firstAttribute="leading" secondItem="LNr-Ou-9Mx" secondAttribute="trailing" constant="14" id="AaP-LZ-Jav"/>
                         <constraint firstItem="USB-XE-bpB" firstAttribute="leading" secondItem="Ydk-2G-1Cp" secondAttribute="leading" constant="8" id="CTw-kk-GlJ"/>
+                        <constraint firstItem="LNr-Ou-9Mx" firstAttribute="leading" secondItem="Ydk-2G-1Cp" secondAttribute="leading" constant="8" id="J2T-yt-GrG"/>
+                        <constraint firstItem="U5u-Pd-Zhl" firstAttribute="leading" secondItem="e5I-HV-Ltx" secondAttribute="trailing" constant="57" id="N4j-LI-2cL"/>
                         <constraint firstItem="U5u-Pd-Zhl" firstAttribute="top" secondItem="Ydk-2G-1Cp" secondAttribute="top" constant="8" id="NWN-vH-7am"/>
                         <constraint firstAttribute="trailing" secondItem="U5u-Pd-Zhl" secondAttribute="trailing" constant="8" id="OIT-Y9-5B8"/>
                         <constraint firstAttribute="trailing" secondItem="USB-XE-bpB" secondAttribute="trailing" constant="8" id="V90-md-tbt"/>
                         <constraint firstAttribute="bottom" secondItem="USB-XE-bpB" secondAttribute="bottom" id="Wdy-yq-AEI"/>
+                        <constraint firstItem="USB-XE-bpB" firstAttribute="top" secondItem="e5I-HV-Ltx" secondAttribute="bottom" constant="6" id="WrU-RI-stu"/>
                         <constraint firstAttribute="height" constant="169" id="Wtq-aC-2X1"/>
+                        <constraint firstItem="USB-XE-bpB" firstAttribute="top" secondItem="LNr-Ou-9Mx" secondAttribute="bottom" constant="8" id="axh-qk-Fei"/>
                         <constraint firstItem="USB-XE-bpB" firstAttribute="top" secondItem="U5u-Pd-Zhl" secondAttribute="bottom" constant="8" id="btw-gn-hQv"/>
-                        <constraint firstItem="OZR-FM-6IA" firstAttribute="top" secondItem="Ydk-2G-1Cp" secondAttribute="top" constant="8" id="jv7-dq-k3J"/>
-                        <constraint firstItem="OZR-FM-6IA" firstAttribute="leading" secondItem="Ydk-2G-1Cp" secondAttribute="leading" constant="8" id="oeN-Lm-Tvz"/>
+                        <constraint firstItem="e5I-HV-Ltx" firstAttribute="top" secondItem="Ydk-2G-1Cp" secondAttribute="top" constant="6" id="ctE-nF-T9S"/>
+                        <constraint firstItem="LNr-Ou-9Mx" firstAttribute="top" secondItem="Ydk-2G-1Cp" secondAttribute="top" constant="8" id="kdp-yb-F1u"/>
                     </constraints>
                 </view>
                 <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l02-WE-OgI" userLabel="SecondContainerView">
@@ -217,6 +256,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="rateLabel" destination="CZW-sQ-fRw" id="6Gx-lm-Lqr"/>
+                <outlet property="rateView" destination="e5I-HV-Ltx" id="X3a-6B-EXQ"/>
                 <outlet property="reviewTextView" destination="USB-XE-bpB" id="KsC-7s-T7b"/>
                 <outlet property="reviewsLabel" destination="jmj-nf-Aj5" id="0pZ-j0-7ZA"/>
                 <outlet property="storeImageView" destination="ojq-9g-AQR" id="PFa-Ww-qoB"/>
