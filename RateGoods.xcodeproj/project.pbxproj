@@ -24,6 +24,10 @@
 		DD63390921E2818C00F6D06A /* StoreAddingViewCoordiantor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390821E2818C00F6D06A /* StoreAddingViewCoordiantor.swift */; };
 		DD63390B21E2AB9A00F6D06A /* StoreInfoViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390A21E2AB9A00F6D06A /* StoreInfoViewInteractor.swift */; };
 		DD63390D21E2ABB100F6D06A /* StoreAddingViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390C21E2ABB100F6D06A /* StoreAddingViewInteractor.swift */; };
+		DD7A868021FB01AE00C578CF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7A867F21FB01AE00C578CF /* SignUpViewController.swift */; };
+		DD7A868221FB072200C578CF /* SignUpViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7A868121FB072200C578CF /* SignUpViewCoordinator.swift */; };
+		DD7B8EC221FA18DF002BABC2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B8EC021FA18DF002BABC2 /* SignInViewController.swift */; };
+		DD7B8EC421FA1B3B002BABC2 /* SignInViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B8EC321FA1B3B002BABC2 /* SignInViewCoordinator.swift */; };
 		DD82BB1921D3DEC9005BE3EF /* StoreAddingPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD82BB1821D3DEC9005BE3EF /* StoreAddingPanel.xib */; };
 		DD82BB1B21D3DF01005BE3EF /* StoreAddingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD82BB1A21D3DF01005BE3EF /* StoreAddingPanel.swift */; };
 		DD82BB1E21D3EC8E005BE3EF /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD82BB1D21D3EC8E005BE3EF /* R.generated.swift */; };
@@ -91,6 +95,10 @@
 		DD63390821E2818C00F6D06A /* StoreAddingViewCoordiantor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddingViewCoordiantor.swift; sourceTree = "<group>"; };
 		DD63390A21E2AB9A00F6D06A /* StoreInfoViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoViewInteractor.swift; sourceTree = "<group>"; };
 		DD63390C21E2ABB100F6D06A /* StoreAddingViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddingViewInteractor.swift; sourceTree = "<group>"; };
+		DD7A867F21FB01AE00C578CF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		DD7A868121FB072200C578CF /* SignUpViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewCoordinator.swift; sourceTree = "<group>"; };
+		DD7B8EC021FA18DF002BABC2 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = RateGoods/ViewControllers/SignInViewController/SignInViewController.swift; sourceTree = SOURCE_ROOT; };
+		DD7B8EC321FA1B3B002BABC2 /* SignInViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewCoordinator.swift; sourceTree = "<group>"; };
 		DD82BB1821D3DEC9005BE3EF /* StoreAddingPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreAddingPanel.xib; sourceTree = "<group>"; };
 		DD82BB1A21D3DF01005BE3EF /* StoreAddingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddingPanel.swift; sourceTree = "<group>"; };
 		DD82BB1D21D3EC8E005BE3EF /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
@@ -219,15 +227,17 @@
 			children = (
 				DDDD280221CE476900E6F4A3 /* Coordinator.swift */,
 				DDDD27FE21CE448700E6F4A3 /* AppCoordinator.swift */,
+				DD7B8EC321FA1B3B002BABC2 /* SignInViewCoordinator.swift */,
+				DD7A868121FB072200C578CF /* SignUpViewCoordinator.swift */,
 				DDDD280021CE463400E6F4A3 /* TabsCoordinator.swift */,
 				DDD564AB21CE59AA00EC6649 /* MapViewCoordinator.swift */,
+				DDD564B921CE8D4800EC6649 /* SearchViewCoordinator.swift */,
+				DDD564BB21CE8D5800EC6649 /* PopularViewCoordinator.swift */,
+				DDD564BD21CE8D6F00EC6649 /* FavouritesViewCoordinator.swift */,
 				DD63390621E2817B00F6D06A /* StoreInfoViewCoordinator.swift */,
 				DD63390821E2818C00F6D06A /* StoreAddingViewCoordiantor.swift */,
 				DD51A42D21E7724600D0A5DC /* GoodsViewCoordinator.swift */,
 				DD57500A21E9D93A00300857 /* GoodsAddingViewCoordinator.swift */,
-				DDD564B921CE8D4800EC6649 /* SearchViewCoordinator.swift */,
-				DDD564BB21CE8D5800EC6649 /* PopularViewCoordinator.swift */,
-				DDD564BD21CE8D6F00EC6649 /* FavouritesViewCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -235,6 +245,8 @@
 		DD6338F521E2010A00F6D06A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DD7A868321FB10EC00C578CF /* SignInViewController */,
+				DD7A868421FB10F600C578CF /* SignUpViewController */,
 				DD6338F921E201F900F6D06A /* MapViewController */,
 				DD6338FE21E2023A00F6D06A /* StoreInfoViewController */,
 				DD6338FD21E2022500F6D06A /* StoreAddingViewController */,
@@ -308,6 +320,22 @@
 				DD51A42F21E7726300D0A5DC /* GoodsViewInteractor.swift */,
 			);
 			path = GoodsViewController;
+			sourceTree = "<group>";
+		};
+		DD7A868321FB10EC00C578CF /* SignInViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DD7B8EC021FA18DF002BABC2 /* SignInViewController.swift */,
+			);
+			path = SignInViewController;
+			sourceTree = "<group>";
+		};
+		DD7A868421FB10F600C578CF /* SignUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DD7A867F21FB01AE00C578CF /* SignUpViewController.swift */,
+			);
+			path = SignUpViewController;
 			sourceTree = "<group>";
 		};
 		DD88533921E8B3D600D75F6F /* StoreAddingPanel */ = {
@@ -508,13 +536,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RateGoods/Pods-RateGoods-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -530,10 +564,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RateGoods/Pods-RateGoods-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
@@ -544,10 +578,10 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
@@ -630,6 +664,7 @@
 				DD8C8F8A21F1F31700A7BDE6 /* Model.xcdatamodeld in Sources */,
 				DD88533E21E8B42400D75F6F /* MainView.swift in Sources */,
 				DDDD280321CE476900E6F4A3 /* Coordinator.swift in Sources */,
+				DD7A868021FB01AE00C578CF /* SignUpViewController.swift in Sources */,
 				DDDD27FF21CE448700E6F4A3 /* AppCoordinator.swift in Sources */,
 				DDD564BC21CE8D5800EC6649 /* PopularViewCoordinator.swift in Sources */,
 				DD4E258D21D8D47800D5777B /* Store.swift in Sources */,
@@ -642,6 +677,8 @@
 				DD88534021E8B43500D75F6F /* AdditionalView.swift in Sources */,
 				DD51A42E21E7724600D0A5DC /* GoodsViewCoordinator.swift in Sources */,
 				DDD564B821CE8D1D00EC6649 /* SearchViewInteractor.swift in Sources */,
+				DD7B8EC421FA1B3B002BABC2 /* SignInViewCoordinator.swift in Sources */,
+				DD7B8EC221FA18DF002BABC2 /* SignInViewController.swift in Sources */,
 				DD8C8F8C21F28BE700A7BDE6 /* CoreDataManager.swift in Sources */,
 				DD82BB1E21D3EC8E005BE3EF /* R.generated.swift in Sources */,
 				DDD564AC21CE59AA00EC6649 /* MapViewCoordinator.swift in Sources */,
@@ -673,6 +710,7 @@
 				DD63390321E233E800F6D06A /* GoodsViewController.swift in Sources */,
 				DDD564B221CE8C0900EC6649 /* PopularViewInteractor.swift in Sources */,
 				DDC0F5C021D78C2400E79FD6 /* StorageManager.swift in Sources */,
+				DD7A868221FB072200C578CF /* SignUpViewCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

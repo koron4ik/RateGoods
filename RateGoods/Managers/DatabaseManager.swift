@@ -8,7 +8,6 @@
 
 import Foundation
 import FirebaseDatabase
-import CodableFirebase
 
 protocol SnapshotProtocol {
     var key: String { get }
