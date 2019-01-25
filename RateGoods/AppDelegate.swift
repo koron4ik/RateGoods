@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import Firebase
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GMSServices.provideAPIKey(Constants.APIKey.googleMaps)
         FirebaseApp.configure()
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         guard let window = self.window else {

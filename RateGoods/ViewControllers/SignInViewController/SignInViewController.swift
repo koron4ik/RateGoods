@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import GoogleSignIn
 import Toast_Swift
 
 protocol SignInViewControllerCoordinator: class {
@@ -28,6 +29,8 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         
         self.auth = Auth.auth()
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
         
         if self.userIsExist() {
             do {
@@ -62,7 +65,7 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func googleButtonPressed(_ sender: Any) {
-        
+        GIDSignIn.sharedInstance().signIn()
     }
     
     @IBAction func facebookButtonPressed(_ sender: Any) {
@@ -71,5 +74,25 @@ class SignInViewController: UIViewController {
     
     @IBAction func signUpButtonPressed(_ sender: Any) {
         self.coordinator?.showSignUp()
+    }
+}
+
+extension SignInViewController: GIDSignInDelegate, GIDSignInUIDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            self.view.makeToast(error.localizedDescription)
+            return
+        }
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        auth.signInAndRetrieveData(with: credential) { [weak self] (authResult, error) in
+            if let error = error {
+                self?.view.makeToast(error.localizedDescription)
+                return
+            }
+            self?.coordinator?.showTabsBar()
+        }
     }
 }

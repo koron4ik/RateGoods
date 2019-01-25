@@ -86,33 +86,6 @@
                                 <color key="textColor" red="0.29250365499999997" green="0.23275315760000001" blue="0.47932881119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="du5-eA-hkV">
-                                <rect key="frame" x="123" y="414.5" width="129" height="48"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-3s-uWP">
-                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="Rkh-3s-uWP" secondAttribute="height" multiplier="1:1" id="2Ni-KO-xfk"/>
-                                            <constraint firstAttribute="height" constant="48" id="z1d-2b-i77"/>
-                                        </constraints>
-                                        <state key="normal" image="google"/>
-                                        <connections>
-                                            <action selector="googleButtonPressed:" destination="3AZ-U8-C6G" eventType="touchUpInside" id="y0s-D0-Pq5"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAi-tP-wpO">
-                                        <rect key="frame" x="81" y="0.0" width="48" height="48"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="48" id="CIQ-JD-6PC"/>
-                                            <constraint firstAttribute="width" secondItem="wAi-tP-wpO" secondAttribute="height" multiplier="1:1" id="otd-0Q-1cG"/>
-                                        </constraints>
-                                        <state key="normal" image="facebook"/>
-                                        <connections>
-                                            <action selector="facebookButtonPressed:" destination="3AZ-U8-C6G" eventType="touchUpInside" id="TZb-Tq-vO7"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKY-m8-agX">
                                 <rect key="frame" x="177.5" y="386" width="20.5" height="20.5"/>
                                 <constraints>
@@ -141,14 +114,29 @@
                                     <action selector="logInButtonPressed:" destination="3AZ-U8-C6G" eventType="touchUpInside" id="Jji-UH-4W7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-3s-uWP">
+                                <rect key="frame" x="103.5" y="414.5" width="168" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="123-Z6-Fv3"/>
+                                    <constraint firstAttribute="width" constant="168" id="et7-Eg-g2F"/>
+                                </constraints>
+                                <state key="normal" image="google"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="googleButtonPressed:" destination="3AZ-U8-C6G" eventType="touchUpInside" id="y0s-D0-Pq5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.69811663641917809" green="0.69806496658219175" blue="0.94023766259315089" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VcP-OQ-hwx" firstAttribute="leading" secondItem="JWK-8j-9aJ" secondAttribute="leading" constant="70" id="38i-Xp-cvy"/>
                             <constraint firstItem="dKY-m8-agX" firstAttribute="top" secondItem="AiY-K2-USl" secondAttribute="bottom" constant="12" id="DyO-Va-KV6"/>
                             <constraint firstItem="AiY-K2-USl" firstAttribute="trailing" secondItem="Wze-Yq-Eem" secondAttribute="trailing" constant="-60" id="I90-br-IZw"/>
-                            <constraint firstItem="du5-eA-hkV" firstAttribute="top" secondItem="dKY-m8-agX" secondAttribute="bottom" constant="8" id="LKp-K0-fkC"/>
-                            <constraint firstItem="du5-eA-hkV" firstAttribute="centerX" secondItem="JWK-8j-9aJ" secondAttribute="centerX" id="UCs-3f-UDw"/>
+                            <constraint firstItem="Rkh-3s-uWP" firstAttribute="top" secondItem="dKY-m8-agX" secondAttribute="bottom" constant="8" id="UJ5-OO-eea"/>
                             <constraint firstItem="D8f-Qk-4m5" firstAttribute="leading" secondItem="VcP-OQ-hwx" secondAttribute="trailing" constant="3" id="UKB-Rt-Zhj"/>
                             <constraint firstItem="jMI-6m-OnN" firstAttribute="top" secondItem="JWK-8j-9aJ" secondAttribute="top" constant="89" id="VhF-Lh-NE7"/>
                             <constraint firstItem="VcP-OQ-hwx" firstAttribute="bottom" secondItem="D8f-Qk-4m5" secondAttribute="bottom" id="Y2V-9A-BGb"/>
@@ -160,6 +148,7 @@
                             <constraint firstAttribute="bottom" secondItem="VcP-OQ-hwx" secondAttribute="bottom" constant="20" symbolic="YES" id="mmk-HI-nRK"/>
                             <constraint firstItem="AiY-K2-USl" firstAttribute="leading" secondItem="Wze-Yq-Eem" secondAttribute="leading" constant="60" id="p1J-lq-6yv"/>
                             <constraint firstItem="3IO-ct-FfB" firstAttribute="leading" secondItem="JWK-8j-9aJ" secondAttribute="leading" constant="60" id="pBi-De-M6f"/>
+                            <constraint firstItem="Rkh-3s-uWP" firstAttribute="centerX" secondItem="JWK-8j-9aJ" secondAttribute="centerX" id="w19-f5-Ygi"/>
                             <constraint firstItem="JWK-8j-9aJ" firstAttribute="trailing" secondItem="3IO-ct-FfB" secondAttribute="trailing" constant="60" id="xu8-Qn-8UX"/>
                             <constraint firstItem="3IO-ct-FfB" firstAttribute="top" secondItem="JWK-8j-9aJ" secondAttribute="top" constant="240" id="ymm-1s-Yf0"/>
                         </constraints>
@@ -247,7 +236,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="facebook" width="64" height="64"/>
-        <image name="google" width="48" height="48"/>
+        <image name="google" width="382" height="92"/>
     </resources>
 </document>
