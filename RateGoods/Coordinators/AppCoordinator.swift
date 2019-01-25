@@ -12,7 +12,7 @@ class AppCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator] = []
     var window: UIWindow?
-    lazy var rootViewController: UINavigationController = UINavigationController(rootViewController: UIViewController())
+    lazy var rootViewController = UINavigationController()
     
     init(window: UIWindow) {
         self.window = window
@@ -22,7 +22,7 @@ class AppCoordinator: Coordinator {
         self.window?.rootViewController = self.rootViewController
         self.window?.makeKeyAndVisible()
         
-        self.startTabsCoordinator()
+        self.startAuthCoordinator()
     }
     
     func stop() {
@@ -30,9 +30,8 @@ class AppCoordinator: Coordinator {
         self.window?.makeKeyAndVisible()
     }
     
-    private func startTabsCoordinator() {
-        self.rootViewController.navigationBar.isHidden = true
-        let tabsScreenCoordinator = TabsCoordinator(rootViewController: self.rootViewController)
-        tabsScreenCoordinator.start()
+    private func startAuthCoordinator() {
+        let authCoordinator = SignInViewCoordinator(rootViewController: self.rootViewController)
+        authCoordinator.start()
     }
 }

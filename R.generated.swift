@@ -30,12 +30,16 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 4 images.
+  /// This `R.image` struct is generated, and contains static references to 6 images.
   struct image {
     /// Image `background`.
     static let background = Rswift.ImageResource(bundle: R.hostingBundle, name: "background")
+    /// Image `facebook`.
+    static let facebook = Rswift.ImageResource(bundle: R.hostingBundle, name: "facebook")
     /// Image `favourite`.
     static let favourite = Rswift.ImageResource(bundle: R.hostingBundle, name: "favourite")
+    /// Image `google`.
+    static let google = Rswift.ImageResource(bundle: R.hostingBundle, name: "google")
     /// Image `placeholder_image`.
     static let placeholder_image = Rswift.ImageResource(bundle: R.hostingBundle, name: "placeholder_image")
     /// Image `unfavourite`.
@@ -46,9 +50,19 @@ struct R: Rswift.Validatable {
       return UIKit.UIImage(resource: R.image.background, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "facebook", bundle: ..., traitCollection: ...)`
+    static func facebook(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.facebook, compatibleWith: traitCollection)
+    }
+    
     /// `UIImage(named: "favourite", bundle: ..., traitCollection: ...)`
     static func favourite(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.favourite, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "google", bundle: ..., traitCollection: ...)`
+    static func google(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.google, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "placeholder_image", bundle: ..., traitCollection: ...)`
@@ -118,17 +132,15 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `GoodsCell`.
     static let goodsCell: Rswift.ReuseIdentifier<GoodsCell> = Rswift.ReuseIdentifier(identifier: "GoodsCell")
-    /// Reuse identifier `ReviewCell`.
-    static let reviewCell: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "ReviewCell")
     
     fileprivate init() {}
   }
   
-  /// This `R.storyboard` struct is generated, and contains static references to 9 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 8 storyboards.
   struct storyboard {
     /// Storyboard `Favourites`.
     static let favourites = _R.storyboard.favourites()
@@ -142,8 +154,6 @@ struct R: Rswift.Validatable {
     static let map = _R.storyboard.map()
     /// Storyboard `Popular`.
     static let popular = _R.storyboard.popular()
-    /// Storyboard `Reviews`.
-    static let reviews = _R.storyboard.reviews()
     /// Storyboard `Search`.
     static let search = _R.storyboard.search()
     /// Storyboard `Settings`.
@@ -177,11 +187,6 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "Popular", bundle: ...)`
     static func popular(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.popular)
-    }
-    
-    /// `UIStoryboard(name: "Reviews", bundle: ...)`
-    static func reviews(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.reviews)
     }
     
     /// `UIStoryboard(name: "Search", bundle: ...)`
@@ -305,7 +310,6 @@ struct _R: Rswift.Validatable {
       try main.validate()
       try map.validate()
       try popular.validate()
-      try reviews.validate()
       try search.validate()
       try settings.validate()
     }
@@ -370,19 +374,38 @@ struct _R: Rswift.Validatable {
     }
     
     struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = UIKit.UIViewController
+      typealias InitialController = UIKit.UINavigationController
       
       let bundle = R.hostingBundle
       let name = "Main"
+      let signInNavigationController = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "SignInNavigationController")
+      let signInViewController = StoryboardViewControllerResource<SignInViewController>(identifier: "SignInViewController")
+      let signUpViewController = StoryboardViewControllerResource<SignUpViewController>(identifier: "SignUpViewController")
       let tabsViewController = StoryboardViewControllerResource<UIKit.UITabBarController>(identifier: "TabsViewController")
+      
+      func signInNavigationController(_: Void = ()) -> UIKit.UINavigationController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: signInNavigationController)
+      }
+      
+      func signInViewController(_: Void = ()) -> SignInViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: signInViewController)
+      }
+      
+      func signUpViewController(_: Void = ()) -> SignUpViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: signUpViewController)
+      }
       
       func tabsViewController(_: Void = ()) -> UIKit.UITabBarController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: tabsViewController)
       }
       
       static func validate() throws {
+        if UIKit.UIImage(named: "google", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'google' is used in storyboard 'Main', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
+        if _R.storyboard.main().signInNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'signInNavigationController' could not be loaded from storyboard 'Main' as 'UIKit.UINavigationController'.") }
+        if _R.storyboard.main().signInViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'signInViewController' could not be loaded from storyboard 'Main' as 'SignInViewController'.") }
+        if _R.storyboard.main().signUpViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'signUpViewController' could not be loaded from storyboard 'Main' as 'SignUpViewController'.") }
         if _R.storyboard.main().tabsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'tabsViewController' could not be loaded from storyboard 'Main' as 'UIKit.UITabBarController'.") }
       }
       
@@ -430,20 +453,6 @@ struct _R: Rswift.Validatable {
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.popular().popularNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'popularNavigationController' could not be loaded from storyboard 'Popular' as 'UIKit.UINavigationController'.") }
-      }
-      
-      fileprivate init() {}
-    }
-    
-    struct reviews: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = UIKit.UITableViewController
-      
-      let bundle = R.hostingBundle
-      let name = "Reviews"
-      
-      static func validate() throws {
-        if #available(iOS 11.0, *) {
-        }
       }
       
       fileprivate init() {}

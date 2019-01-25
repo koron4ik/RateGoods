@@ -43,11 +43,6 @@ PODS:
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 5.2)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseUI/Auth (5.2.2):
-    - Firebase/Auth (~> 5.0)
-  - FirebaseUI/Google (5.2.2):
-    - FirebaseUI/Auth
-    - GoogleSignIn (~> 4.0)
   - FloatingPanel (1.3.2)
   - GoogleAppMeasurement (5.5.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
@@ -105,13 +100,13 @@ PODS:
 
 DEPENDENCIES:
   - Cosmos
+  - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
-  - FirebaseUI/Auth
-  - FirebaseUI/Google
   - FloatingPanel
   - GoogleMaps
+  - GoogleSignIn
   - R.swift
   - SwiftLint
   - Toast-Swift
@@ -127,7 +122,6 @@ SPEC REPOS:
     - FirebaseDatabase
     - FirebaseInstanceID
     - FirebaseStorage
-    - FirebaseUI
     - FloatingPanel
     - GoogleAppMeasurement
     - GoogleMaps
@@ -152,7 +146,6 @@ SPEC CHECKSUMS:
   FirebaseDatabase: 23acb0c53cd4d4070a427b60100b2e4aaa97c45d
   FirebaseInstanceID: 97ea7a5dca9afd72c79bfcdddb7a44aa1cbb42a1
   FirebaseStorage: 29075f874c2b3cf61e5221a62c4ceefc809e5412
-  FirebaseUI: 09519bf436a055cd696bf68687d624423150e4c0
   FloatingPanel: a17dec0ef2b40eb614ee743de1a2529140fb2a6a
   GoogleAppMeasurement: 621f3bc6211d5ba548debe01fafad30cf5ab6859
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
@@ -167,6 +160,6 @@ SPEC CHECKSUMS:
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
   Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
 
-PODFILE CHECKSUM: 16e6c55a3ad7aed2c89816b7012207720697bc23
+PODFILE CHECKSUM: 62123f50e8e4a000b259e53bc3dbd00453820afe
 
 COCOAPODS: 1.5.3
