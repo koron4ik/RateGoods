@@ -24,8 +24,6 @@
 		DD63390921E2818C00F6D06A /* StoreAddingViewCoordiantor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390821E2818C00F6D06A /* StoreAddingViewCoordiantor.swift */; };
 		DD63390B21E2AB9A00F6D06A /* StoreInfoViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390A21E2AB9A00F6D06A /* StoreInfoViewInteractor.swift */; };
 		DD63390D21E2ABB100F6D06A /* StoreAddingViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390C21E2ABB100F6D06A /* StoreAddingViewInteractor.swift */; };
-		DD7B8EB921FA0AA3002BABC2 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B8EB821FA0AA3002BABC2 /* AuthViewController.swift */; };
-		DD7B8EBB21FA0ABB002BABC2 /* AuthViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B8EBA21FA0ABB002BABC2 /* AuthViewInteractor.swift */; };
 		DD82BB1921D3DEC9005BE3EF /* StoreAddingPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD82BB1821D3DEC9005BE3EF /* StoreAddingPanel.xib */; };
 		DD82BB1B21D3DF01005BE3EF /* StoreAddingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD82BB1A21D3DF01005BE3EF /* StoreAddingPanel.swift */; };
 		DD82BB1E21D3EC8E005BE3EF /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD82BB1D21D3EC8E005BE3EF /* R.generated.swift */; };
@@ -95,8 +93,6 @@
 		DD63390821E2818C00F6D06A /* StoreAddingViewCoordiantor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddingViewCoordiantor.swift; sourceTree = "<group>"; };
 		DD63390A21E2AB9A00F6D06A /* StoreInfoViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoViewInteractor.swift; sourceTree = "<group>"; };
 		DD63390C21E2ABB100F6D06A /* StoreAddingViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddingViewInteractor.swift; sourceTree = "<group>"; };
-		DD7B8EB821FA0AA3002BABC2 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
-		DD7B8EBA21FA0ABB002BABC2 /* AuthViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewInteractor.swift; sourceTree = "<group>"; };
 		DD82BB1821D3DEC9005BE3EF /* StoreAddingPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreAddingPanel.xib; sourceTree = "<group>"; };
 		DD82BB1A21D3DF01005BE3EF /* StoreAddingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddingPanel.swift; sourceTree = "<group>"; };
 		DD82BB1D21D3EC8E005BE3EF /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
@@ -244,7 +240,6 @@
 		DD6338F521E2010A00F6D06A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DD7B8EB721FA0A84002BABC2 /* AuthViewContoller */,
 				DD6338F921E201F900F6D06A /* MapViewController */,
 				DD6338FE21E2023A00F6D06A /* StoreInfoViewController */,
 				DD6338FD21E2022500F6D06A /* StoreAddingViewController */,
@@ -319,15 +314,6 @@
 				DD51A42F21E7726300D0A5DC /* GoodsViewInteractor.swift */,
 			);
 			path = GoodsViewController;
-			sourceTree = "<group>";
-		};
-		DD7B8EB721FA0A84002BABC2 /* AuthViewContoller */ = {
-			isa = PBXGroup;
-			children = (
-				DD7B8EB821FA0AA3002BABC2 /* AuthViewController.swift */,
-				DD7B8EBA21FA0ABB002BABC2 /* AuthViewInteractor.swift */,
-			);
-			path = AuthViewContoller;
 			sourceTree = "<group>";
 		};
 		DD88533921E8B3D600D75F6F /* StoreAddingPanel */ = {
@@ -686,13 +672,11 @@
 				DD88534021E8B43500D75F6F /* AdditionalView.swift in Sources */,
 				DD51A42E21E7724600D0A5DC /* GoodsViewCoordinator.swift in Sources */,
 				DDD564B821CE8D1D00EC6649 /* SearchViewInteractor.swift in Sources */,
-				DD7B8EB921FA0AA3002BABC2 /* AuthViewController.swift in Sources */,
 				DD8C8F8C21F28BE700A7BDE6 /* CoreDataManager.swift in Sources */,
 				DD82BB1E21D3EC8E005BE3EF /* R.generated.swift in Sources */,
 				DDD564AC21CE59AA00EC6649 /* MapViewCoordinator.swift in Sources */,
 				DD9935F621EA9A2C003793B1 /* Review.swift in Sources */,
 				DD51A43021E7726300D0A5DC /* GoodsViewInteractor.swift in Sources */,
-				DD7B8EBB21FA0ABB002BABC2 /* AuthViewInteractor.swift in Sources */,
 				DDDC6BA921C40E450049888D /* MapViewController.swift in Sources */,
 				DDE1344021DE6BF200AA170B /* UIColor+purple.swift in Sources */,
 				DD57500B21E9D93A00300857 /* GoodsAddingViewCoordinator.swift in Sources */,
