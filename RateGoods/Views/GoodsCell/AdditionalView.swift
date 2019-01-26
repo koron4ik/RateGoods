@@ -11,7 +11,7 @@ import Cosmos
 
 protocol AdditionalViewDelegate: class {
     func addReviewButtonPressed(_ reviewText: String, _ rate: Int)
-    func seeAllButtonPressed()
+    func reviewsButtonPressed()
 }
 
 class AdditionalView: UIView {
@@ -31,8 +31,8 @@ class AdditionalView: UIView {
         self.delegate?.addReviewButtonPressed(reviewText, Int(rateView.rating))
     }
     
-    @IBAction func seeAllButtonPressed(_ sender: UIButton) {
-        
+    @IBAction func reviewsButtonPressed(_ sender: UIButton) {
+        self.delegate?.reviewsButtonPressed()
     }
     
 }

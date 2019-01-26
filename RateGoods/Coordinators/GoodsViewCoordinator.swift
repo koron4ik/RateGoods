@@ -35,6 +35,16 @@ class GoodsViewCoordinator: GoodsViewControllerCoordinator {
         goodsAddingViewCoordinator.start()
     }
     
+    func showAllReviews(vc: UIViewController, goods: Goods) {
+        guard let navVC = vc.navigationController else { return }
+        
+        let reviewsTablewViewCoordinator = ReviewsTableViewCoordinator(rootViewController: navVC, goods: goods)
+        reviewsTablewViewCoordinator.start()
+    }
+}
+
+extension GoodsViewCoordinator {
+    
     private func createGoodsViewController() -> GoodsViewController {
         guard let viewController = R.storyboard.goods.goodsViewController() else {
             preconditionFailure("Goods Storyboard should contain GoodsgViewController")

@@ -78,12 +78,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 4 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 5 nibs.
   struct nib {
     /// Nib `AdditionalView`.
     static let additionalView = _R.nib._AdditionalView()
     /// Nib `MainView`.
     static let mainView = _R.nib._MainView()
+    /// Nib `ReviewView`.
+    static let reviewView = _R.nib._ReviewView()
     /// Nib `StoreAddingPanel`.
     static let storeAddingPanel = _R.nib._StoreAddingPanel()
     /// Nib `StoreInfoPanel`.
@@ -99,6 +101,12 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.mainView) instead")
     static func mainView(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.mainView)
+    }
+    
+    /// `UINib(name: "ReviewView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.reviewView) instead")
+    static func reviewView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.reviewView)
     }
     
     /// `UINib(name: "StoreAddingPanel", in: bundle)`
@@ -121,6 +129,10 @@ struct R: Rswift.Validatable {
       return R.nib.mainView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MainView
     }
     
+    static func reviewView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ReviewView? {
+      return R.nib.reviewView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ReviewView
+    }
+    
     static func storeAddingPanel(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> StoreAddingPanel? {
       return R.nib.storeAddingPanel.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? StoreAddingPanel
     }
@@ -132,15 +144,17 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `GoodsCell`.
     static let goodsCell: Rswift.ReuseIdentifier<GoodsCell> = Rswift.ReuseIdentifier(identifier: "GoodsCell")
+    /// Reuse identifier `ReviewCell`.
+    static let reviewCell: Rswift.ReuseIdentifier<ReviewCell> = Rswift.ReuseIdentifier(identifier: "ReviewCell")
     
     fileprivate init() {}
   }
   
-  /// This `R.storyboard` struct is generated, and contains static references to 8 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 9 storyboards.
   struct storyboard {
     /// Storyboard `Favourites`.
     static let favourites = _R.storyboard.favourites()
@@ -154,6 +168,8 @@ struct R: Rswift.Validatable {
     static let map = _R.storyboard.map()
     /// Storyboard `Popular`.
     static let popular = _R.storyboard.popular()
+    /// Storyboard `Reviews`.
+    static let reviews = _R.storyboard.reviews()
     /// Storyboard `Search`.
     static let search = _R.storyboard.search()
     /// Storyboard `Settings`.
@@ -187,6 +203,11 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "Popular", bundle: ...)`
     static func popular(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.popular)
+    }
+    
+    /// `UIStoryboard(name: "Reviews", bundle: ...)`
+    static func reviews(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.reviews)
     }
     
     /// `UIStoryboard(name: "Search", bundle: ...)`
@@ -264,6 +285,17 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
+    struct _ReviewView: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "ReviewView"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ReviewView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ReviewView
+      }
+      
+      fileprivate init() {}
+    }
+    
     struct _StoreAddingPanel: Rswift.NibResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "StoreAddingPanel"
@@ -310,6 +342,7 @@ struct _R: Rswift.Validatable {
       try main.validate()
       try map.validate()
       try popular.validate()
+      try reviews.validate()
       try search.validate()
       try settings.validate()
     }
@@ -453,6 +486,26 @@ struct _R: Rswift.Validatable {
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.popular().popularNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'popularNavigationController' could not be loaded from storyboard 'Popular' as 'UIKit.UINavigationController'.") }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct reviews: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = ReviewsTableViewController
+      
+      let bundle = R.hostingBundle
+      let name = "Reviews"
+      let reviewsTableViewController = StoryboardViewControllerResource<ReviewsTableViewController>(identifier: "ReviewsTableViewController")
+      
+      func reviewsTableViewController(_: Void = ()) -> ReviewsTableViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: reviewsTableViewController)
+      }
+      
+      static func validate() throws {
+        if #available(iOS 11.0, *) {
+        }
+        if _R.storyboard.reviews().reviewsTableViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'reviewsTableViewController' could not be loaded from storyboard 'Reviews' as 'ReviewsTableViewController'.") }
       }
       
       fileprivate init() {}

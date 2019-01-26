@@ -45,7 +45,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
                             <state key="normal" title="REVIEWS"/>
                             <connections>
-                                <action selector="seeAllButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="6yD-h5-wuG"/>
+                                <action selector="reviewsButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="bYZ-lE-czG"/>
                             </connections>
                         </button>
                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Rate:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNr-Ou-9Mx">

@@ -26,6 +26,11 @@
 		DD63390D21E2ABB100F6D06A /* StoreAddingViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390C21E2ABB100F6D06A /* StoreAddingViewInteractor.swift */; };
 		DD7A868021FB01AE00C578CF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7A867F21FB01AE00C578CF /* SignUpViewController.swift */; };
 		DD7A868221FB072200C578CF /* SignUpViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7A868121FB072200C578CF /* SignUpViewCoordinator.swift */; };
+		DD7A868621FB78A500C578CF /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD7A868521FB78A500C578CF /* ReviewView.xib */; };
+		DD7A868821FB834D00C578CF /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7A868721FB834D00C578CF /* ReviewView.swift */; };
+		DD7A868A21FB8B6300C578CF /* ReviewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7A868921FB8B6300C578CF /* ReviewsTableViewController.swift */; };
+		DD7A868C21FB8BE900C578CF /* ReviewsTableViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7A868B21FB8BE900C578CF /* ReviewsTableViewInteractor.swift */; };
+		DD7A868E21FB8C4E00C578CF /* ReviewsTableViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7A868D21FB8C4E00C578CF /* ReviewsTableViewCoordinator.swift */; };
 		DD7B8EC221FA18DF002BABC2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B8EC021FA18DF002BABC2 /* SignInViewController.swift */; };
 		DD7B8EC421FA1B3B002BABC2 /* SignInViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B8EC321FA1B3B002BABC2 /* SignInViewCoordinator.swift */; };
 		DD82BB1921D3DEC9005BE3EF /* StoreAddingPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD82BB1821D3DEC9005BE3EF /* StoreAddingPanel.xib */; };
@@ -99,6 +104,11 @@
 		DD63390C21E2ABB100F6D06A /* StoreAddingViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddingViewInteractor.swift; sourceTree = "<group>"; };
 		DD7A867F21FB01AE00C578CF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		DD7A868121FB072200C578CF /* SignUpViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewCoordinator.swift; sourceTree = "<group>"; };
+		DD7A868521FB78A500C578CF /* ReviewView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewView.xib; sourceTree = "<group>"; };
+		DD7A868721FB834D00C578CF /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		DD7A868921FB8B6300C578CF /* ReviewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewController.swift; sourceTree = "<group>"; };
+		DD7A868B21FB8BE900C578CF /* ReviewsTableViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewInteractor.swift; sourceTree = "<group>"; };
+		DD7A868D21FB8C4E00C578CF /* ReviewsTableViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCoordinator.swift; sourceTree = "<group>"; };
 		DD7B8EC021FA18DF002BABC2 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = RateGoods/ViewControllers/SignInViewController/SignInViewController.swift; sourceTree = SOURCE_ROOT; };
 		DD7B8EC321FA1B3B002BABC2 /* SignInViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewCoordinator.swift; sourceTree = "<group>"; };
 		DD82BB1821D3DEC9005BE3EF /* StoreAddingPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreAddingPanel.xib; sourceTree = "<group>"; };
@@ -243,6 +253,7 @@
 				DD63390821E2818C00F6D06A /* StoreAddingViewCoordiantor.swift */,
 				DD51A42D21E7724600D0A5DC /* GoodsViewCoordinator.swift */,
 				DD57500A21E9D93A00300857 /* GoodsAddingViewCoordinator.swift */,
+				DD7A868D21FB8C4E00C578CF /* ReviewsTableViewCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -260,7 +271,7 @@
 				DD6338FA21E2020300F6D06A /* SearchViewController */,
 				DD6338FB21E2020E00F6D06A /* PopularViewController */,
 				DD6338FC21E2021800F6D06A /* FavouritesViewContrller */,
-				DDB4077D21F6257A004590E5 /* ReviewsViewController */,
+				DDB4077D21F6257A004590E5 /* ReviewsTableViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -383,17 +394,21 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		DDB4077D21F6257A004590E5 /* ReviewsViewController */ = {
+		DDB4077D21F6257A004590E5 /* ReviewsTableViewController */ = {
 			isa = PBXGroup;
 			children = (
+				DD7A868921FB8B6300C578CF /* ReviewsTableViewController.swift */,
+				DD7A868B21FB8BE900C578CF /* ReviewsTableViewInteractor.swift */,
 			);
-			path = ReviewsViewController;
+			path = ReviewsTableViewController;
 			sourceTree = "<group>";
 		};
 		DDB4077E21F677E4004590E5 /* ReviewCel */ = {
 			isa = PBXGroup;
 			children = (
 				DDB4077F21F67815004590E5 /* ReviewCell.swift */,
+				DD7A868721FB834D00C578CF /* ReviewView.swift */,
+				DD7A868521FB78A500C578CF /* ReviewView.xib */,
 			);
 			path = ReviewCel;
 			sourceTree = "<group>";
@@ -530,6 +545,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDBFEBD721CD5A8300A34FBB /* Map.storyboard in Resources */,
+				DD7A868621FB78A500C578CF /* ReviewView.xib in Resources */,
 				DDDC6BB121C40E470049888D /* LaunchScreen.storyboard in Resources */,
 				DD4E259321D8F16100D5777B /* StoreInfoPanel.xib in Resources */,
 				DDDC6BAE21C40E470049888D /* Assets.xcassets in Resources */,
@@ -559,8 +575,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RateGoods/Pods-RateGoods-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
@@ -568,8 +582,6 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
@@ -629,7 +641,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -691,6 +703,7 @@
 				DDDD27FF21CE448700E6F4A3 /* AppCoordinator.swift in Sources */,
 				DDD564BC21CE8D5800EC6649 /* PopularViewCoordinator.swift in Sources */,
 				DD4E258D21D8D47800D5777B /* Store.swift in Sources */,
+				DD7A868E21FB8C4E00C578CF /* ReviewsTableViewCoordinator.swift in Sources */,
 				DDF57E2A21CFF3B700E4C94C /* StoreAddingViewController.swift in Sources */,
 				DDC3B4B121C4331700C056FC /* SearchViewController.swift in Sources */,
 				DDD564B421CE8CF200EC6649 /* FavouritesViewController.swift in Sources */,
@@ -701,6 +714,7 @@
 				DD88534021E8B43500D75F6F /* AdditionalView.swift in Sources */,
 				DD51A42E21E7724600D0A5DC /* GoodsViewCoordinator.swift in Sources */,
 				DDD564B821CE8D1D00EC6649 /* SearchViewInteractor.swift in Sources */,
+				DD7A868C21FB8BE900C578CF /* ReviewsTableViewInteractor.swift in Sources */,
 				DD7B8EC421FA1B3B002BABC2 /* SignInViewCoordinator.swift in Sources */,
 				DD7B8EC221FA18DF002BABC2 /* SignInViewController.swift in Sources */,
 				DD8C8F8C21F28BE700A7BDE6 /* CoreDataManager.swift in Sources */,
@@ -714,10 +728,12 @@
 				DDDD280121CE463400E6F4A3 /* TabsCoordinator.swift in Sources */,
 				DDE1343E21DE3D5800AA170B /* CLLocationCoordinate2D+operatorOverloading.swift in Sources */,
 				DDBAC72021CC3E6B00C8B743 /* MapViewInteractor.swift in Sources */,
+				DD7A868821FB834D00C578CF /* ReviewView.swift in Sources */,
 				DDA3646921E36E2D00FA34BD /* Result.swift in Sources */,
 				DDD564BA21CE8D4800EC6649 /* SearchViewCoordinator.swift in Sources */,
 				DD4E25A321D912B500D5777B /* StoreInfoViewController.swift in Sources */,
 				DD9935F821EA9A3A003793B1 /* Goods.swift in Sources */,
+				DD7A868A21FB8B6300C578CF /* ReviewsTableViewController.swift in Sources */,
 				DDD564BE21CE8D6F00EC6649 /* FavouritesViewCoordinator.swift in Sources */,
 				DD63390521E2405500F6D06A /* GoodsCell.swift in Sources */,
 				DD63390D21E2ABB100F6D06A /* StoreAddingViewInteractor.swift in Sources */,
@@ -903,6 +919,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "Pods/**";
 			};
 			name = Debug;
 		};
@@ -933,6 +950,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "Pods/**";
 			};
 			name = Release;
 		};

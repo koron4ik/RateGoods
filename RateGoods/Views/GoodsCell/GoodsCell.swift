@@ -22,11 +22,6 @@ extension GoodsCellDelegate {
 
 class GoodsCell: UITableViewCell {
     
-    enum Height: CGFloat {
-        case main = 93
-        case additional = 434
-    }
-    
     enum State {
         case open
         case closed
@@ -123,7 +118,7 @@ extension GoodsCell: AdditionalViewDelegate {
         delegate?.goodsCell(self, addReviewAt: self.indexPath, with: reviewText, rate: rate)
     }
     
-    func seeAllButtonPressed() {
+    func reviewsButtonPressed() {
         delegate?.goodsCell(self, seeAllReviewsAt: self.indexPath)
     }
 }

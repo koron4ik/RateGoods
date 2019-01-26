@@ -16,6 +16,7 @@ protocol GoodsViewControllerInteractor: class {
 
 protocol GoodsViewControllerCoordinator: class {
     func showGoodsAdding(vc: UIViewController, store: Store)
+    func showAllReviews(vc: UIViewController, goods: Goods)
 }
 
 class GoodsViewController: UIViewController {
@@ -134,7 +135,6 @@ extension GoodsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? GoodsCell else { return }
         
-        //cell.isOpen ? cell.close() : cell.open()
         if cell.isOpen {
             cell.close()
         } else {
@@ -170,7 +170,7 @@ extension GoodsViewController: GoodsCellDelegate {
     }
     
     func goodsCell(_ goodsCell: GoodsCell, seeAllReviewsAt indexPath: IndexPath) {
-        
+        self.coordinator?.showAllReviews(vc: self, goods: self.interactor.goods[indexPath.row])
     }
     
     func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Int) {

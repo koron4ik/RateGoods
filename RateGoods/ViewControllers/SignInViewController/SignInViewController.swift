@@ -35,7 +35,6 @@ class SignInViewController: UIViewController {
         if self.userIsExist() {
             do {
                 self.coordinator?.showTabsBar()
-                try self.auth.signOut()
             } catch {}
         }
     }
