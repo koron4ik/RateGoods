@@ -11,13 +11,13 @@ import UIKit
 protocol GoodsCellDelegate: class {
     func goodsCell(_ goodsCell: GoodsCell, faviouriteButtonPressedAt indexPath: IndexPath)
     func goodsCell(_ goodsCell: GoodsCell, seeAllReviewsAt indexPath: IndexPath)
-    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Int)
+    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Double)
 }
 
 extension GoodsCellDelegate {
     func goodsCell(_ goodsCell: GoodsCell, faviouriteButtonPressedAt indexPath: IndexPath) { }
     func goodsCell(_ goodsCell: GoodsCell, seeAllReviewsAt indexPath: IndexPath) { }
-    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Int) { }
+    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Double) { }
 }
 
 class GoodsCell: UITableViewCell {
@@ -114,7 +114,7 @@ extension GoodsCell: MainViewDelegate {
 
 extension GoodsCell: AdditionalViewDelegate {
     
-    func addReviewButtonPressed(_ reviewText: String, _ rate: Int) {
+    func addReviewButtonPressed(_ reviewText: String, _ rate: Double) {
         delegate?.goodsCell(self, addReviewAt: self.indexPath, with: reviewText, rate: rate)
     }
     

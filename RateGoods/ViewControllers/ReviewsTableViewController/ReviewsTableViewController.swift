@@ -20,14 +20,27 @@ class ReviewsTableViewController: UITableViewController {
     
     var interactor: ReviewsTableViewInteractor!
     var coordinator: ReviewsTableViewCoordinator?
+    
+    private var reviews = [Review]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
         self.navigationController?.isNavigationBarHidden = false
+        
+        self.view.makeToastActivity(.center)
+        let reviewsRef = interactor.goods.ref.child(Constants.Database.reviews)
+        DatabaseManager.shared.loadData(from: reviewsRef) { [weak self] (result: Result<[Review]?>) in
+            switch result {
+            case .success(let reviews):
+                guard let reviews = reviews else { return }
+                self?.reviews = reviews
+                self?.tableView.reloadData()
+            case .failure(let error):
+                self?.view.makeToast(error.localizedDescription, duration: 2.0, position: .bottom)
+            }
+            self?.view.hideToastActivity()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -36,53 +49,28 @@ class ReviewsTableViewController: UITableViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
 
-    // MARK: - Table view data source
+}
 
+extension ReviewsTableViewController {
+ 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.reviews.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as? ReviewCell else { return UITableViewCell() }
         
-        //cell.reviewView.rateView
-        //cell.reviewView.nicknameLabel
-        //cell.reviewView.reviewTextLabel
-
+        let review = self.reviews[indexPath.row]
+        cell.configure(with: review)
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

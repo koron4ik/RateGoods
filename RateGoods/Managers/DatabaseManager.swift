@@ -21,14 +21,16 @@ class DatabaseManager {
     static let shared = DatabaseManager()
     
     var ref: DatabaseReference!
+    lazy var mapstyle = ref.child(Constants.Database.mapStyle)
     lazy var storeRef = ref.child(Constants.Database.stores)
+    lazy var usersRef = ref.child(Constants.Database.users)
     
     init() {
         ref = Database.database().reference()
     }
     
     func loadMapStyle(completion: @escaping (Result<String?>) -> Void) {
-        ref.child(Constants.Database.mapStyle).observe(.value, with: { snapshot in
+        mapstyle.observe(.value, with: { snapshot in
             do {
                 let style = try self.jsonToString(json: snapshot.value as Any)
                 completion(.success(style))

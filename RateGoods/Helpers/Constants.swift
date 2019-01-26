@@ -19,6 +19,7 @@ struct Constants {
         static let stores = "stores"
         static let reviews = "reviews"
         static let goods = "goods"
+        static let users = "users"
     }
     
     struct Storage {

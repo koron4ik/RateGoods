@@ -21,7 +21,7 @@ class ReviewCell: UITableViewCell {
         commonInit()
     }
     
-    func commonInit() {
+    private func commonInit() {
         self.reviewView = R.nib.reviewView.instantiate(withOwner: nil).first as? ReviewView
         self.reviewView.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(reviewView)
@@ -31,12 +31,18 @@ class ReviewCell: UITableViewCell {
         setupConstraints()
     }
 
-    func setupConstraints() {
+    private func setupConstraints() {
         guard let view = contentView.subviews.first as? ReviewView else { return }
         
         view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: indent).isActive = true
         view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -indent).isActive = true
         view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: indent).isActive = true
         view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -indent).isActive = true
+    }
+    
+    func configure(with review: Review) {
+        reviewView.rateView.rating = review.rate ?? 0.0
+        reviewView.nicknameLabel.text = review.authorEmail
+        reviewView.reviewTextLabel.text = review.text
     }
 }

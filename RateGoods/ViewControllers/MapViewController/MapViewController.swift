@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import FloatingPanel
+import FirebaseAuth
 
 protocol MapViewControllerInteractor: class {
     var stores: [Store] { get set }
@@ -27,8 +28,8 @@ class MapViewController: UIViewController {
     
     weak var floatingPanelController: FloatingPanelController?
     
-    var interactor: MapViewControllerInteractor!
-    var coordinator: MapViewControllerCoordinator?
+    var interactor: MapViewInteractor!
+    var coordinator: MapViewCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,15 +65,17 @@ class MapViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = false
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
-    func createFloatingPanelController() -> FloatingPanelController {
+    private func createFloatingPanelController() -> FloatingPanelController {
         let fpc = FloatingPanelController()
         fpc.delegate = self
         fpc.addPanel(toParent: self)
@@ -85,8 +88,19 @@ class MapViewController: UIViewController {
         return fpc
     }
     
+    @IBAction func exitBarButtonItemPressed(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            self.coordinator?.stop()
+        } catch {
+            self.view.makeToast(error.localizedDescription)
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = true
     }
     
 }

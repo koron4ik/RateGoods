@@ -10,7 +10,7 @@ import UIKit
 import Cosmos
 
 protocol AdditionalViewDelegate: class {
-    func addReviewButtonPressed(_ reviewText: String, _ rate: Int)
+    func addReviewButtonPressed(_ reviewText: String, _ rate: Double)
     func reviewsButtonPressed()
 }
 
@@ -28,7 +28,7 @@ class AdditionalView: UIView {
     @IBAction func addReviewButtonPressed(_ sender: UIButton) {
         guard let reviewText = reviewTextView.text else { return }
 
-        self.delegate?.addReviewButtonPressed(reviewText, Int(rateView.rating))
+        self.delegate?.addReviewButtonPressed(reviewText, rateView.rating)
     }
     
     @IBAction func reviewsButtonPressed(_ sender: UIButton) {

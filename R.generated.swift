@@ -30,10 +30,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 6 images.
+  /// This `R.image` struct is generated, and contains static references to 8 images.
   struct image {
+    /// Image `144-1442847_exit-to-app-button-vector-entry-exit-icon.png`.
+    static let _exitToAppButtonVectorEntryExitIconPng = Rswift.ImageResource(bundle: R.hostingBundle, name: "144-1442847_exit-to-app-button-vector-entry-exit-icon.png")
     /// Image `background`.
     static let background = Rswift.ImageResource(bundle: R.hostingBundle, name: "background")
+    /// Image `exit`.
+    static let exit = Rswift.ImageResource(bundle: R.hostingBundle, name: "exit")
     /// Image `facebook`.
     static let facebook = Rswift.ImageResource(bundle: R.hostingBundle, name: "facebook")
     /// Image `favourite`.
@@ -45,9 +49,19 @@ struct R: Rswift.Validatable {
     /// Image `unfavourite`.
     static let unfavourite = Rswift.ImageResource(bundle: R.hostingBundle, name: "unfavourite")
     
+    /// `UIImage(named: "144-1442847_exit-to-app-button-vector-entry-exit-icon.png", bundle: ..., traitCollection: ...)`
+    static func _exitToAppButtonVectorEntryExitIconPng(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image._exitToAppButtonVectorEntryExitIconPng, compatibleWith: traitCollection)
+    }
+    
     /// `UIImage(named: "background", bundle: ..., traitCollection: ...)`
     static func background(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.background, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "exit", bundle: ..., traitCollection: ...)`
+    static func exit(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.exit, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "facebook", bundle: ..., traitCollection: ...)`
@@ -462,6 +476,7 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if UIKit.UIImage(named: "exit", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'exit' is used in storyboard 'Map', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.map().mapNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mapNavigationController' could not be loaded from storyboard 'Map' as 'UIKit.UINavigationController'.") }

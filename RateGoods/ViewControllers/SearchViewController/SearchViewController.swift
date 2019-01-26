@@ -191,7 +191,7 @@ extension SearchViewController: GoodsCellDelegate {
         
     }
     
-    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Int) {
+    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Double) {
         
     }
 }

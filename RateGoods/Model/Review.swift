@@ -13,16 +13,19 @@ class Review: SnapshotProtocol {
     
     var key: String
     var ref: DatabaseReference
-    var rate: Int?
+    var rate: Double?
     var text: String?
+    var authorEmail: String?
+    //var date: Date?
     
-    init(storeKey: String, goodsKey: String, rate: Int, text: String) {
+    init(storeKey: String, goodsKey: String, rate: Double, text: String, authorEmail: String) {
         let goodsRef = DatabaseManager.shared.storeRef.child(storeKey).child(Constants.Database.goods)
         
         self.ref = goodsRef.child(goodsKey).child(Constants.Database.reviews).childByAutoId()
         self.key = ref.key ?? ""
         self.rate = rate
         self.text = text
+        self.authorEmail = authorEmail
     }
     
     required init?(snapshot: DataSnapshot) {
@@ -30,14 +33,16 @@ class Review: SnapshotProtocol {
         
         self.key = snapshot.key
         self.ref = snapshot.ref
-        self.rate = value["rate"] as? Int
+        self.rate = value["rate"] as? Double
         self.text = value["text"] as? String
+        self.authorEmail = value["author"] as? String
     }
     
     func toAny() -> Any {
         return [
             "rate": rate as Any,
-            "text": text as Any
+            "text": text as Any,
+            "author": authorEmail as Any
         ]
     }
 }

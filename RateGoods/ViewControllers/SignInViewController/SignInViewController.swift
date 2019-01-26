@@ -33,9 +33,7 @@ class SignInViewController: UIViewController {
         GIDSignIn.sharedInstance().uiDelegate = self
         
         if self.userIsExist() {
-            do {
-                self.coordinator?.showTabsBar()
-            } catch {}
+            self.coordinator?.showTabsBar()
         }
     }
     
@@ -52,9 +50,12 @@ class SignInViewController: UIViewController {
             let password = passwordTextField.text else {
             return
         }
-        auth.signIn(withEmail: email, password: password) { [weak self] (user, error) in
-            if let user = user {
+        
+        auth.signIn(withEmail: email, password: password) { [weak self] (authResult, error) in
+            if let authResult = authResult {
                 self?.coordinator?.showTabsBar()
+                DatabaseManager.shared.uploadData(to: DatabaseManager.shared.usersRef.child(authResult.user.uid),
+                                                  data: ["email": authResult.user.email])
             }
             
             if let error = error {
@@ -91,7 +92,13 @@ extension SignInViewController: GIDSignInDelegate, GIDSignInUIDelegate {
                 self?.view.makeToast(error.localizedDescription)
                 return
             }
-            self?.coordinator?.showTabsBar()
+            
+            if let authResult = authResult {
+                self?.coordinator?.showTabsBar()
+                //DatabaseManager.shared.uploadData(to: DatabaseManager.shared.usersRef.child(user.userID),
+                //                                  data: ["email": user.profile.email])
+                DatabaseManager.shared.uploadData(to: DatabaseManager.shared.usersRef.child(authResult.user.uid), data: ["email": authResult.user.email])
+            }
         }
     }
 }

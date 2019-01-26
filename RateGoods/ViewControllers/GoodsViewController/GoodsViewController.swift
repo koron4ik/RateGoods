@@ -8,6 +8,7 @@
 
 import UIKit
 import Toast_Swift
+import FirebaseAuth
 
 protocol GoodsViewControllerInteractor: class {
     var store: Store { get }
@@ -173,11 +174,16 @@ extension GoodsViewController: GoodsCellDelegate {
         self.coordinator?.showAllReviews(vc: self, goods: self.interactor.goods[indexPath.row])
     }
     
-    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Int) {
+    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Double) {
+        guard rate >= 1, !text.isEmpty else {
+            return
+        }
+        
         let review = Review(storeKey: self.interactor.store.key,
                             goodsKey: self.interactor.goods[indexPath.row].key,
                             rate: rate,
-                            text: text)
+                            text: text,
+                            authorEmail: Auth.auth().currentUser?.email ?? "")
         DatabaseManager.shared.uploadData(to: review.ref, data: review.toAny())
     }
 }

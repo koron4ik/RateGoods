@@ -12,7 +12,7 @@ import Toast_Swift
 
 protocol GoodsAddingViewControllerInteractor: class {
     var store: Store { get }
-    func saveGoods(with goodsTitle: String, goodsImageUrl: String, rate: Int, goodsReview: String)
+    func saveGoods(with goodsTitle: String, goodsImageUrl: String, rate: Double, goodsReview: String)
 }
 
 protocol GoodsAddingViewControllerCoordinator: class {
@@ -113,15 +113,13 @@ class GoodsAddingViewController: UIViewController {
             switch result {
             case .success(let url):
                 guard let url = url else { return }
-                let rate = Int(self.rateView.rating)
                 self.interactor.saveGoods(with: goodsTitle,
                                                 goodsImageUrl: url.absoluteString,
-                                                rate: rate,
+                                                rate: self.rateView?.rating ?? 0.0,
                                                 goodsReview: goodsReview)
                 self.coordinator?.stop()
             case .failure(let error):
-                print(error)
-                self.view.makeToast("The goods wasn't saved", duration: 2.0, position: .bottom)
+                self.view.makeToast(error.localizedDescription, duration: 2.0, position: .bottom)
             }
             self.view.isUserInteractionEnabled = true
             self.view.hideToastActivity()

@@ -30,9 +30,10 @@
         <!--Map-->
         <scene sceneID="MFD-F1-Fr3">
             <objects>
-                <navigationController storyboardIdentifier="MapNavigationController" navigationBarHidden="YES" id="XVX-Z4-Hek" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MapNavigationController" id="XVX-Z4-Hek" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" id="EDg-70-oxI"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SRx-pn-FFw">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -53,7 +54,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="EQW-9D-odJ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="gOz-o3-HEf"/>
+                    <navigationItem key="navigationItem" id="gOz-o3-HEf">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="exit" id="siJ-k1-9AB">
+                            <connections>
+                                <action selector="exitBarButtonItemPressed:" destination="JF8-Qt-C5W" id="Za6-yb-PfZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="dd6-Mg-rye" id="XCD-6H-NKg"/>
                     </connections>
@@ -63,4 +70,7 @@
             <point key="canvasLocation" x="821.60000000000002" y="13.943028485757123"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="exit" width="32" height="32"/>
+    </resources>
 </document>

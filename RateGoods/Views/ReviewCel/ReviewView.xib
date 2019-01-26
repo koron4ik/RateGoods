@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="352" height="62"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCJ-sC-inn">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nickname" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCJ-sC-inn">
                     <rect key="frame" x="282" y="8" width="62" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -35,20 +35,21 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFs-d3-s0f">
-                    <rect key="frame" x="8" y="33" width="336" height="20.5"/>
+                    <rect key="frame" x="8" y="33" width="29" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
+                <constraint firstItem="dCJ-sC-inn" firstAttribute="leading" relation="lessThanOrEqual" secondItem="kOz-cm-i5X" secondAttribute="trailing" constant="169" id="3tw-Az-Wsb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="nFs-d3-s0f" secondAttribute="trailing" constant="315" id="5Ta-Ju-i9k"/>
                 <constraint firstItem="dCJ-sC-inn" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="Bsg-TZ-sAu"/>
                 <constraint firstItem="kOz-cm-i5X" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="Loo-2A-GYy"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dCJ-sC-inn" secondAttribute="trailing" constant="8" id="NiI-b3-6NO"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="nFs-d3-s0f" secondAttribute="bottom" constant="8.5" id="RXj-Qa-qpf"/>
                 <constraint firstItem="kOz-cm-i5X" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="Sev-m3-s8f"/>
                 <constraint firstItem="nFs-d3-s0f" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="bae-Eg-xcc"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nFs-d3-s0f" secondAttribute="trailing" constant="8" id="lya-Th-c6C"/>
                 <constraint firstItem="nFs-d3-s0f" firstAttribute="top" secondItem="dCJ-sC-inn" secondAttribute="bottom" constant="8" id="mhS-1x-RbK"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
