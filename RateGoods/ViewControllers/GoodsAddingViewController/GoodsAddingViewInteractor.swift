@@ -20,8 +20,10 @@ class GoodsAddingViewInteractor: GoodsAddingViewControllerInteractor {
     func saveGoods(with goodsTitle: String, goodsImageUrl: String, rate: Double, goodsReview: String) {
         let goods = Goods(storeKey: store.key, title: goodsTitle, imageUrl: goodsImageUrl)
         DatabaseManager.shared.uploadData(to: goods.ref, data: goods.toAny()) {
-            let review = Review(storeKey: self.store.key, goodsKey: goods.key, rate: rate, text: goodsReview, authorEmail: Auth.auth().currentUser?.email ?? "")
-            DatabaseManager.shared.uploadData(to: review.ref, data: review.toAny())
+            if rate >= 1 {
+                let review = Review(storeKey: self.store.key, goodsKey: goods.key, rate: rate, text: goodsReview, authorEmail: Auth.auth().currentUser?.email ?? "")
+                DatabaseManager.shared.uploadData(to: review.ref, data: review.toAny())
+            }
         }
     }
 }

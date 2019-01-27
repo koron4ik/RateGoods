@@ -54,6 +54,8 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        filteredGoods.removeAll()
+        tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -188,7 +190,8 @@ extension SearchViewController: GoodsCellDelegate {
     }
     
     func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Double) {
-        guard rate >= 1, !text.isEmpty else {
+        guard rate >= 1 else {
+            self.view.makeToast("Enter rating")
             return
         }
         
@@ -197,5 +200,6 @@ extension SearchViewController: GoodsCellDelegate {
                             text: text,
                             authorEmail: Auth.auth().currentUser?.email ?? "")
         DatabaseManager.shared.uploadData(to: review.ref, data: review.toAny())
+        goodsCell.additionalView.configure(with: review)
     }
 }

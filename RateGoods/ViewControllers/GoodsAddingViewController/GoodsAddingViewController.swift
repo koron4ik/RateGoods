@@ -110,10 +110,15 @@ class GoodsAddingViewController: UIViewController {
             let goodsImage = goodsImageView.image,
             !goodsTitle.isEmpty,
             imageIsChoosen else {
-                self.view.makeToast("Enter text or choose image to continue", duration: 2.0, position: .bottom)
+                self.view.makeToast("Enter text and choose image to continue", duration: 2.0, position: .bottom)
                 return
         }
 
+        if rateView.rating < 1 && !reviewTextView.text.isEmpty {
+            self.view.makeToast("Enter rating")
+            return
+        }
+        
         self.view.makeToastActivity(.center)
         self.view.isUserInteractionEnabled = false
         StorageManager.shared.uploadMedia(path: Constants.Storage.goodsImages, image: goodsImage) { [weak self] result in

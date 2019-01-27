@@ -31,11 +31,16 @@ class MapViewController: UIViewController {
     var interactor: MapViewInteractor!
     weak var coordinator: MapViewCoordinator?
     
+    private var locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.mapView.settings.consumesGesturesInView = false
         self.mapView.delegate = self
+        self.mapView.isMyLocationEnabled = true
+        self.locationManager.delegate = self
+        self.locationManager.startUpdatingLocation()
         
         self.setupMapstyle()
         self.configureMarkers()
@@ -50,7 +55,7 @@ class MapViewController: UIViewController {
     
     private func configureMarkers() {
         self.view.makeToastActivity(.center)
-        DatabaseManager.shared.loadData(from: DatabaseManager.shared.storeRef) { [weak self] (result: Result<[Store]?>) in
+        DatabaseManager.shared.loadDataEvent(from: DatabaseManager.shared.storeRef) { [weak self] (result: Result<[Store]?>) in
             switch result {
             case .success(let stores):
                 guard let stores = stores else {
@@ -62,6 +67,8 @@ class MapViewController: UIViewController {
                     if let location = $0.location {
                         let marker = GMSMarker(position: location)
                         marker.map = self?.mapView
+                        //marker.isFlat = true
+                        marker.opacity = 0.8
                     }
                 }
             case .failure(let error):
@@ -98,9 +105,34 @@ class MapViewController: UIViewController {
     
 }
 
+extension MapViewController {
+    
+    private func createFloatingPanelController() -> FloatingPanelController {
+        let fpc = FloatingPanelController()
+        fpc.delegate = self
+        fpc.addPanel(toParent: self)
+        fpc.isRemovalInteractionEnabled = true
+        fpc.move(to: .hidden, animated: true)
+        fpc.surfaceView.cornerRadius = 16.0
+        fpc.surfaceView.backgroundColor = UIColor.purple
+        fpc.surfaceView.grabberHandle.backgroundColor = UIColor.white
+        
+        return fpc
+    }
+}
+
 extension MapViewController: FloatingPanelControllerDelegate {
     func floatingPanel(_ vc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
         return MyFloatingPanelLayout()
+    }
+}
+
+extension MapViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 14)
+        mapView.animate(to: camera)
+        self.locationManager.stopUpdatingLocation()
     }
 }
 
@@ -127,21 +159,5 @@ extension MapViewController: GMSMapViewDelegate {
         }
         
         return true
-    }
-}
-
-extension MapViewController {
-    
-    private func createFloatingPanelController() -> FloatingPanelController {
-        let fpc = FloatingPanelController()
-        fpc.delegate = self
-        fpc.addPanel(toParent: self)
-        fpc.isRemovalInteractionEnabled = true
-        fpc.move(to: .hidden, animated: true)
-        fpc.surfaceView.cornerRadius = 16.0
-        fpc.surfaceView.backgroundColor = UIColor.purple
-        fpc.surfaceView.grabberHandle.backgroundColor = UIColor.white
-        
-        return fpc
     }
 }

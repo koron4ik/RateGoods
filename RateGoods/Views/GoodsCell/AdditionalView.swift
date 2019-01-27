@@ -22,6 +22,8 @@ class AdditionalView: UIView {
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var reviewTextView: UITextView!
     @IBOutlet weak var rateView: CosmosView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var addReviewButton: UIButton!
     
     weak var delegate: AdditionalViewDelegate?
     
@@ -35,4 +37,20 @@ class AdditionalView: UIView {
         self.delegate?.reviewsButtonPressed()
     }
     
+    func configure(with review: Review?) {
+        if let review = review {
+            reviewTextView.text = review.text
+            rateView.rating = review.rate ?? 0.0
+            reviewTextView.isUserInteractionEnabled = false
+            rateView.isUserInteractionEnabled = false
+            addReviewButton.isUserInteractionEnabled = false
+            activityIndicator.stopAnimating()
+            addReviewButton.backgroundColor = UIColor.lightGray
+        } else {
+            reviewTextView.isUserInteractionEnabled = true
+            rateView.isUserInteractionEnabled = true
+            addReviewButton.isUserInteractionEnabled = true
+            activityIndicator.stopAnimating()
+        }
+    }
 }

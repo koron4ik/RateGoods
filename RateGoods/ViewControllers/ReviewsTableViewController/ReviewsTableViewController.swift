@@ -30,7 +30,7 @@ class ReviewsTableViewController: UITableViewController {
         
         self.view.makeToastActivity(.center)
         let reviewsRef = interactor.goods.ref.child(Constants.Database.reviews)
-        DatabaseManager.shared.loadData(from: reviewsRef) { [weak self] (result: Result<[Review]?>) in
+        DatabaseManager.shared.loadDataSingleEvent(from: reviewsRef) { [weak self] (result: Result<[Review]?>) in
             switch result {
             case .success(let reviews):
                 guard let reviews = reviews else { return }

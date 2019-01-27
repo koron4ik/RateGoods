@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseDatabase
+import FirebaseAuth
 
 class Goods: SnapshotProtocol {
     
@@ -30,6 +31,23 @@ class Goods: SnapshotProtocol {
         self.ref = snapshot.ref
         self.imageUrl = value["imageUrl"] as? String
         self.title = value["title"] as? String
+    }
+    
+    func getUserReview(completion: @escaping (Review?) -> Void) {
+        let reviewsRef = ref.child(Constants.Database.reviews)
+        DatabaseManager.shared.loadDataSingleEvent(from: reviewsRef) { (result: Result<[Review]?>) in
+            switch result {
+            case .success(let reviews):
+                guard let reviews = reviews else {
+                    completion(nil)
+                    return
+                }
+                let userReviews = reviews.filter({ $0.authorEmail == Auth.auth().currentUser?.email })
+                completion(userReviews.count > 0 ? userReviews[0] : nil)
+            default:
+                completion(nil)
+            }
+        }
     }
     
     func toAny() -> Any {

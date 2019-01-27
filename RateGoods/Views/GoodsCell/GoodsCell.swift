@@ -33,8 +33,8 @@ class GoodsCell: UITableViewCell {
     var additionalView: AdditionalView!
     var indexPath: IndexPath!
     
-    var indent: CGFloat = 8
-    var cornerRadius: CGFloat = 10.0
+    private var indent: CGFloat = 8
+    private var cornerRadius: CGFloat = 10.0
     private var state = State.closed
     
     var isOpen: Bool {
@@ -111,8 +111,30 @@ class GoodsCell: UITableViewCell {
             }
         }
         
+        let reviewsRef = goods.ref.child(Constants.Database.reviews)
+        DatabaseManager.shared.loadDataSingleEvent(from: reviewsRef) { [weak self] (result: Result<[Review]?>) in
+            switch result {
+            case .success(let reviews):
+                if let reviews = reviews {
+                    let reviewsCount = reviews.count
+                    let reviewsAverageRate = reviews.compactMap({ $0.rate }).reduce(0, +) / Double(reviewsCount)
+                    let roundedAverageRate = Double(round(10 * reviewsAverageRate) / 10)
+                    self?.mainView.reviewsLabel.text = String(reviewsCount)
+                    self?.mainView.rateLabel.text = String(roundedAverageRate)
+                    self?.additionalView.reviewsLabel.text = String(reviewsCount)
+                    self?.additionalView.rateLabel.text = String(roundedAverageRate)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
         if CoreDataManager.shared.goodsIsExist(with: goods.ref.description()) {
             mainView.isFavourite = true
+        }
+        
+        goods.getUserReview { [weak self] (review) in
+            self?.additionalView.configure(with: review)
         }
     }
     
@@ -123,8 +145,6 @@ class GoodsCell: UITableViewCell {
         
         if let imageData = goodsCoreData.image {
             mainView.storeImageView.image = UIImage(data: imageData)
-        } else {
-            mainView.storeImageView.image = UIImage(named: "placeholder_image")
         }
 
         if CoreDataManager.shared.goodsIsExist(with: goodsCoreData.ref ?? "") {

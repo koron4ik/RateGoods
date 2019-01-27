@@ -28,13 +28,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ydk-2G-1Cp" userLabel="ThirdContainerView">
-                    <rect key="frame" x="0.0" y="200" width="335" height="178"/>
+                    <rect key="frame" x="0.0" y="207" width="335" height="178"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="USB-XE-bpB">
                             <rect key="frame" x="8" y="36" width="319" height="142"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <accessibility key="accessibilityConfiguration">
+                                <accessibilityTraits key="traits" notEnabled="YES"/>
+                            </accessibility>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </textView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="U5u-Pd-Zhl">
                             <rect key="frame" x="286" y="8" width="41" height="20"/>
@@ -61,7 +69,7 @@
                             <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5I-HV-Ltx" customClass="CosmosView" customModule="Cosmos">
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5I-HV-Ltx" customClass="CosmosView" customModule="Cosmos">
                             <rect key="frame" x="104" y="6" width="125" height="24"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -88,6 +96,9 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="WWo-uS-XzS">
+                            <rect key="frame" x="157.5" y="97" width="20" height="20"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -105,16 +116,18 @@
                         <constraint firstItem="USB-XE-bpB" firstAttribute="top" secondItem="U5u-Pd-Zhl" secondAttribute="bottom" constant="8" id="btw-gn-hQv"/>
                         <constraint firstItem="e5I-HV-Ltx" firstAttribute="top" secondItem="Ydk-2G-1Cp" secondAttribute="top" constant="6" id="ctE-nF-T9S"/>
                         <constraint firstItem="LNr-Ou-9Mx" firstAttribute="top" secondItem="Ydk-2G-1Cp" secondAttribute="top" constant="8" id="kdp-yb-F1u"/>
+                        <constraint firstItem="WWo-uS-XzS" firstAttribute="centerX" secondItem="USB-XE-bpB" secondAttribute="centerX" id="nK1-aq-tlS"/>
+                        <constraint firstItem="WWo-uS-XzS" firstAttribute="centerY" secondItem="USB-XE-bpB" secondAttribute="centerY" id="pPl-4W-2kh"/>
                     </constraints>
                 </view>
                 <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l02-WE-OgI" userLabel="SecondContainerView">
-                    <rect key="frame" x="0.0" y="40" width="335" height="160"/>
+                    <rect key="frame" x="0.0" y="40" width="335" height="167"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_image" translatesAutoresizingMaskIntoConstraints="NO" id="ojq-9g-AQR">
-                            <rect key="frame" x="0.0" y="0.0" width="335" height="160"/>
+                            <rect key="frame" x="0.0" y="0.0" width="335" height="167"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KsL-HG-rcB" userLabel="CenterView">
-                            <rect key="frame" x="8" y="112" width="50" height="40"/>
+                            <rect key="frame" x="8" y="119" width="50" height="40"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REVIEWS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPD-4t-HhE">
                                     <rect key="frame" x="3" y="0.0" width="44" height="12"/>
@@ -140,7 +153,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZR-ar-sz7" userLabel="RightView">
-                            <rect key="frame" x="277" y="112" width="50" height="40"/>
+                            <rect key="frame" x="277" y="119" width="50" height="40"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RATE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jc2-O6-U3U">
                                     <rect key="frame" x="13" y="0.0" width="24.5" height="12"/>
@@ -201,55 +214,47 @@
                         <constraint firstItem="b2c-uE-eZd" firstAttribute="leading" secondItem="Ybq-Qz-tAU" secondAttribute="leading" id="jdB-8p-lsc"/>
                     </constraints>
                 </view>
-                <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MXG-9u-ME6" userLabel="BottomContainerView">
-                    <rect key="frame" x="0.0" y="378" width="335" height="56"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yd0-gH-7yq">
-                            <rect key="frame" x="22" y="8" width="291" height="40"/>
-                            <color key="backgroundColor" red="0.99607843139999996" green="0.74509803919999995" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="18"/>
-                            <state key="normal" title="ADD REVIEW">
-                                <color key="titleColor" red="0.27058823529999998" green="0.2156862745" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="10"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="addReviewButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="DRs-4K-6QG"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="yd0-gH-7yq" secondAttribute="bottom" constant="8" id="7fF-Tc-2fU"/>
-                        <constraint firstItem="yd0-gH-7yq" firstAttribute="leading" secondItem="MXG-9u-ME6" secondAttribute="leading" constant="22" id="FKP-ML-MhI"/>
-                        <constraint firstItem="yd0-gH-7yq" firstAttribute="top" secondItem="MXG-9u-ME6" secondAttribute="top" constant="8" id="UpI-FG-4OY"/>
-                        <constraint firstAttribute="height" priority="750" constant="56" id="ZHa-k5-Yor"/>
-                        <constraint firstAttribute="trailing" secondItem="yd0-gH-7yq" secondAttribute="trailing" constant="22" id="gRL-vm-onL"/>
-                    </constraints>
-                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yd0-gH-7yq">
+                    <rect key="frame" x="22" y="393" width="291" height="33"/>
+                    <color key="backgroundColor" red="0.99607843139999996" green="0.74509803919999995" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
+                    </accessibility>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="18"/>
+                    <state key="normal" title="ADD REVIEW">
+                        <color key="titleColor" red="0.27058823529999998" green="0.2156862745" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="addReviewButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="DRs-4K-6QG"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="0.137261199" blue="0.004296659978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="MXG-9u-ME6" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="0Y6-8j-zfO"/>
-                <constraint firstItem="MXG-9u-ME6" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="56d-ZP-fZW"/>
                 <constraint firstItem="l02-WE-OgI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="AqF-Dh-r1a"/>
-                <constraint firstItem="MXG-9u-ME6" firstAttribute="top" secondItem="Ydk-2G-1Cp" secondAttribute="bottom" id="IIp-ux-m1d"/>
                 <constraint firstItem="Ybq-Qz-tAU" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="JYQ-qV-dKd"/>
+                <constraint firstItem="yd0-gH-7yq" firstAttribute="top" secondItem="Ydk-2G-1Cp" secondAttribute="bottom" constant="8" id="MGQ-qv-SFz"/>
+                <constraint firstItem="yd0-gH-7yq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="22" id="OWv-qg-cxY"/>
                 <constraint firstItem="Ybq-Qz-tAU" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="TlS-sF-U2U"/>
                 <constraint firstItem="Ybq-Qz-tAU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="UhN-rr-vvb"/>
                 <constraint firstItem="l02-WE-OgI" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="ZeG-CP-Ftb"/>
-                <constraint firstItem="MXG-9u-ME6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="g8I-MV-MIt"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="yd0-gH-7yq" secondAttribute="bottom" constant="8" id="iVY-vC-so8"/>
                 <constraint firstItem="Ydk-2G-1Cp" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="kvg-hH-inG"/>
                 <constraint firstItem="l02-WE-OgI" firstAttribute="top" secondItem="Ybq-Qz-tAU" secondAttribute="bottom" id="n8h-RD-307"/>
                 <constraint firstItem="Ydk-2G-1Cp" firstAttribute="top" secondItem="l02-WE-OgI" secondAttribute="bottom" id="qN5-ZS-YOI"/>
                 <constraint firstItem="Ydk-2G-1Cp" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="voO-w8-PiV"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="yd0-gH-7yq" secondAttribute="trailing" constant="22" id="ycB-Pa-Dui"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="activityIndicator" destination="WWo-uS-XzS" id="PlJ-Th-1Yj"/>
+                <outlet property="addReviewButton" destination="yd0-gH-7yq" id="85X-Gd-IeB"/>
                 <outlet property="rateLabel" destination="CZW-sQ-fRw" id="6Gx-lm-Lqr"/>
                 <outlet property="rateView" destination="e5I-HV-Ltx" id="X3a-6B-EXQ"/>
                 <outlet property="reviewTextView" destination="USB-XE-bpB" id="KsC-7s-T7b"/>

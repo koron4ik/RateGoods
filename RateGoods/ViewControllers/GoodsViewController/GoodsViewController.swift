@@ -46,7 +46,7 @@ class GoodsViewController: UIViewController {
         
         self.view.makeToastActivity(.center)
         let goodsRef = interactor.store.ref.child(Constants.Database.goods)
-        DatabaseManager.shared.loadData(from: goodsRef) { [weak self] (result: Result<[Goods]?>) in
+        DatabaseManager.shared.loadDataSingleEvent(from: goodsRef) { [weak self] (result: Result<[Goods]?>) in
             switch result {
             case .success(let goods):
                 guard let goods = goods else { return }
@@ -161,7 +161,8 @@ extension GoodsViewController: GoodsCellDelegate {
     }
     
     func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Double) {
-        guard rate >= 1, !text.isEmpty else {
+        guard rate >= 1 else {
+            self.view.makeToast("Enter rating")
             return
         }
         
@@ -171,5 +172,6 @@ extension GoodsViewController: GoodsCellDelegate {
                             text: text,
                             authorEmail: Auth.auth().currentUser?.email ?? "")
         DatabaseManager.shared.uploadData(to: review.ref, data: review.toAny())
+        goodsCell.additionalView.configure(with: review)
     }
 }

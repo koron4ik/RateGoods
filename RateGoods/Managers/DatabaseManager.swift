@@ -30,7 +30,7 @@ class DatabaseManager {
     }
     
     func loadMapStyle(completion: @escaping (Result<String?>) -> Void) {
-        mapstyle.observe(.value, with: { snapshot in
+        mapstyle.observeSingleEvent(of: .value, with: { snapshot in
             do {
                 let style = try self.jsonToString(json: snapshot.value as Any)
                 completion(.success(style))
@@ -57,23 +57,30 @@ class DatabaseManager {
         completion?()
     }
     
-    func loadData<T: SnapshotProtocol>(from itemRef: DatabaseReference, completion: @escaping (Result<[T]?>) -> Void) {
-        itemRef.observe(.value, with: { snapshot in
-            var items = [T]()
-            snapshot.children.forEach {
-                if let snapshot = $0 as? DataSnapshot,
-                    let item = T(snapshot: snapshot) {
-                    items.append(item)
-                }
-            }
+    func loadDataSingleEvent<T: SnapshotProtocol>(from itemRef: DatabaseReference, completion: @escaping (Result<[T]?>) -> Void) {
+        itemRef.observeSingleEvent(of: .value, with: { [weak self] snapshot in
+            let items: [T] = self?.getItems(from: snapshot) ?? [T]()
             completion(.success(items))
         }, withCancel: { error in
             completion(.failure(error))
         })
     }
     
+    func loadDataEvent<T: SnapshotProtocol>(from itemRef: DatabaseReference, completion: @escaping (Result<[T]?>) -> Void) {
+        itemRef.observe(.value, with: { [weak self] snapshot in
+            let items: [T] = self?.getItems(from: snapshot) ?? [T]()
+            completion(.success(items))
+        }, withCancel: { error in
+            completion(.failure(error))
+        })
+    }
+    
+    private func getItems<T: SnapshotProtocol>(from snapshot: DataSnapshot) -> [T] {
+        return snapshot.children.compactMap({ $0 as? DataSnapshot }).compactMap({ T(snapshot: $0) })
+    }
+    
     func getGoods(with name: String, completion: @escaping (Result<[Goods]?>) -> Void) {
-        loadData(from: storeRef) { (result: Result<[Store]?>) in
+        loadDataSingleEvent(from: storeRef) { (result: Result<[Store]?>) in
             switch result {
             case .success(let stores):
                 var filteredGoods = [Goods]()
@@ -85,7 +92,7 @@ class DatabaseManager {
                 stores.forEach {
                     dispatchGroup.enter()
                     let goodsRef = $0.ref.child(Constants.Database.goods)
-                    self.loadData(from: goodsRef, completion: { (result: Result<[Goods]?>) in
+                    self.loadDataSingleEvent(from: goodsRef, completion: { (result: Result<[Goods]?>) in
                         switch result {
                         case .success(let goods):
                             guard let goods = goods else {
