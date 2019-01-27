@@ -420,9 +420,7 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = UIKit.UINavigationController
-      
+    struct main: Rswift.StoryboardResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "Main"
       let signInNavigationController = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "SignInNavigationController")

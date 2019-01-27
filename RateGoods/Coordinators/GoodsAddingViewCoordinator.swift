@@ -8,11 +8,12 @@
 
 import UIKit
 
-class GoodsAddingViewCoordinator: NSObject, GoodsAddingViewControllerCoordinator {
+class GoodsAddingViewCoordinator: NSObject, Coordinator, GoodsAddingViewControllerCoordinator {
     
     var rootViewController: UINavigationController
     var childCoordinators: [Coordinator] = []
     lazy var presentingViewController: UIViewController = self.createGoodsAddingViewController()
+    weak var delegate: FinishCoordinatorDelegate?
     private var store: Store
     
     init(rootViewController: UINavigationController, store: Store) {
@@ -27,6 +28,13 @@ class GoodsAddingViewCoordinator: NSObject, GoodsAddingViewControllerCoordinator
     func stop() {
         self.rootViewController.popViewController(animated: true)
     }
+    
+    func dismiss() {
+        self.delegate?.finishedFlow(coordinator: self)
+    }
+}
+
+extension GoodsAddingViewCoordinator {
     
     private func createGoodsAddingViewController() -> GoodsAddingViewController {
         guard let viewController = R.storyboard.goods.goodsAddingViewController() else {

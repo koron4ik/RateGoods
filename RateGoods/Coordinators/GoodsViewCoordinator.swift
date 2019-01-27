@@ -8,10 +8,11 @@
 
 import UIKit
 
-class GoodsViewCoordinator: GoodsViewControllerCoordinator {
+class GoodsViewCoordinator: NSObject, Coordinator, GoodsViewControllerCoordinator {
     
     var rootViewController: UINavigationController
     var childCoordinators: [Coordinator] = []
+    weak var delegate: FinishCoordinatorDelegate?
     lazy var presentingViewController: UIViewController = self.createGoodsViewController()
     private var store: Store
     
@@ -28,17 +29,27 @@ class GoodsViewCoordinator: GoodsViewControllerCoordinator {
         self.rootViewController.popViewController(animated: true)
     }
     
-    func showGoodsAdding(vc: UIViewController, store: Store) {
-        guard let navVC = vc.navigationController else { return }
+    func dismiss() {
+        self.delegate?.finishedFlow(coordinator: self)
+    }
+    
+    func showGoodsAdding(viewController: UIViewController, store: Store) {
+        guard let navVC = viewController.navigationController else { return }
         
-        let goodsAddingViewCoordinator = GoodsAddingViewCoordinator(rootViewController: navVC, store: store)
+        let goodsAddingViewCoordinator = GoodsAddingViewCoordinator(rootViewController: navVC,
+                                                                    store: store)
+        goodsAddingViewCoordinator.delegate = self
+        self.add(childCoordinator: goodsAddingViewCoordinator)
         goodsAddingViewCoordinator.start()
     }
     
-    func showAllReviews(vc: UIViewController, goods: Goods) {
-        guard let navVC = vc.navigationController else { return }
+    func showAllReviews(viewController: UIViewController, goods: Goods) {
+        guard let navVC = viewController.navigationController else { return }
         
-        let reviewsTablewViewCoordinator = ReviewsTableViewCoordinator(rootViewController: navVC, goods: goods)
+        let reviewsTablewViewCoordinator = ReviewsTableViewCoordinator(rootViewController: navVC,
+                                                                       goods: goods)
+        reviewsTablewViewCoordinator.delegate = self
+        self.add(childCoordinator: reviewsTablewViewCoordinator)
         reviewsTablewViewCoordinator.start()
     }
 }
@@ -54,5 +65,11 @@ extension GoodsViewCoordinator {
         viewController.coordinator = self
         
         return viewController
+    }
+}
+
+extension GoodsViewCoordinator: FinishCoordinatorDelegate {
+    func finishedFlow(coordinator: Coordinator) {
+        self.remove(childCoordinator: coordinator)
     }
 }

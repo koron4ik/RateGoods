@@ -83,8 +83,8 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_image" translatesAutoresizingMaskIntoConstraints="NO" id="IEN-sx-Pgk" userLabel="GoodsImage">
                     <rect key="frame" x="0.0" y="0.0" width="93" height="93"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="IEN-sx-Pgk" secondAttribute="height" multiplier="1:1" id="PRD-z9-LoE"/>
-                        <constraint firstAttribute="height" constant="93" id="jCg-Vd-DRg"/>
+                        <constraint firstAttribute="width" secondItem="IEN-sx-Pgk" secondAttribute="height" multiplier="1:1" priority="950" id="PRD-z9-LoE"/>
+                        <constraint firstAttribute="height" priority="950" constant="93" id="jCg-Vd-DRg"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9k-38-yBP" userLabel="RightView">

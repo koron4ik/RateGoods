@@ -19,8 +19,8 @@ protocol FavouritesViewControllerCoordinator: class {
 
 class FavouritesViewController: UIViewController {
     
-    var interactor: FavouritesViewControllerInteractor!
-    weak var coordinator: FavouritesViewControllerCoordinator?
+    var interactor: FavouritesViewInteractor!
+    weak var coordinator: FavouritesViewCoordinator?
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -35,6 +35,11 @@ class FavouritesViewController: UIViewController {
         
         self.interactor.loadFavouriteGoods()
         self.tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
     }
 }
 
@@ -53,29 +58,13 @@ extension FavouritesViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GoodsCell", for: indexPath) as? GoodsCell,
-            let ref = self.interactor.favouriteGoods[indexPath.row].ref else {
-                return UITableViewCell()
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GoodsCell", for: indexPath) as? GoodsCell else { return UITableViewCell() }
         
         let goods = self.interactor.favouriteGoods[indexPath.row]
-        
-        cell.mainView.titleLabel.text = goods.title
-        cell.mainView.rateLabel.text = String(goods.rate)
-        cell.mainView.reviewsLabel.text = String(goods.reviews)
-        
-        if let imageData = goods.image {
-            cell.mainView.storeImageView.image = UIImage(data: imageData)
-        } else {
-            cell.mainView.storeImageView.image = UIImage(named: "placeholder_image")
-        }
+        cell.configure(with: goods)
         
         cell.indexPath = indexPath
         cell.delegate = self
-        
-        if CoreDataManager.shared.goodsIsExist(with: ref) {
-            cell.mainView.isFavourite = true
-        }
         
         return cell
     }
@@ -92,6 +81,7 @@ extension FavouritesViewController: GoodsCellDelegate {
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .middle)
             tableView.endUpdates()
+            tableView.reloadData()
         }
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import Rswift
 
-class TabsCoordinator: Coordinator {
+class TabsCoordinator: NSObject, Coordinator {
     
     var childCoordinators: [Coordinator] = []
     var rootViewController: UINavigationController
@@ -22,13 +22,17 @@ class TabsCoordinator: Coordinator {
     }
     
     func start() {
-        self.rootViewController.setViewControllers([tabBarViewController], animated: false)
+        self.rootViewController.pushViewController(tabBarViewController, animated: false)
     }
     
     func stop() {
         self.rootViewController.dismiss(animated: true) 
     }
     
+}
+
+extension TabsCoordinator {
+ 
     private func mapViewController() -> UINavigationController {
         guard let navigationViewController = R.storyboard.map.mapNavigationController(), let viewController = navigationViewController.topViewController as? MapViewController else {
             preconditionFailure("Map Storyboard should contain MapNavigationController and MapViewController")
@@ -88,5 +92,4 @@ class TabsCoordinator: Coordinator {
         tabBarController.viewControllers = [mapViewController(), searchViewController(), popularViewController(), favouritesViewController()]
         return tabBarController
     }
-    
 }

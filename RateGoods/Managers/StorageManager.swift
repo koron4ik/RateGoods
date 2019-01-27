@@ -42,7 +42,7 @@ class StorageManager {
     }
     
     func loadImage(with url: String, completion: @escaping (Result<UIImage?>) -> Void) {
-        Storage.storage().reference(forURL: url).getData(maxSize: 2 * 1024 * 1024) { data, error in
+        Storage.storage().reference(forURL: url).getData(maxSize: 8 * 1024 * 1024) { data, error in
             if let error = error {
                 completion(.failure(error))
                 return

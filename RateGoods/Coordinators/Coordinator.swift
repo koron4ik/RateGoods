@@ -14,9 +14,7 @@ protocol Coordinator: class {
     var childCoordinators: [Coordinator] { get set }
     
     func start()
-    
     func stop()
-    
 }
 
 extension Coordinator {
@@ -28,4 +26,8 @@ extension Coordinator {
     public func remove(childCoordinator: Coordinator) {
         self.childCoordinators = self.childCoordinators.filter { $0 !== childCoordinator }
     }
+}
+
+protocol FinishCoordinatorDelegate: class {
+    func finishedFlow(coordinator: Coordinator)
 }

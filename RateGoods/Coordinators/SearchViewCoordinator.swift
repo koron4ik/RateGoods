@@ -26,4 +26,29 @@ class SearchViewCoordinator: NSObject, Coordinator, SearchViewControllerCoordina
         self.rootViewController.dismiss(animated: true)
     }
     
+    func showGoodsAdding(viewController: UIViewController, store: Store) {
+        guard let navVC = viewController.navigationController else { return }
+        
+        let goodsAddingViewCoordinator = GoodsAddingViewCoordinator(rootViewController: navVC,
+                                                                    store: store)
+        //goodsAddingViewCoordinator.delegate = self
+        self.add(childCoordinator: goodsAddingViewCoordinator)
+        goodsAddingViewCoordinator.start()
+    }
+    
+    func showAllReviews(viewController: UIViewController, goods: Goods) {
+        guard let navVC = viewController.navigationController else { return }
+        
+        let reviewsTablewViewCoordinator = ReviewsTableViewCoordinator(rootViewController: navVC,
+                                                                       goods: goods)
+        ///reviewsTablewViewCoordinator.delegate = self
+        self.add(childCoordinator: reviewsTablewViewCoordinator)
+        reviewsTablewViewCoordinator.start()
+    }
+}
+
+extension SearchViewCoordinator: FinishCoordinatorDelegate {
+    func finishedFlow(coordinator: Coordinator) {
+        self.remove(childCoordinator: coordinator)
+    }
 }

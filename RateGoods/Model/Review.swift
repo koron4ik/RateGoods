@@ -18,14 +18,17 @@ class Review: SnapshotProtocol {
     var authorEmail: String?
     //var date: Date?
     
-    init(storeKey: String, goodsKey: String, rate: Double, text: String, authorEmail: String) {
-        let goodsRef = DatabaseManager.shared.storeRef.child(storeKey).child(Constants.Database.goods)
-        
-        self.ref = goodsRef.child(goodsKey).child(Constants.Database.reviews).childByAutoId()
+    init(goodsRef: DatabaseReference, rate: Double, text: String, authorEmail: String) {
+        self.ref = goodsRef.child(Constants.Database.reviews).childByAutoId()
         self.key = ref.key ?? ""
         self.rate = rate
         self.text = text
         self.authorEmail = authorEmail
+    }
+    
+    convenience init(storeKey: String, goodsKey: String, rate: Double, text: String, authorEmail: String) {
+        let ref = DatabaseManager.shared.storeRef.child(storeKey).child(Constants.Database.goods).child(goodsKey)
+        self.init(goodsRef: ref, rate: rate, text: text, authorEmail: authorEmail)
     }
     
     required init?(snapshot: DataSnapshot) {

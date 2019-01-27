@@ -8,11 +8,12 @@
 
 import UIKit
 
-class SignUpViewCoordinator: Coordinator, SignUpViewControllerCoordinator {
+class SignUpViewCoordinator: NSObject, Coordinator, SignUpViewControllerCoordinator {
     
     var rootViewController: UINavigationController
     var childCoordinators: [Coordinator] = []
     lazy var presentingViewController: UIViewController = self.signInViewController()
+    weak var delegate: FinishCoordinatorDelegate?
     
     init(rootViewController: UINavigationController) {
         self.rootViewController = rootViewController
@@ -26,10 +27,9 @@ class SignUpViewCoordinator: Coordinator, SignUpViewControllerCoordinator {
         self.rootViewController.popViewController(animated: true)
     }
     
-    func showTabsBar() {
-        
+    func dismiss() {
+        self.delegate?.finishedFlow(coordinator: self)
     }
-    
 }
 
 extension SignUpViewCoordinator {

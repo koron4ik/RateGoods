@@ -93,15 +93,43 @@ class GoodsCell: UITableViewCell {
         view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: indent).isActive = true
         view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -indent).isActive = true
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    
+    func configure(with goods: Goods) {
+        mainView.titleLabel.text = goods.title
+        additionalView.titleLabel.text = goods.title
         
+        if let imageUrl = goods.imageUrl {
+            StorageManager.shared.loadImage(with: imageUrl) { [weak self] result in
+                switch result {
+                case .success(let image):
+                    guard let image = image else { return }
+                    self?.mainView.storeImageView.image = image
+                    self?.additionalView.storeImageView.image = image
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+        
+        if CoreDataManager.shared.goodsIsExist(with: goods.ref.description()) {
+            mainView.isFavourite = true
+        }
     }
+    
+    func configure(with goodsCoreData: GoodsCoreData) {
+        mainView.titleLabel.text = goodsCoreData.title
+        mainView.rateLabel.text = String(goodsCoreData.rate)
+        mainView.reviewsLabel.text = String(goodsCoreData.reviews)
+        
+        if let imageData = goodsCoreData.image {
+            mainView.storeImageView.image = UIImage(data: imageData)
+        } else {
+            mainView.storeImageView.image = UIImage(named: "placeholder_image")
+        }
 
-    @IBAction func addReviewButtonPressed(_ sender: UIButton) {
-        additionalView.reviewTextView.text.removeAll()
-        close()
+        if CoreDataManager.shared.goodsIsExist(with: goodsCoreData.ref ?? "") {
+            mainView.isFavourite = true
+        }
     }
 }
 
@@ -121,8 +149,4 @@ extension GoodsCell: AdditionalViewDelegate {
     func reviewsButtonPressed() {
         delegate?.goodsCell(self, seeAllReviewsAt: self.indexPath)
     }
-}
-
-extension GoodsCell {
-    //configure cell
 }

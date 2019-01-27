@@ -9,7 +9,11 @@
 import UIKit
 import FloatingPanel
 
-class StoreInfoViewCoordinator: NSObject, StoreInfoViewControllerCoordinator {
+class StoreInfoViewCoordinator: NSObject, Coordinator, StoreInfoViewControllerCoordinator {
+    
+    var rootViewController: UINavigationController = UINavigationController()
+    var childCoordinators: [Coordinator] = []
+    weak var delegate: FinishCoordinatorDelegate?
     
     private weak var floatingPanelController: FloatingPanelController?
     private var store: Store
@@ -35,10 +39,22 @@ class StoreInfoViewCoordinator: NSObject, StoreInfoViewControllerCoordinator {
         
     }
     
-    func showGoods(store: Store) {
-        guard let navVC = floatingPanelController?.parent?.navigationController else { return }
-        let goodsViewCoordinator = GoodsViewCoordinator(rootViewController: navVC, store: store)
-        goodsViewCoordinator.start()
+    func dismiss() {
+        self.delegate?.finishedFlow(coordinator: self)
     }
     
+    func showGoods(store: Store) {
+        guard let navVC = floatingPanelController?.parent?.navigationController else { return }
+        
+        let goodsViewCoordinator = GoodsViewCoordinator(rootViewController: navVC, store: store)
+        goodsViewCoordinator.delegate = self
+        self.add(childCoordinator: goodsViewCoordinator)
+        goodsViewCoordinator.start()
+    }
+}
+
+extension StoreInfoViewCoordinator: FinishCoordinatorDelegate {
+    func finishedFlow(coordinator: Coordinator) {
+        self.remove(childCoordinator: coordinator)
+    }
 }

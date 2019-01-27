@@ -19,7 +19,7 @@ protocol ReviewsTableViewControllerCoordinator {
 class ReviewsTableViewController: UITableViewController {
     
     var interactor: ReviewsTableViewInteractor!
-    var coordinator: ReviewsTableViewCoordinator?
+    weak var coordinator: ReviewsTableViewCoordinator?
     
     private var reviews = [Review]()
 
@@ -46,7 +46,9 @@ class ReviewsTableViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.navigationController?.isNavigationBarHidden = true
+        if self.isMovingFromParent {
+            self.coordinator?.dismiss()
+        }
     }
 
 }

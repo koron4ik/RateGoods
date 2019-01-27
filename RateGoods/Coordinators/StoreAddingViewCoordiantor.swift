@@ -10,8 +10,11 @@ import UIKit
 import GoogleMaps
 import FloatingPanel
 
-class StoreAddingViewCoordinator: NSObject, StoreAddingViewControllerCoordiantor {
+class StoreAddingViewCoordinator: NSObject, Coordinator, StoreAddingViewControllerCoordiantor {
     
+    var rootViewController: UINavigationController = UINavigationController()
+    var childCoordinators: [Coordinator] = []
+    weak var delegate: FinishCoordinatorDelegate?
     private weak var floatingPanelController: FloatingPanelController?
     private var storeLocation: CLLocationCoordinate2D
     
@@ -34,6 +37,10 @@ class StoreAddingViewCoordinator: NSObject, StoreAddingViewControllerCoordiantor
     
     func stop() {
         
+    }
+    
+    func dismiss() {
+        self.delegate?.finishedFlow(coordinator: self)
     }
     
     func storeSaved() {

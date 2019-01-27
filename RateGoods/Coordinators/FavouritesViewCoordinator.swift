@@ -25,5 +25,4 @@ class FavouritesViewCoordinator: NSObject, Coordinator, FavouritesViewController
     func stop() {
         self.rootViewController.dismiss(animated: true)
     }
-    
 }

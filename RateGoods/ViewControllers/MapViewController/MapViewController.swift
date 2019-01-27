@@ -18,8 +18,8 @@ protocol MapViewControllerInteractor: class {
 }
 
 protocol MapViewControllerCoordinator: class {
-    func showStore(floatingPanelController: FloatingPanelController, store: Store?, storeLocation: CLLocationCoordinate2D?)
-    
+    func showStoreInfoPanel(floatingPanelController: FloatingPanelController, store: Store)
+    func showStoreAddingPanel(floatingPanelController: FloatingPanelController, storeLocation: CLLocationCoordinate2D)
 }
 
 class MapViewController: UIViewController {
@@ -29,19 +29,26 @@ class MapViewController: UIViewController {
     weak var floatingPanelController: FloatingPanelController?
     
     var interactor: MapViewInteractor!
-    var coordinator: MapViewCoordinator?
+    weak var coordinator: MapViewCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.mapView.settings.consumesGesturesInView = false
+        self.mapView.delegate = self
+        
+        self.setupMapstyle()
+        self.configureMarkers()
+    }
+    
+    private func setupMapstyle() {
         self.interactor.setupMapStyle { [weak self] style, _ in
             guard let style = style else { return }
             self?.mapView.mapStyle = style
         }
-
-        self.mapView.settings.consumesGesturesInView = false
-        self.mapView.delegate = self
-        
+    }
+    
+    private func configureMarkers() {
         self.view.makeToastActivity(.center)
         DatabaseManager.shared.loadData(from: DatabaseManager.shared.storeRef) { [weak self] (result: Result<[Store]?>) in
             switch result {
@@ -58,8 +65,7 @@ class MapViewController: UIViewController {
                     }
                 }
             case .failure(let error):
-                print(error)
-                self?.view.makeToast("An unknown error occurred while retrieving data", duration: 2.0, position: .bottom)
+                self?.view.makeToast(error.localizedDescription, duration: 2.0, position: .bottom)
             }
             self?.view.hideToastActivity()
         }
@@ -73,19 +79,6 @@ class MapViewController: UIViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-    }
-    
-    private func createFloatingPanelController() -> FloatingPanelController {
-        let fpc = FloatingPanelController()
-        fpc.delegate = self
-        fpc.addPanel(toParent: self)
-        fpc.isRemovalInteractionEnabled = true
-        fpc.move(to: .hidden, animated: true)
-        fpc.surfaceView.cornerRadius = 16.0
-        fpc.surfaceView.backgroundColor = UIColor.purple
-        fpc.surfaceView.grabberHandle.backgroundColor = UIColor.white
-        
-        return fpc
     }
     
     @IBAction func exitBarButtonItemPressed(_ sender: Any) {
@@ -116,19 +109,39 @@ extension MapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
         floatingPanelController?.removePanelFromParent(animated: false)
         floatingPanelController = createFloatingPanelController()
-        guard let fpc = floatingPanelController else { return }
-        coordinator?.showStore(floatingPanelController: fpc, store: nil, storeLocation: coordinate)
+        
+        if let floatingPanelController = floatingPanelController {
+            self.coordinator?.showStoreAddingPanel(floatingPanelController: floatingPanelController,
+                                                   storeLocation: coordinate)
+        }
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         floatingPanelController?.removePanelFromParent(animated: false)
         floatingPanelController = createFloatingPanelController()
         
-        guard let store = interactor?.getStore(with: marker.position),
-            let fpc = floatingPanelController else { return false }
-        
-        coordinator?.showStore(floatingPanelController: fpc, store: store, storeLocation: nil)
+        if let floatingPanelController = floatingPanelController,
+            let store = self.interactor.getStore(with: marker.position) {
+            self.coordinator?.showStoreInfoPanel(floatingPanelController: floatingPanelController,
+                                                 store: store)
+        }
         
         return true
+    }
+}
+
+extension MapViewController {
+    
+    private func createFloatingPanelController() -> FloatingPanelController {
+        let fpc = FloatingPanelController()
+        fpc.delegate = self
+        fpc.addPanel(toParent: self)
+        fpc.isRemovalInteractionEnabled = true
+        fpc.move(to: .hidden, animated: true)
+        fpc.surfaceView.cornerRadius = 16.0
+        fpc.surfaceView.backgroundColor = UIColor.purple
+        fpc.surfaceView.grabberHandle.backgroundColor = UIColor.white
+        
+        return fpc
     }
 }

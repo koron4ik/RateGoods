@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class SignInViewCoordinator: Coordinator, SignInViewControllerCoordinator {
+class SignInViewCoordinator: NSObject, Coordinator, SignInViewControllerCoordinator {
     
     var rootViewController: UINavigationController
     var childCoordinators: [Coordinator] = []
@@ -20,20 +20,21 @@ class SignInViewCoordinator: Coordinator, SignInViewControllerCoordinator {
     }
     
     func start() {
-        self.rootViewController.pushViewController(self.presentingViewController, animated: false)
+        self.rootViewController.setViewControllers([presentingViewController], animated: false)
     }
     
-    func stop() {
-        self.rootViewController.popViewController(animated: false)
-    }
+    func stop() { }
     
     func showTabsBar() {
         let tabsScreenCoordinator = TabsCoordinator(rootViewController: self.rootViewController)
+        self.add(childCoordinator: tabsScreenCoordinator)
         tabsScreenCoordinator.start()
     }
     
     func showSignUp() {
         let signUpCoordinator = SignUpViewCoordinator(rootViewController: self.rootViewController)
+        signUpCoordinator.delegate = self
+        self.add(childCoordinator: signUpCoordinator)
         signUpCoordinator.start()
     }
 }
@@ -48,5 +49,11 @@ extension SignInViewCoordinator {
         viewController.coordinator = self
         
         return viewController
+    }
+}
+
+extension SignInViewCoordinator: FinishCoordinatorDelegate {
+    func finishedFlow(coordinator: Coordinator) {
+        self.remove(childCoordinator: coordinator)
     }
 }

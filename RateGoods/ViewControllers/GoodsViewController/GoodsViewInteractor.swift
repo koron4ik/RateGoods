@@ -11,7 +11,6 @@ import UIKit
 class GoodsViewInteractor: GoodsViewControllerInteractor {
     
     var store: Store
-    var goods = [Goods]()
     
     init(store: Store) {
         self.store = store

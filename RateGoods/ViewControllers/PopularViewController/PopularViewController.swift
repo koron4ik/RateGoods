@@ -18,12 +18,17 @@ protocol PopularViewControllerCoordinator: class {
 
 class PopularViewController: UIViewController {
     
-    var interactor: PopularViewControllerInteractor!
-    weak var coordinator: PopularViewControllerCoordinator?
+    var interactor: PopularViewInteractor!
+    weak var coordinator: PopularViewCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
     }
     
 }

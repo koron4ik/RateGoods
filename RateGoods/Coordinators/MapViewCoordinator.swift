@@ -28,14 +28,23 @@ class MapViewCoordinator: NSObject, Coordinator, MapViewControllerCoordinator {
         self.rootViewController.dismiss(animated: true)
     }
     
-    func showStore(floatingPanelController: FloatingPanelController, store: Store?, storeLocation: CLLocationCoordinate2D?) {
-        if let storeLocation = storeLocation {
-            let storeAddingViewCoordinator = StoreAddingViewCoordinator(floatingPanelController: floatingPanelController, storeLocation: storeLocation)
-            storeAddingViewCoordinator.start()
-        }
-        if let store = store {
-            let storeInfoViewCoordinator = StoreInfoViewCoordinator(floatingPanelController: floatingPanelController, store: store)
-            storeInfoViewCoordinator.start()
-        }
+    func showStoreInfoPanel(floatingPanelController: FloatingPanelController, store: Store) {
+        let storeInfoViewCoordinator = StoreInfoViewCoordinator(floatingPanelController: floatingPanelController, store: store)
+        storeInfoViewCoordinator.delegate = self
+        self.add(childCoordinator: storeInfoViewCoordinator)
+        storeInfoViewCoordinator.start()
+    }
+    
+    func showStoreAddingPanel(floatingPanelController: FloatingPanelController, storeLocation: CLLocationCoordinate2D) {
+        let storeAddingViewCoordinator = StoreAddingViewCoordinator(floatingPanelController: floatingPanelController, storeLocation: storeLocation)
+        storeAddingViewCoordinator.delegate = self
+        self.add(childCoordinator: storeAddingViewCoordinator)
+        storeAddingViewCoordinator.start()
+    }
+}
+
+extension MapViewCoordinator: FinishCoordinatorDelegate {
+    func finishedFlow(coordinator: Coordinator) {
+        self.remove(childCoordinator: coordinator)
     }
 }

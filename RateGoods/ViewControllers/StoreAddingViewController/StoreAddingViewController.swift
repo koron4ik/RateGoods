@@ -21,23 +21,30 @@ protocol StoreAddingViewControllerCoordiantor: class {
 
 class StoreAddingViewController: UIViewController {
     
-    var storeAddingPanel: StoreAddingPanel!
+    weak var storeAddingPanel: StoreAddingPanel!
         
     var interactor: StoreAddingViewInteractor!
-    var coordinator: StoreAddingViewCoordinator?
+    weak var coordinator: StoreAddingViewCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureViewController()
+        configurePanel()
     }
     
-    private func configureViewController() {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParent {
+            self.coordinator?.dismiss()
+        }
+    }
+    
+    private func configurePanel() {
         self.storeAddingPanel = R.nib.storeAddingPanel.instantiate(withOwner: nil, options: nil).first as? StoreAddingPanel
         self.storeAddingPanel.frame = view.frame
         self.storeAddingPanel.delegate = self
         self.storeAddingPanel.storeNameTextField.delegate = self
-        self.storeAddingPanel.configurePicker()
         
         self.view.addSubview(storeAddingPanel)
     }

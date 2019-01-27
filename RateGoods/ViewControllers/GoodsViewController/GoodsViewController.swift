@@ -12,12 +12,11 @@ import FirebaseAuth
 
 protocol GoodsViewControllerInteractor: class {
     var store: Store { get }
-    var goods: [Goods] { get set }
 }
 
 protocol GoodsViewControllerCoordinator: class {
-    func showGoodsAdding(vc: UIViewController, store: Store)
-    func showAllReviews(vc: UIViewController, goods: Goods)
+    func showGoodsAdding(viewController: UIViewController, store: Store)
+    func showAllReviews(viewController: UIViewController, goods: Goods)
 }
 
 class GoodsViewController: UIViewController {
@@ -26,19 +25,23 @@ class GoodsViewController: UIViewController {
     @IBOutlet weak var navigationTitleLabel: UILabel!
     
     var interactor: GoodsViewInteractor!
-    var coordinator: GoodsViewCoordinator?
+    weak var coordinator: GoodsViewCoordinator?
+    
+    private var goods = [Goods]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationTitleLabel.text = self.interactor.store.title ?? "Store"
-        tableView.backgroundView = UIImageView(image: UIImage(named: "background"))
+        self.tableView.backgroundView = UIImageView(image: UIImage(named: "background"))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.interactor.goods.removeAll()
+        self.navigationController?.isNavigationBarHidden = true
+        
+        self.goods.removeAll()
         self.tableView.reloadData()
         
         self.view.makeToastActivity(.center)
@@ -47,18 +50,25 @@ class GoodsViewController: UIViewController {
             switch result {
             case .success(let goods):
                 guard let goods = goods else { return }
-                self?.interactor.goods = goods
+                self?.goods = goods
                 self?.tableView.reloadData()
             case .failure(let error):
-                print(error)
-                self?.view.makeToast("An unknown error occurred while retrieving data", duration: 2.0, position: .bottom)
+                self?.view.makeToast(error.localizedDescription, duration: 2.0, position: .bottom)
             }
             self?.view.hideToastActivity()
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParent {
+            self.coordinator?.dismiss()
+        }
+    }
+    
     @IBAction func addGoodsButtonPressed(_ sender: UIButton) {
-        coordinator?.showGoodsAdding(vc: self, store: interactor.store)
+        self.coordinator?.showGoodsAdding(viewController: self, store: interactor.store)
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -89,7 +99,7 @@ extension GoodsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.interactor.goods.count
+        return self.goods.count
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -100,35 +110,12 @@ extension GoodsViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GoodsCell", for: indexPath) as? GoodsCell else {
             return UITableViewCell()
         }
-        let goods = self.interactor.goods[indexPath.row]
         
-//        cell.configure(with: goods.title,
-//                       image: nil,
-//                       rate: goods.rate,
-//                       reviews: goods.reviews)
-        
-        cell.mainView.titleLabel.text = goods.title
-        cell.additionalView.titleLabel.text = goods.title
+        let goods = self.goods[indexPath.row]
+        cell.configure(with: goods)
         cell.delegate = self
         cell.additionalView.reviewTextView.delegate = self
         cell.indexPath = indexPath
-        
-        if let imageUrl = goods.imageUrl {
-            StorageManager.shared.loadImage(with: imageUrl) { result in
-                switch result {
-                case .success(let image):
-                    guard let image = image else { return }
-                    cell.mainView.storeImageView.image = image
-                    cell.additionalView.storeImageView.image = image
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
-        
-        if CoreDataManager.shared.goodsIsExist(with: goods.ref.description()) {
-            cell.mainView.isFavourite = true
-        }
         
         return cell
     }
@@ -152,18 +139,17 @@ extension GoodsViewController: UITableViewDataSource, UITableViewDelegate {
 extension GoodsViewController: GoodsCellDelegate {
     
     func goodsCell(_ goodsCell: GoodsCell, faviouriteButtonPressedAt indexPath: IndexPath) {
-        let ref = self.interactor.goods[indexPath.row].ref.description()
+        let goods = self.goods[indexPath.row]
         
         if goodsCell.mainView.isFavourite {
-            CoreDataManager.shared.deleteGoods(with: ref)
+            CoreDataManager.shared.deleteGoods(with: goods.ref.description())
         } else {
-            let title = self.interactor.goods[indexPath.row].title ?? ""
             let image = goodsCell.mainView.storeImageView.image?.pngData()
             let rate = Float(goodsCell.mainView.rateLabel.text ?? "0.0") ?? 0.0
             let reviews = Int16(goodsCell.mainView.reviewsLabel.text ?? "0") ?? 0
             
-            CoreDataManager.shared.saveFavouriteGoods(with: title,
-                                                      ref: ref,
+            CoreDataManager.shared.saveFavouriteGoods(with: goods.title ?? "",
+                                                      ref: goods.ref.description(),
                                                       image: image,
                                                       rate: rate,
                                                       reviews: reviews)
@@ -171,7 +157,7 @@ extension GoodsViewController: GoodsCellDelegate {
     }
     
     func goodsCell(_ goodsCell: GoodsCell, seeAllReviewsAt indexPath: IndexPath) {
-        self.coordinator?.showAllReviews(vc: self, goods: self.interactor.goods[indexPath.row])
+        self.coordinator?.showAllReviews(viewController: self, goods: self.goods[indexPath.row])
     }
     
     func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Double) {
@@ -180,7 +166,7 @@ extension GoodsViewController: GoodsCellDelegate {
         }
         
         let review = Review(storeKey: self.interactor.store.key,
-                            goodsKey: self.interactor.goods[indexPath.row].key,
+                            goodsKey: self.goods[indexPath.row].key,
                             rate: rate,
                             text: text,
                             authorEmail: Auth.auth().currentUser?.email ?? "")

@@ -25,5 +25,4 @@ class PopularViewCoordinator: NSObject, Coordinator, PopularViewControllerCoordi
     func stop() {
         self.rootViewController.dismiss(animated: true)
     }
-    
 }

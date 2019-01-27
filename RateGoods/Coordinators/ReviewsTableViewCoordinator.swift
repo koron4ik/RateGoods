@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ReviewsTableViewCoordinator: Coordinator, ReviewsTableViewControllerCoordinator {
+class ReviewsTableViewCoordinator: NSObject, Coordinator, ReviewsTableViewControllerCoordinator {
  
     var rootViewController: UINavigationController
     var childCoordinators: [Coordinator] = []
     lazy var presentingViewController: UIViewController = self.createReviewsTableViewController()
+    weak var delegate: FinishCoordinatorDelegate?
     private var goods: Goods
     
     init(rootViewController: UINavigationController, goods: Goods) {
@@ -28,6 +29,9 @@ class ReviewsTableViewCoordinator: Coordinator, ReviewsTableViewControllerCoordi
         self.rootViewController.popViewController(animated: true)
     }
     
+    func dismiss() {
+        self.delegate?.finishedFlow(coordinator: self)
+    }
 }
 
 extension ReviewsTableViewCoordinator {

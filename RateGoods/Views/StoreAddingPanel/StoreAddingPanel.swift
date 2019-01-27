@@ -26,7 +26,13 @@ class StoreAddingPanel: UIView {
     
     var picker = UIImagePickerController()
     
-    func configurePicker() {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        configurePicker()
+    }
+    
+    private func configurePicker() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGesture(gesture:)))
         storeImageView.addGestureRecognizer(tapGesture)
         storeImageView.isUserInteractionEnabled = true
@@ -51,13 +57,13 @@ class StoreAddingPanel: UIView {
         delegate?.alert(alert)
     }
     
-    func openCamera() {
+    private func openCamera() {
         picker.sourceType = .camera
         picker.allowsEditing = true
         delegate?.picker(picker)
     }
     
-    func openGallery() {
+    private func openGallery() {
         picker.sourceType = .photoLibrary
         picker.allowsEditing = true
         delegate?.picker(picker)

@@ -7,19 +7,21 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 protocol SearchViewControllerInteractor: class {
 
 }
 
 protocol SearchViewControllerCoordinator: class {
-    
+    func showGoodsAdding(viewController: UIViewController, store: Store)
+    func showAllReviews(viewController: UIViewController, goods: Goods)
 }
 
 class SearchViewController: UIViewController {
     
-    var interactor: SearchViewControllerInteractor!
-    weak var coordinator: SearchViewControllerCoordinator?
+    var interactor: SearchViewInteractor!
+    weak var coordinator: SearchViewCoordinator?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -51,15 +53,17 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
-        filteredGoods.removeAll()
-        tableView.reloadData()
     }
 
     @objc private func loadGoodsResults(_ timer: Timer) {
-        guard let text = timer.userInfo as? String,
-            text.count > 0 else {
-                return
+        guard let text = timer.userInfo as? String, text.count > 0 else {
+            return
         }
         
         self.view.makeToastActivity(.center)
@@ -73,7 +77,7 @@ class SearchViewController: UIViewController {
                 self?.filteredGoods = goods
                 self?.tableView.reloadData()
             case .failure(let error):
-                print(error)
+                self?.view.makeToast(error.localizedDescription)
             }
             self?.view.hideToastActivity()
         }
@@ -99,6 +103,22 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
+extension SearchViewController: UITextViewDelegate {
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+}
+
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -118,33 +138,10 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         let goods = filteredGoods[indexPath.row]
-        
-        //        cell.configure(with: goods.title,
-        //                       image: nil,
-        //                       rate: goods.rate,
-        //                       reviews: goods.reviews)
-        
-        cell.mainView.titleLabel.text = goods.title
-        cell.additionalView.titleLabel.text = goods.title
+        cell.configure(with: goods)
         cell.delegate = self
+        cell.additionalView.reviewTextView.delegate = self
         cell.indexPath = indexPath
-        
-        if let imageUrl = goods.imageUrl {
-            StorageManager.shared.loadImage(with: imageUrl) { result in
-                switch result {
-                case .success(let image):
-                    guard let image = image else { return }
-                    cell.mainView.storeImageView.image = image
-                    cell.additionalView.storeImageView.image = image
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
-        
-        if CoreDataManager.shared.goodsIsExist(with: goods.ref.description()) {
-            cell.mainView.isFavourite = true
-        }
         
         return cell
     }
@@ -152,7 +149,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? GoodsCell else { return }
         
-        //cell.isOpen ? cell.close() : cell.open()
         if cell.isOpen {
             cell.close()
         } else {
@@ -169,18 +165,17 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 extension SearchViewController: GoodsCellDelegate {
     
     func goodsCell(_ goodsCell: GoodsCell, faviouriteButtonPressedAt indexPath: IndexPath) {
-        let ref = filteredGoods[indexPath.row].ref.description()
+        let goods = filteredGoods[indexPath.row]
         
         if goodsCell.mainView.isFavourite {
-            CoreDataManager.shared.deleteGoods(with: ref)
+            CoreDataManager.shared.deleteGoods(with: goods.ref.description())
         } else {
-            let title = filteredGoods[indexPath.row].title ?? ""
             let image = goodsCell.mainView.storeImageView.image?.pngData()
             let rate = Float(goodsCell.mainView.rateLabel.text ?? "0.0") ?? 0.0
             let reviews = Int16(goodsCell.mainView.reviewsLabel.text ?? "0") ?? 0
             
-            CoreDataManager.shared.saveFavouriteGoods(with: title,
-                                                      ref: ref,
+            CoreDataManager.shared.saveFavouriteGoods(with: goods.title ?? "",
+                                                      ref: goods.ref.description(),
                                                       image: image,
                                                       rate: rate,
                                                       reviews: reviews)
@@ -188,10 +183,19 @@ extension SearchViewController: GoodsCellDelegate {
     }
 
     func goodsCell(_ goodsCell: GoodsCell, seeAllReviewsAt indexPath: IndexPath) {
-        
+        self.coordinator?.showAllReviews(viewController: self,
+                                         goods: self.filteredGoods[indexPath.row])
     }
     
     func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Double) {
+        guard rate >= 1, !text.isEmpty else {
+            return
+        }
         
+        let review = Review(goodsRef: filteredGoods[indexPath.row].ref,
+                            rate: rate,
+                            text: text,
+                            authorEmail: Auth.auth().currentUser?.email ?? "")
+        DatabaseManager.shared.uploadData(to: review.ref, data: review.toAny())
     }
 }

@@ -22,7 +22,7 @@ protocol GoodsAddingViewControllerCoordinator: class {
 class GoodsAddingViewController: UIViewController {
     
     var interactor: GoodsAddingViewInteractor!
-    var coordinator: GoodsAddingViewCoordinator?
+    weak var coordinator: GoodsAddingViewCoordinator?
     
     @IBOutlet weak var goodsTextField: UITextField!
     @IBOutlet weak var goodsImageView: UIImageView!
@@ -46,16 +46,24 @@ class GoodsAddingViewController: UIViewController {
         self.view.addGestureRecognizer(tapGesture)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParent {
+            self.coordinator?.dismiss()
+        }
+    }
+    
     @objc func keyboardShouldHide() {
         self.view.endEditing(true)
     }
     
-    func registerNotificationObservers() {
+    private func registerNotificationObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    func configurePicker() {
+    private func configurePicker() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGesture(gesture:)))
         self.goodsImageView.addGestureRecognizer(tapGesture)
         self.goodsImageView.isUserInteractionEnabled = true
@@ -80,20 +88,20 @@ class GoodsAddingViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    func openCamera() {
+    private func openCamera() {
         self.picker.sourceType = .camera
         self.picker.allowsEditing = true
         self.present(picker, animated: true)
     }
     
-    func openGallery() {
+    private func openGallery() {
         self.picker.sourceType = .photoLibrary
         self.picker.allowsEditing = true
         self.present(picker, animated: true)
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
-        coordinator?.stop()
+        self.coordinator?.stop()
     }
     
     @IBAction func doneButtonPressed(_ sender: UIButton) {

@@ -10,23 +10,30 @@ import UIKit
 import Firebase
 
 protocol SignUpViewControllerCoordinator {
-    func showTabsBar()
+   
 }
 
 class SignUpViewController: UIViewController {
     
-    var coordinator: SignUpViewCoordinator?
+    weak var coordinator: SignUpViewCoordinator?
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
     
-    var auth: Auth!
+    private lazy var auth = Auth.auth()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.auth = Auth.auth()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+     
+        if self.isMovingFromParent {
+            self.coordinator?.dismiss()
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -40,7 +47,7 @@ class SignUpViewController: UIViewController {
                 return
         }
         
-        guard password == repeatPassword else {
+        if password != repeatPassword {
             self.view.makeToast("Passwords don't match")
             self.passwordTextField.text?.removeAll()
             self.repeatPasswordTextField.text?.removeAll()
@@ -48,8 +55,9 @@ class SignUpViewController: UIViewController {
         }
         
         auth.createUser(withEmail: email, password: password) { (user, error) in
-            if let user = user {
+            if user != nil {
                 self.coordinator?.stop()
+                return
             }
             
             if let error = error {

@@ -18,34 +18,31 @@ protocol StoreInfoViewControllerCoordinator: class {
 
 class StoreInfoViewController: UIViewController {
     
-    var storeInfoPanel: StoreInfoPanel!
+    weak var storeInfoPanel: StoreInfoPanel!
     
     var interactor: StoreInfoViewInteractor!
-    var coordinator: StoreInfoViewCoordinator?
+    weak var coordinator: StoreInfoViewCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        configureViewController()
+        configurePanel()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
-        StorageManager.shared.loadImage(with: self.interactor.store.imageUrl ?? "") { [weak self] result in
-            switch result {
-            case .success(let image):
-                guard let image = image else { return }
-                self?.storeInfoPanel.setImage(image)
-            case .failure(let error):
-                print(error)
-                self?.view.makeToast("An unknown error occurred while retrieving data", duration: 2.0, position: .bottom)
-            }
-            self?.storeInfoPanel.hideActivityIndicator()
+        if self.isMovingFromParent {
+            self.coordinator?.dismiss()
         }
     }
     
-    private func configureViewController() {
+    private func configurePanel() {
         self.storeInfoPanel = R.nib.storeInfoPanel.instantiate(withOwner: nil, options: nil).first as? StoreInfoPanel
         self.storeInfoPanel.frame = view.frame
         self.storeInfoPanel.delegate = self
-        self.storeInfoPanel.setTitle(with: self.interactor.store.title ?? "")
+        self.storeInfoPanel.configure(with: self.interactor.store)
+        
         self.view.addSubview(storeInfoPanel)
     }
 }
