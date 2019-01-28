@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import FloatingPanel
 import FirebaseAuth
+import Firebase
 
 protocol MapViewControllerInteractor: class {
     var stores: [Store] { get set }
@@ -37,8 +38,10 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
 
         self.mapView.settings.consumesGesturesInView = false
+        //self.mapView.settings.rotateGestures
         self.mapView.delegate = self
         self.mapView.isMyLocationEnabled = true
+        self.mapView.settings.myLocationButton = true
         self.locationManager.delegate = self
         self.locationManager.startUpdatingLocation()
         
@@ -67,8 +70,7 @@ class MapViewController: UIViewController {
                     if let location = $0.location {
                         let marker = GMSMarker(position: location)
                         marker.map = self?.mapView
-                        //marker.isFlat = true
-                        marker.opacity = 0.8
+                        marker.icon = UIImage(named: "marker")
                     }
                 }
             case .failure(let error):
@@ -91,7 +93,8 @@ class MapViewController: UIViewController {
     @IBAction func exitBarButtonItemPressed(_ sender: Any) {
         do {
             try Auth.auth().signOut()
-            self.coordinator?.stop()
+            DatabaseManager.shared.storeRef.removeAllObservers()
+            self.coordinator?.dismiss()
         } catch {
             self.view.makeToast(error.localizedDescription)
         }

@@ -26,9 +26,10 @@ class SignInViewCoordinator: NSObject, Coordinator, SignInViewControllerCoordina
     func stop() { }
     
     func showTabsBar() {
-        let tabsScreenCoordinator = TabsCoordinator(rootViewController: self.rootViewController)
-        self.add(childCoordinator: tabsScreenCoordinator)
-        tabsScreenCoordinator.start()
+        let tabsCoordinator = TabsCoordinator(rootViewController: self.rootViewController)
+        tabsCoordinator.delegate = self
+        self.add(childCoordinator: tabsCoordinator)
+        tabsCoordinator.start()
     }
     
     func showSignUp() {

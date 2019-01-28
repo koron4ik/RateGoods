@@ -27,11 +27,11 @@
             </objects>
             <point key="canvasLocation" x="-766" y="17"/>
         </scene>
-        <!--Favourites-->
+        <!--Navigation Controller-->
         <scene sceneID="FEc-Wo-TUe">
             <objects>
                 <navigationController storyboardIdentifier="FavouritesNavigationController" id="oOW-ZF-xri" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favourites" id="5n5-Ed-kYb"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="5n5-Ed-kYb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8v1-QU-hNM">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

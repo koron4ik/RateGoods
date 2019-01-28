@@ -14,6 +14,7 @@ class MapViewCoordinator: NSObject, Coordinator, MapViewControllerCoordinator {
     
     var childCoordinators: [Coordinator] = []
     var rootViewController: UINavigationController
+    weak var delegate: FinishCoordinatorDelegate?
     
     init(rootViewController: UINavigationController) {
         self.rootViewController = rootViewController
@@ -25,7 +26,7 @@ class MapViewCoordinator: NSObject, Coordinator, MapViewControllerCoordinator {
     }
     
     func stop() {
-        self.rootViewController.dismiss(animated: true)
+        self.rootViewController.popViewController(animated: true)
     }
     
     func showStoreInfoPanel(floatingPanelController: FloatingPanelController, store: Store) {
@@ -40,6 +41,10 @@ class MapViewCoordinator: NSObject, Coordinator, MapViewControllerCoordinator {
         storeAddingViewCoordinator.delegate = self
         self.add(childCoordinator: storeAddingViewCoordinator)
         storeAddingViewCoordinator.start()
+    }
+    
+    func dismiss() {
+        self.delegate?.finishedFlow(coordinator: self)
     }
 }
 

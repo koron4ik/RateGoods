@@ -31,7 +31,9 @@
         <scene sceneID="MFD-F1-Fr3">
             <objects>
                 <navigationController storyboardIdentifier="MapNavigationController" id="XVX-Z4-Hek" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="EDg-70-oxI"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" id="EDg-70-oxI">
+                        <color key="badgeColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SRx-pn-FFw">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -71,6 +73,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="exit" width="32" height="32"/>
+        <image name="exit" width="48" height="48"/>
+        <image name="map" width="48" height="48"/>
     </resources>
 </document>

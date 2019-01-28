@@ -30,7 +30,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 8 images.
+  /// This `R.image` struct is generated, and contains static references to 10 images.
   struct image {
     /// Image `144-1442847_exit-to-app-button-vector-entry-exit-icon.png`.
     static let _exitToAppButtonVectorEntryExitIconPng = Rswift.ImageResource(bundle: R.hostingBundle, name: "144-1442847_exit-to-app-button-vector-entry-exit-icon.png")
@@ -44,6 +44,10 @@ struct R: Rswift.Validatable {
     static let favourite = Rswift.ImageResource(bundle: R.hostingBundle, name: "favourite")
     /// Image `google`.
     static let google = Rswift.ImageResource(bundle: R.hostingBundle, name: "google")
+    /// Image `map`.
+    static let map = Rswift.ImageResource(bundle: R.hostingBundle, name: "map")
+    /// Image `marker`.
+    static let marker = Rswift.ImageResource(bundle: R.hostingBundle, name: "marker")
     /// Image `placeholder_image`.
     static let placeholder_image = Rswift.ImageResource(bundle: R.hostingBundle, name: "placeholder_image")
     /// Image `unfavourite`.
@@ -77,6 +81,16 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "google", bundle: ..., traitCollection: ...)`
     static func google(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.google, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "map", bundle: ..., traitCollection: ...)`
+    static func map(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.map, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "marker", bundle: ..., traitCollection: ...)`
+    static func marker(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.marker, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "placeholder_image", bundle: ..., traitCollection: ...)`
@@ -475,7 +489,9 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIKit.UIImage(named: "exit", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'exit' is used in storyboard 'Map', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "map", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'map' is used in storyboard 'Map', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
+          if UIKit.UIColor(named: "systemPinkColor", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'systemPinkColor' is used in storyboard 'Map', but couldn't be loaded.") }
         }
         if _R.storyboard.map().mapNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mapNavigationController' could not be loaded from storyboard 'Map' as 'UIKit.UINavigationController'.") }
         if _R.storyboard.map().pulleyViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'pulleyViewController' could not be loaded from storyboard 'Map' as 'MapViewController'.") }

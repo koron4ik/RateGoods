@@ -13,6 +13,7 @@ class TabsCoordinator: NSObject, Coordinator {
     
     var childCoordinators: [Coordinator] = []
     var rootViewController: UINavigationController
+    weak var delegate: FinishCoordinatorDelegate?
     
     lazy var tabBarViewController: UITabBarController = self.createTabsViewController()
     
@@ -26,7 +27,7 @@ class TabsCoordinator: NSObject, Coordinator {
     }
     
     func stop() {
-        self.rootViewController.dismiss(animated: true) 
+        self.rootViewController.popViewController(animated: true)
     }
     
 }
@@ -40,6 +41,7 @@ extension TabsCoordinator {
         
         viewController.interactor = MapViewInteractor()
         let mapViewCoordinator = MapViewCoordinator(rootViewController: rootViewController)
+        mapViewCoordinator.delegate = self
         viewController.coordinator = mapViewCoordinator
         self.add(childCoordinator: mapViewCoordinator)
         
@@ -89,7 +91,15 @@ extension TabsCoordinator {
         guard let tabBarController = R.storyboard.main.tabsViewController() else {
             preconditionFailure("Main Storyboard should contain TabsViewController")
         }
-        tabBarController.viewControllers = [mapViewController(), searchViewController(), popularViewController(), favouritesViewController()]
+        tabBarController.viewControllers = [mapViewController(), searchViewController(), favouritesViewController()]
         return tabBarController
+    }
+}
+
+extension TabsCoordinator: FinishCoordinatorDelegate {
+    
+    func finishedFlow(coordinator: Coordinator) {
+        self.delegate?.finishedFlow(coordinator: self)
+        self.stop()
     }
 }
