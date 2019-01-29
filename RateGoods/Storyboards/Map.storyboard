@@ -57,7 +57,7 @@
                         <viewLayoutGuide key="safeArea" id="EQW-9D-odJ"/>
                     </view>
                     <navigationItem key="navigationItem" id="gOz-o3-HEf">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="exit" id="siJ-k1-9AB">
+                        <barButtonItem key="rightBarButtonItem" image="exit" id="siJ-k1-9AB">
                             <connections>
                                 <action selector="exitBarButtonItemPressed:" destination="JF8-Qt-C5W" id="Za6-yb-PfZ"/>
                             </connections>
@@ -73,7 +73,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="exit" width="48" height="48"/>
-        <image name="map" width="48" height="48"/>
+        <image name="exit" width="16" height="16"/>
+        <image name="map" width="32" height="32"/>
     </resources>
 </document>

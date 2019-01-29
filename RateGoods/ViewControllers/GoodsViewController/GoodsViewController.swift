@@ -17,12 +17,14 @@ protocol GoodsViewControllerInteractor: class {
 protocol GoodsViewControllerCoordinator: class {
     func showGoodsAdding(viewController: UIViewController, store: Store)
     func showAllReviews(viewController: UIViewController, goods: Goods)
+    func dismiss()
 }
 
 class GoodsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navigationTitleLabel: UILabel!
+    @IBOutlet weak var storeImageView: UIImageView!
     
     var interactor: GoodsViewInteractor!
     weak var coordinator: GoodsViewCoordinator?
@@ -32,8 +34,22 @@ class GoodsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationTitleLabel.text = self.interactor.store.title ?? "Store"
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "background"))
+        self.configireNavigationBar()
+    }
+    
+    private func configireNavigationBar() {
+        self.navigationTitleLabel.text = self.interactor.store.title ?? "Store"
+        
+        guard let imageUrl = interactor.store.imageUrl else { return }
+        StorageManager.shared.loadImage(with: imageUrl) { [weak self] (result) in
+            switch result {
+            case .success(let image):
+                self?.storeImageView.image = image
+            default:
+                break
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +104,8 @@ extension GoodsViewController: UITextViewDelegate {
             textView.resignFirstResponder()
             return false
         }
-        return true
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        return newText.count < 500
     }
 }
 
@@ -119,21 +136,6 @@ extension GoodsViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? GoodsCell else { return }
-        
-        if cell.isOpen {
-            cell.close()
-        } else {
-            cell.open()
-        }
-        
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { () -> Void in
-            tableView.beginUpdates()
-            tableView.endUpdates()
-        }, completion: nil)
-    }
 }
 
 extension GoodsViewController: GoodsCellDelegate {
@@ -145,13 +147,13 @@ extension GoodsViewController: GoodsCellDelegate {
             CoreDataManager.shared.deleteGoods(with: goods.ref.description())
         } else {
             let image = goodsCell.mainView.storeImageView.image?.pngData()
-            let rate = Float(goodsCell.mainView.rateLabel.text ?? "0.0") ?? 0.0
+            let rating = Float(goodsCell.mainView.rateLabel.text ?? "0.0") ?? 0.0
             let reviews = Int16(goodsCell.mainView.reviewsLabel.text ?? "0") ?? 0
             
             CoreDataManager.shared.saveFavouriteGoods(with: goods.title ?? "",
                                                       ref: goods.ref.description(),
                                                       image: image,
-                                                      rate: rate,
+                                                      rating: rating,
                                                       reviews: reviews)
         }
     }
@@ -160,18 +162,36 @@ extension GoodsViewController: GoodsCellDelegate {
         self.coordinator?.showAllReviews(viewController: self, goods: self.goods[indexPath.row])
     }
     
-    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Double) {
-        guard rate >= 1 else {
+    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rating: Double) {
+        guard rating >= 1 else {
             self.view.makeToast("Enter rating")
             return
         }
         
         let review = Review(storeKey: self.interactor.store.key,
                             goodsKey: self.goods[indexPath.row].key,
-                            rate: rate,
+                            rating: rating,
                             text: text,
                             authorEmail: Auth.auth().currentUser?.email ?? "")
         DatabaseManager.shared.uploadData(to: review.ref, data: review.toAny())
         goodsCell.additionalView.configure(with: review)
+    }
+    
+    func goodsCell(_ goodsCell: GoodsCell, shouldCloseAt indexPath: IndexPath) {
+        goodsCell.close()
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] () -> Void in
+            self?.tableView.beginUpdates()
+            self?.tableView.endUpdates()
+        }, completion: nil)
+    }
+    
+    func goodsCell(_ goodsCell: GoodsCell, shouldOpenAt indexPath: IndexPath) {
+        goodsCell.open()
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] () -> Void in
+            self?.tableView.beginUpdates()
+            self?.tableView.endUpdates()
+            }, completion: nil)
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 protocol SignUpViewControllerCoordinator {
-   
+    func dismiss()
 }
 
 class SignUpViewController: UIViewController {
@@ -21,17 +21,22 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
     
-    private lazy var auth = Auth.auth()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
      
         if self.isMovingFromParent {
+            self.navigationController?.isNavigationBarHidden = true
             self.coordinator?.dismiss()
         }
     }
@@ -54,7 +59,7 @@ class SignUpViewController: UIViewController {
             return
         }
         
-        auth.createUser(withEmail: email, password: password) { (user, error) in
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if user != nil {
                 self.coordinator?.stop()
                 return

@@ -10,8 +10,9 @@ import UIKit
 import Cosmos
 
 protocol AdditionalViewDelegate: class {
-    func addReviewButtonPressed(_ reviewText: String, _ rate: Double)
+    func addReviewButtonPressed(_ reviewText: String, _ rating: Double)
     func reviewsButtonPressed()
+    func additionalViewTapped()
 }
 
 class AdditionalView: UIView {
@@ -24,8 +25,21 @@ class AdditionalView: UIView {
     @IBOutlet weak var rateView: CosmosView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var addReviewButton: UIButton!
+    @IBOutlet weak var containerView: UIView!
     
     weak var delegate: AdditionalViewDelegate?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGesture(gesture:)))
+        titleLabel.addGestureRecognizer(tapGesture)
+        containerView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func tapGesture(gesture: UIGestureRecognizer) {
+        self.delegate?.additionalViewTapped()
+    }
     
     @IBAction func addReviewButtonPressed(_ sender: UIButton) {
         guard let reviewText = reviewTextView.text else { return }
@@ -40,7 +54,7 @@ class AdditionalView: UIView {
     func configure(with review: Review?) {
         if let review = review {
             reviewTextView.text = review.text
-            rateView.rating = review.rate ?? 0.0
+            rateView.rating = review.rating ?? 0.0
             reviewTextView.isUserInteractionEnabled = false
             rateView.isUserInteractionEnabled = false
             addReviewButton.isUserInteractionEnabled = false

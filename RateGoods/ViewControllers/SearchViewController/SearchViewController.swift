@@ -9,9 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-protocol SearchViewControllerInteractor: class {
-
-}
+protocol SearchViewControllerInteractor: class { }
 
 protocol SearchViewControllerCoordinator: class {
     func showGoodsAdding(viewController: UIViewController, store: Store)
@@ -117,7 +115,8 @@ extension SearchViewController: UITextViewDelegate {
             textView.resignFirstResponder()
             return false
         }
-        return true
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        return newText.count < 500
     }
 }
 
@@ -147,21 +146,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? GoodsCell else { return }
-        
-        if cell.isOpen {
-            cell.close()
-        } else {
-            cell.open()
-        }
-        
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { () -> Void in
-            tableView.beginUpdates()
-            tableView.endUpdates()
-        }, completion: nil)
-    }
 }
 
 extension SearchViewController: GoodsCellDelegate {
@@ -173,13 +157,13 @@ extension SearchViewController: GoodsCellDelegate {
             CoreDataManager.shared.deleteGoods(with: goods.ref.description())
         } else {
             let image = goodsCell.mainView.storeImageView.image?.pngData()
-            let rate = Float(goodsCell.mainView.rateLabel.text ?? "0.0") ?? 0.0
+            let rating = Float(goodsCell.mainView.rateLabel.text ?? "0.0") ?? 0.0
             let reviews = Int16(goodsCell.mainView.reviewsLabel.text ?? "0") ?? 0
             
             CoreDataManager.shared.saveFavouriteGoods(with: goods.title ?? "",
                                                       ref: goods.ref.description(),
                                                       image: image,
-                                                      rate: rate,
+                                                      rating: rating,
                                                       reviews: reviews)
         }
     }
@@ -189,17 +173,35 @@ extension SearchViewController: GoodsCellDelegate {
                                          goods: self.filteredGoods[indexPath.row])
     }
     
-    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Double) {
-        guard rate >= 1 else {
+    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rating: Double) {
+        guard rating >= 1 else {
             self.view.makeToast("Enter rating")
             return
         }
         
         let review = Review(goodsRef: filteredGoods[indexPath.row].ref,
-                            rate: rate,
+                            rating: rating,
                             text: text,
                             authorEmail: Auth.auth().currentUser?.email ?? "")
         DatabaseManager.shared.uploadData(to: review.ref, data: review.toAny())
         goodsCell.additionalView.configure(with: review)
+    }
+    
+    func goodsCell(_ goodsCell: GoodsCell, shouldCloseAt indexPath: IndexPath) {
+        goodsCell.close()
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] () -> Void in
+            self?.tableView.beginUpdates()
+            self?.tableView.endUpdates()
+            }, completion: nil)
+    }
+    
+    func goodsCell(_ goodsCell: GoodsCell, shouldOpenAt indexPath: IndexPath) {
+        goodsCell.open()
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] () -> Void in
+            self?.tableView.beginUpdates()
+            self?.tableView.endUpdates()
+            }, completion: nil)
     }
 }

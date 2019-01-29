@@ -41,7 +41,7 @@ class ReviewCell: UITableViewCell {
     }
     
     func configure(with review: Review) {
-        reviewView.rateView.rating = review.rate ?? 0.0
+        reviewView.rateView.rating = review.rating ?? 0.0
         reviewView.nicknameLabel.text = review.authorEmail
         reviewView.reviewTextLabel.text = review.text
     }

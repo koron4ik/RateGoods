@@ -29,11 +29,11 @@ class StoreInfoPanel: UIView {
         StorageManager.shared.loadImage(with: store.imageUrl ?? "") { [weak self] result in
             switch result {
             case .success(let image):
-                guard let image = image else { return }
-                self?.storeImageView.image = image
-            case .failure(let error):
-                print(error)
-                self?.storeImageView.image = UIImage(named: "placeholder_image")
+                if let image = image {
+                    self?.storeImageView.image = image
+                }
+            default:
+                break
             }
             self?.hideActivityIndicator()
         }

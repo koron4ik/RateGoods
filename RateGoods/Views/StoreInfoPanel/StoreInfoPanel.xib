@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="528"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_image" translatesAutoresizingMaskIntoConstraints="NO" id="mMY-Yd-WkD">
+                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_image" translatesAutoresizingMaskIntoConstraints="NO" id="mMY-Yd-WkD">
                     <rect key="frame" x="0.0" y="97" width="375" height="376"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSd-Dv-GyP">
@@ -74,6 +74,6 @@
         </view>
     </objects>
     <resources>
-        <image name="placeholder_image" width="1200" height="800"/>
+        <image name="placeholder_image" width="600" height="399.75"/>
     </resources>
 </document>

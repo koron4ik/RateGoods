@@ -30,10 +30,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 10 images.
+  /// This `R.image` struct is generated, and contains static references to 11 images.
   struct image {
-    /// Image `144-1442847_exit-to-app-button-vector-entry-exit-icon.png`.
-    static let _exitToAppButtonVectorEntryExitIconPng = Rswift.ImageResource(bundle: R.hostingBundle, name: "144-1442847_exit-to-app-button-vector-entry-exit-icon.png")
+    /// Image `back`.
+    static let back = Rswift.ImageResource(bundle: R.hostingBundle, name: "back")
     /// Image `background`.
     static let background = Rswift.ImageResource(bundle: R.hostingBundle, name: "background")
     /// Image `exit`.
@@ -44,6 +44,8 @@ struct R: Rswift.Validatable {
     static let favourite = Rswift.ImageResource(bundle: R.hostingBundle, name: "favourite")
     /// Image `google`.
     static let google = Rswift.ImageResource(bundle: R.hostingBundle, name: "google")
+    /// Image `launchscreen`.
+    static let launchscreen = Rswift.ImageResource(bundle: R.hostingBundle, name: "launchscreen")
     /// Image `map`.
     static let map = Rswift.ImageResource(bundle: R.hostingBundle, name: "map")
     /// Image `marker`.
@@ -53,9 +55,9 @@ struct R: Rswift.Validatable {
     /// Image `unfavourite`.
     static let unfavourite = Rswift.ImageResource(bundle: R.hostingBundle, name: "unfavourite")
     
-    /// `UIImage(named: "144-1442847_exit-to-app-button-vector-entry-exit-icon.png", bundle: ..., traitCollection: ...)`
-    static func _exitToAppButtonVectorEntryExitIconPng(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image._exitToAppButtonVectorEntryExitIconPng, compatibleWith: traitCollection)
+    /// `UIImage(named: "back", bundle: ..., traitCollection: ...)`
+    static func back(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.back, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "background", bundle: ..., traitCollection: ...)`
@@ -81,6 +83,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "google", bundle: ..., traitCollection: ...)`
     static func google(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.google, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "launchscreen", bundle: ..., traitCollection: ...)`
+    static func launchscreen(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.launchscreen, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "map", bundle: ..., traitCollection: ...)`
@@ -410,6 +417,7 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if UIKit.UIImage(named: "back", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'back' is used in storyboard 'Goods', but couldn't be loaded.") }
         if UIKit.UIImage(named: "placeholder_image", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'placeholder_image' is used in storyboard 'Goods', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
@@ -427,6 +435,7 @@ struct _R: Rswift.Validatable {
       let name = "LaunchScreen"
       
       static func validate() throws {
+        if UIKit.UIImage(named: "launchscreen", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'launchscreen' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
       }

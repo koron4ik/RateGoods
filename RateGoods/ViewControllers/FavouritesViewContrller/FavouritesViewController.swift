@@ -13,9 +13,7 @@ protocol FavouritesViewControllerInteractor: class {
     func loadFavouriteGoods()
 }
 
-protocol FavouritesViewControllerCoordinator: class {
-    
-}
+protocol FavouritesViewControllerCoordinator: class { }
 
 class FavouritesViewController: UIViewController {
     
@@ -61,7 +59,7 @@ extension FavouritesViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GoodsCell", for: indexPath) as? GoodsCell else { return UITableViewCell() }
         
         let goods = self.interactor.favouriteGoods[indexPath.row]
-        cell.configure(with: goods)
+        cell.mainView.configure(with: goods)
         
         cell.indexPath = indexPath
         cell.delegate = self

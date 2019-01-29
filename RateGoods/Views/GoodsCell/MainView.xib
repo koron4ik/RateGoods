@@ -142,7 +142,7 @@
         </view>
     </objects>
     <resources>
-        <image name="placeholder_image" width="1200" height="800"/>
+        <image name="placeholder_image" width="600" height="399.75"/>
         <image name="unfavourite" width="48" height="48"/>
     </resources>
 </document>

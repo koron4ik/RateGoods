@@ -24,7 +24,6 @@
 		DD63390921E2818C00F6D06A /* StoreAddingViewCoordiantor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390821E2818C00F6D06A /* StoreAddingViewCoordiantor.swift */; };
 		DD63390B21E2AB9A00F6D06A /* StoreInfoViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390A21E2AB9A00F6D06A /* StoreInfoViewInteractor.swift */; };
 		DD63390D21E2ABB100F6D06A /* StoreAddingViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63390C21E2ABB100F6D06A /* StoreAddingViewInteractor.swift */; };
-		DD66BAD421FC634000C19F8D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66BAD321FC634000C19F8D /* User.swift */; };
 		DD7A868021FB01AE00C578CF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7A867F21FB01AE00C578CF /* SignUpViewController.swift */; };
 		DD7A868221FB072200C578CF /* SignUpViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7A868121FB072200C578CF /* SignUpViewCoordinator.swift */; };
 		DD7A868621FB78A500C578CF /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD7A868521FB78A500C578CF /* ReviewView.xib */; };
@@ -103,7 +102,6 @@
 		DD63390821E2818C00F6D06A /* StoreAddingViewCoordiantor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddingViewCoordiantor.swift; sourceTree = "<group>"; };
 		DD63390A21E2AB9A00F6D06A /* StoreInfoViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoViewInteractor.swift; sourceTree = "<group>"; };
 		DD63390C21E2ABB100F6D06A /* StoreAddingViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAddingViewInteractor.swift; sourceTree = "<group>"; };
-		DD66BAD321FC634000C19F8D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DD7A867F21FB01AE00C578CF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		DD7A868121FB072200C578CF /* SignUpViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewCoordinator.swift; sourceTree = "<group>"; };
 		DD7A868521FB78A500C578CF /* ReviewView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewView.xib; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 				DD4E258C21D8D47800D5777B /* Store.swift */,
 				DD9935F521EA9A2C003793B1 /* Review.swift */,
 				DD9935F721EA9A3A003793B1 /* Goods.swift */,
-				DD66BAD321FC634000C19F8D /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -754,7 +751,6 @@
 				DDD564B221CE8C0900EC6649 /* PopularViewInteractor.swift in Sources */,
 				DDC0F5C021D78C2400E79FD6 /* StorageManager.swift in Sources */,
 				DD7A868221FB072200C578CF /* SignUpViewCoordinator.swift in Sources */,
-				DD66BAD421FC634000C19F8D /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

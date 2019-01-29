@@ -49,6 +49,7 @@ class StoreAddingViewCoordinator: NSObject, Coordinator, StoreAddingViewControll
             
             let marker = GMSMarker(position: storeLocation)
             marker.map = parent.mapView
+            marker.icon = UIImage(named: "marker")
         }
     }
 }

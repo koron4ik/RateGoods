@@ -13,7 +13,7 @@ protocol ReviewsTableViewControllerInteractor {
 }
 
 protocol ReviewsTableViewControllerCoordinator {
-    
+    func dismiss()
 }
 
 class ReviewsTableViewController: UITableViewController {

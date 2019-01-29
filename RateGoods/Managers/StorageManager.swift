@@ -42,6 +42,11 @@ class StorageManager {
     }
     
     func loadImage(with url: String, completion: @escaping (Result<UIImage?>) -> Void) {
+        guard URL(string: url) != nil else {
+            completion(.success(nil))
+            return
+        }
+
         Storage.storage().reference(forURL: url).getData(maxSize: 8 * 1024 * 1024) { data, error in
             if let error = error {
                 completion(.failure(error))
@@ -55,5 +60,6 @@ class StorageManager {
             
             completion(.success(nil))
         }
+        
     }
 }

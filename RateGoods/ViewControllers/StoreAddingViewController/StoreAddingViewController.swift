@@ -12,11 +12,12 @@ import GoogleMaps
 
 protocol StoreAddingViewControllerInteractor: class {
     var storeLocation: CLLocationCoordinate2D { get }
-    func saveStore(storeTitle: String, storeImage: UIImage, storeLocation: CLLocationCoordinate2D, completion: @escaping (_ error: Error?) -> Void)
+    func saveStore(storeTitle: String, storeImage: UIImage?, storeLocation: CLLocationCoordinate2D, completion: @escaping (_ error: Error?) -> Void)
 }
 
 protocol StoreAddingViewControllerCoordiantor: class {
     func storeSaved()
+    func dismiss()
 }
 
 class StoreAddingViewController: UIViewController {
@@ -73,7 +74,8 @@ extension StoreAddingViewController: UITextFieldDelegate {
         if text.isEmpty && string == " " {
             return false
         }
-        return true
+        let count = text.count + string.count - range.length
+        return count < 20
     }
 }
 
@@ -93,8 +95,9 @@ extension StoreAddingViewController: StoreAddingPanelDelegate {
                 return
         }
 
+        let image = storeAddingPanel.imageIsChoosen ? storeImage : nil
         self.storeAddingPanel.showActivityIndicator()
-        self.interactor.saveStore(storeTitle: storeTitle, storeImage: storeImage, storeLocation: interactor.storeLocation) { [weak self] _ in
+        self.interactor.saveStore(storeTitle: storeTitle, storeImage: image, storeLocation: interactor.storeLocation) { [weak self] _ in
             self?.storeAddingPanel.hideActivityIndicator()
             self?.coordinator?.storeSaved()
         }

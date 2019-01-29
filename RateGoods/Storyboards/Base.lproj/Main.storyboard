@@ -48,7 +48,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="3IO-ct-FfB">
-                                <rect key="frame" x="60" y="260" width="255" height="63"/>
+                                <rect key="frame" x="60" y="312" width="255" height="63"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="chH-Fy-cnI">
                                         <rect key="frame" x="0.0" y="0.0" width="255" height="30"/>
@@ -64,12 +64,6 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate Goods" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMI-6m-OnN">
-                                <rect key="frame" x="71.5" y="109" width="232.5" height="55.5"/>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="51"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8f-Qk-4m5">
                                 <rect key="frame" x="243" y="617" width="61" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -87,7 +81,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKY-m8-agX">
-                                <rect key="frame" x="177.5" y="386" width="20.5" height="20.5"/>
+                                <rect key="frame" x="177.5" y="438" width="20.5" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dKY-m8-agX" secondAttribute="height" multiplier="1:1" id="OnA-lO-5cB"/>
                                 </constraints>
@@ -96,7 +90,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiY-K2-USl">
-                                <rect key="frame" x="60" y="335" width="255" height="39"/>
+                                <rect key="frame" x="60" y="387" width="255" height="39"/>
                                 <color key="backgroundColor" red="0.29250365499999997" green="0.23275315760000001" blue="0.47932881119999998" alpha="0.44648972602739728" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="z3y-8W-8ln"/>
@@ -115,7 +109,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-3s-uWP">
-                                <rect key="frame" x="103.5" y="414.5" width="168" height="35"/>
+                                <rect key="frame" x="103.5" y="466.5" width="168" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="123-Z6-Fv3"/>
                                     <constraint firstAttribute="width" constant="168" id="et7-Eg-g2F"/>
@@ -130,27 +124,33 @@
                                     <action selector="googleButtonPressed:" destination="3AZ-U8-C6G" eventType="touchUpInside" id="y0s-D0-Pq5"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate Goods" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMI-6m-OnN">
+                                <rect key="frame" x="71.5" y="144" width="232.5" height="55.5"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="51"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.69811663641917809" green="0.69806496658219175" blue="0.94023766259315089" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VcP-OQ-hwx" firstAttribute="leading" secondItem="JWK-8j-9aJ" secondAttribute="leading" constant="70" id="38i-Xp-cvy"/>
                             <constraint firstItem="dKY-m8-agX" firstAttribute="top" secondItem="AiY-K2-USl" secondAttribute="bottom" constant="12" id="DyO-Va-KV6"/>
-                            <constraint firstItem="AiY-K2-USl" firstAttribute="trailing" secondItem="Wze-Yq-Eem" secondAttribute="trailing" constant="-60" id="I90-br-IZw"/>
                             <constraint firstItem="Rkh-3s-uWP" firstAttribute="top" secondItem="dKY-m8-agX" secondAttribute="bottom" constant="8" id="UJ5-OO-eea"/>
                             <constraint firstItem="D8f-Qk-4m5" firstAttribute="leading" secondItem="VcP-OQ-hwx" secondAttribute="trailing" constant="3" id="UKB-Rt-Zhj"/>
-                            <constraint firstItem="jMI-6m-OnN" firstAttribute="top" secondItem="JWK-8j-9aJ" secondAttribute="top" constant="89" id="VhF-Lh-NE7"/>
+                            <constraint firstItem="jMI-6m-OnN" firstAttribute="top" secondItem="JWK-8j-9aJ" secondAttribute="top" constant="124" id="VhF-Lh-NE7"/>
+                            <constraint firstItem="3IO-ct-FfB" firstAttribute="centerY" secondItem="JWK-8j-9aJ" secondAttribute="centerY" id="WzK-PC-MQc"/>
                             <constraint firstItem="VcP-OQ-hwx" firstAttribute="bottom" secondItem="D8f-Qk-4m5" secondAttribute="bottom" id="Y2V-9A-BGb"/>
                             <constraint firstItem="JWK-8j-9aJ" firstAttribute="trailing" secondItem="D8f-Qk-4m5" secondAttribute="trailing" constant="71" id="YdN-Wo-EDr"/>
+                            <constraint firstItem="AiY-K2-USl" firstAttribute="trailing" secondItem="3IO-ct-FfB" secondAttribute="trailing" id="gdq-ml-sNN"/>
                             <constraint firstItem="VcP-OQ-hwx" firstAttribute="top" secondItem="D8f-Qk-4m5" secondAttribute="top" id="gsX-6x-UxP"/>
                             <constraint firstItem="dKY-m8-agX" firstAttribute="centerX" secondItem="AiY-K2-USl" secondAttribute="centerX" id="hXc-hZ-5XL"/>
                             <constraint firstItem="jMI-6m-OnN" firstAttribute="centerX" secondItem="JWK-8j-9aJ" secondAttribute="centerX" id="hcn-cV-v4X"/>
                             <constraint firstItem="AiY-K2-USl" firstAttribute="top" secondItem="3IO-ct-FfB" secondAttribute="bottom" constant="12" id="hwJ-jH-mmS"/>
                             <constraint firstAttribute="bottom" secondItem="VcP-OQ-hwx" secondAttribute="bottom" constant="20" symbolic="YES" id="mmk-HI-nRK"/>
-                            <constraint firstItem="AiY-K2-USl" firstAttribute="leading" secondItem="Wze-Yq-Eem" secondAttribute="leading" constant="60" id="p1J-lq-6yv"/>
                             <constraint firstItem="3IO-ct-FfB" firstAttribute="leading" secondItem="JWK-8j-9aJ" secondAttribute="leading" constant="60" id="pBi-De-M6f"/>
+                            <constraint firstItem="AiY-K2-USl" firstAttribute="leading" secondItem="3IO-ct-FfB" secondAttribute="leading" id="sS1-7G-y5x"/>
                             <constraint firstItem="Rkh-3s-uWP" firstAttribute="centerX" secondItem="JWK-8j-9aJ" secondAttribute="centerX" id="w19-f5-Ygi"/>
                             <constraint firstItem="JWK-8j-9aJ" firstAttribute="trailing" secondItem="3IO-ct-FfB" secondAttribute="trailing" constant="60" id="xu8-Qn-8UX"/>
-                            <constraint firstItem="3IO-ct-FfB" firstAttribute="top" secondItem="JWK-8j-9aJ" secondAttribute="top" constant="240" id="ymm-1s-Yf0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JWK-8j-9aJ"/>
                     </view>
@@ -236,6 +236,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="google" width="382" height="92"/>
+        <image name="google" width="190.5" height="45.75"/>
     </resources>
 </document>

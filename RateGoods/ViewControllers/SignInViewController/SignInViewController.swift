@@ -32,22 +32,19 @@ class SignInViewController: UIViewController {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         
-        if self.userIsExist() {
+        if auth.currentUser != nil {
             self.coordinator?.showTabsBar()
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-    }
-    
-    private func userIsExist() -> Bool {
-        return auth.currentUser != nil
     }
     
     @IBAction func logInButtonPressed(_ sender: Any) {
@@ -73,10 +70,6 @@ class SignInViewController: UIViewController {
         GIDSignIn.sharedInstance().signIn()
     }
     
-    @IBAction func facebookButtonPressed(_ sender: Any) {
-        
-    }
-    
     @IBAction func signUpButtonPressed(_ sender: Any) {
         self.coordinator?.showSignUp()
     }
@@ -99,10 +92,8 @@ extension SignInViewController: GIDSignInDelegate, GIDSignInUIDelegate {
             }
             
             if let authResult = authResult {
-                self?.coordinator?.showTabsBar()
-                //DatabaseManager.shared.uploadData(to: DatabaseManager.shared.usersRef.child(user.userID),
-                //                                  data: ["email": user.profile.email])
                 DatabaseManager.shared.uploadData(to: DatabaseManager.shared.usersRef.child(authResult.user.uid), data: ["email": authResult.user.email])
+                self?.coordinator?.showTabsBar()
             }
         }
     }

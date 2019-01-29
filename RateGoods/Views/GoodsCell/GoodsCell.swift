@@ -11,13 +11,17 @@ import UIKit
 protocol GoodsCellDelegate: class {
     func goodsCell(_ goodsCell: GoodsCell, faviouriteButtonPressedAt indexPath: IndexPath)
     func goodsCell(_ goodsCell: GoodsCell, seeAllReviewsAt indexPath: IndexPath)
-    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Double)
+    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rating: Double)
+    func goodsCell(_ goodsCell: GoodsCell, shouldCloseAt indexPath: IndexPath)
+    func goodsCell(_ goodsCell: GoodsCell, shouldOpenAt indexPath: IndexPath)
 }
 
 extension GoodsCellDelegate {
     func goodsCell(_ goodsCell: GoodsCell, faviouriteButtonPressedAt indexPath: IndexPath) { }
     func goodsCell(_ goodsCell: GoodsCell, seeAllReviewsAt indexPath: IndexPath) { }
-    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rate: Double) { }
+    func goodsCell(_ goodsCell: GoodsCell, addReviewAt indexPath: IndexPath, with text: String, rating: Double) { }
+    func goodsCell(_ goodsCell: GoodsCell, shouldCloseAt indexPath: IndexPath) { }
+    func goodsCell(_ goodsCell: GoodsCell, shouldOpenAt indexPath: IndexPath) { }
 }
 
 class GoodsCell: UITableViewCell {
@@ -117,12 +121,12 @@ class GoodsCell: UITableViewCell {
             case .success(let reviews):
                 if let reviews = reviews {
                     let reviewsCount = reviews.count
-                    let reviewsAverageRate = reviews.compactMap({ $0.rate }).reduce(0, +) / Double(reviewsCount)
-                    let roundedAverageRate = Double(round(10 * reviewsAverageRate) / 10)
+                    let reviewsAverageRating = reviews.compactMap({ $0.rating }).reduce(0, +) / Double(reviewsCount)
+                    let roundedAverageRating = Double(round(10 * reviewsAverageRating) / 10)
                     self?.mainView.reviewsLabel.text = String(reviewsCount)
-                    self?.mainView.rateLabel.text = String(roundedAverageRate)
+                    self?.mainView.rateLabel.text = String(roundedAverageRating)
                     self?.additionalView.reviewsLabel.text = String(reviewsCount)
-                    self?.additionalView.rateLabel.text = String(roundedAverageRate)
+                    self?.additionalView.rateLabel.text = String(roundedAverageRating)
                 }
             case .failure(let error):
                 print(error)
@@ -137,23 +141,13 @@ class GoodsCell: UITableViewCell {
             self?.additionalView.configure(with: review)
         }
     }
-    
-    func configure(with goodsCoreData: GoodsCoreData) {
-        mainView.titleLabel.text = goodsCoreData.title
-        mainView.rateLabel.text = String(goodsCoreData.rate)
-        mainView.reviewsLabel.text = String(goodsCoreData.reviews)
-        
-        if let imageData = goodsCoreData.image {
-            mainView.storeImageView.image = UIImage(data: imageData)
-        }
-
-        if CoreDataManager.shared.goodsIsExist(with: goodsCoreData.ref ?? "") {
-            mainView.isFavourite = true
-        }
-    }
 }
 
 extension GoodsCell: MainViewDelegate {
+    
+    func mainViewTapped() {
+        self.delegate?.goodsCell(self, shouldOpenAt: self.indexPath)
+    }
     
     func favouriteButtonPressed() {
         delegate?.goodsCell(self, faviouriteButtonPressedAt: self.indexPath)
@@ -162,8 +156,12 @@ extension GoodsCell: MainViewDelegate {
 
 extension GoodsCell: AdditionalViewDelegate {
     
-    func addReviewButtonPressed(_ reviewText: String, _ rate: Double) {
-        delegate?.goodsCell(self, addReviewAt: self.indexPath, with: reviewText, rate: rate)
+    func additionalViewTapped() {
+        self.delegate?.goodsCell(self, shouldCloseAt: self.indexPath)
+    }
+    
+    func addReviewButtonPressed(_ reviewText: String, _ rating: Double) {
+        delegate?.goodsCell(self, addReviewAt: self.indexPath, with: reviewText, rating: rating)
     }
     
     func reviewsButtonPressed() {

@@ -25,6 +25,7 @@ class StoreAddingPanel: UIView {
     weak var delegate: StoreAddingPanelDelegate?
     
     var picker = UIImagePickerController()
+    var imageIsChoosen = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -89,6 +90,7 @@ extension StoreAddingPanel: UIImagePickerControllerDelegate, UINavigationControl
         if let chosenImage = info[.editedImage] as? UIImage {
             storeImageView.contentMode = .scaleToFill
             storeImageView.image = chosenImage
+            imageIsChoosen = true
         }
         
         picker.dismiss(animated: true, completion: nil)

@@ -70,7 +70,7 @@ class CoreDataManager {
 
 extension CoreDataManager {
     
-    func saveFavouriteGoods(with title: String, ref: String, image: Data?, rate: Float, reviews: Int16) {
+    func saveFavouriteGoods(with title: String, ref: String, image: Data?, rating: Float, reviews: Int16) {
         let entity = NSEntityDescription.entity(forEntityName: "GoodsCoreData",
                                              in: self.managedObjectContext)!
         
@@ -78,7 +78,7 @@ extension CoreDataManager {
         goodsCoreData.title = title
         goodsCoreData.ref = ref
         goodsCoreData.image = image
-        goodsCoreData.rate = rate
+        goodsCoreData.rating = rating
         goodsCoreData.reviews = reviews
         
         self.saveContext()

@@ -99,7 +99,10 @@ class DatabaseManager {
                                 completion(.success(nil))
                                 return
                             }
-                            filteredGoods.append(contentsOf: goods.filter { $0.title == name })
+                            filteredGoods.append(contentsOf: goods.filter {
+                                if let title = $0.title { return title.range(of: name, options: .caseInsensitive) != nil }
+                                return false
+                            })
                         case .failure(let error):
                             completion(.failure(error))
                         }

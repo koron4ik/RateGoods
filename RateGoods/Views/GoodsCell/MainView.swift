@@ -10,6 +10,7 @@ import UIKit
 
 protocol MainViewDelegate: class {
     func favouriteButtonPressed()
+    func mainViewTapped()
 }
 
 class MainView: UIView {
@@ -19,6 +20,17 @@ class MainView: UIView {
     @IBOutlet weak var reviewsLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var favouriteButton: UIButton!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGesture(gesture:)))
+        addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func tapGesture(gesture: UIGestureRecognizer) {
+        self.delegate?.mainViewTapped()
+    }
     
     var isFavourite: Bool = false {
         didSet {
@@ -36,4 +48,17 @@ class MainView: UIView {
         isFavourite = !isFavourite
     }
     
+    func configure(with goodsCoreData: GoodsCoreData) {
+        titleLabel.text = goodsCoreData.title
+        rateLabel.text = String(goodsCoreData.rating)
+        reviewsLabel.text = String(goodsCoreData.reviews)
+        
+        if let imageData = goodsCoreData.image {
+            storeImageView.image = UIImage(data: imageData)
+        }
+        
+        if CoreDataManager.shared.goodsIsExist(with: goodsCoreData.ref ?? "") {
+            isFavourite = true
+        }
+    }
 }

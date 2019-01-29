@@ -12,11 +12,11 @@ import Toast_Swift
 
 protocol GoodsAddingViewControllerInteractor: class {
     var store: Store { get }
-    func saveGoods(with goodsTitle: String, goodsImageUrl: String, rate: Double, goodsReview: String)
+    func saveGoods(with goodsTitle: String, goodsImageUrl: String, rating: Double, goodsReview: String)
 }
 
 protocol GoodsAddingViewControllerCoordinator: class {
-    
+    func dismiss()
 }
 
 class GoodsAddingViewController: UIViewController {
@@ -28,7 +28,6 @@ class GoodsAddingViewController: UIViewController {
     @IBOutlet weak var goodsImageView: UIImageView!
     @IBOutlet weak var rateView: CosmosView!
     @IBOutlet weak var reviewTextView: UITextView!
-    @IBOutlet weak var navigationTitleLabel: UILabel!
     @IBOutlet weak var contentScrollView: UIScrollView!
     
     private var picker = UIImagePickerController()
@@ -38,7 +37,6 @@ class GoodsAddingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationTitleLabel.text = self.interactor.store.title ?? "Goods"
         self.configurePicker()
         self.registerNotificationObservers()
         
@@ -128,7 +126,7 @@ class GoodsAddingViewController: UIViewController {
                 guard let url = url else { return }
                 self.interactor.saveGoods(with: goodsTitle,
                                                 goodsImageUrl: url.absoluteString,
-                                                rate: self.rateView?.rating ?? 0.0,
+                                                rating: self.rateView?.rating ?? 0.0,
                                                 goodsReview: goodsReview)
                 self.coordinator?.stop()
             case .failure(let error):
@@ -185,7 +183,8 @@ extension GoodsAddingViewController: UITextViewDelegate {
             textView.resignFirstResponder()
             return false
         }
-        return true
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        return newText.count < 500
     }
 }
 
@@ -198,9 +197,12 @@ extension GoodsAddingViewController: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return true }
+
         if text.isEmpty && string == " " {
             return false
         }
-        return true
+        
+        let count = text.count + string.count - range.length
+        return count < 20
     }
 }
